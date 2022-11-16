@@ -1,5 +1,58 @@
-.div {
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100px;
-  background-color: red;
+  z-index: 1000;
+  background-color: aliceblue;
+}
+
+.container {
+  max-width: 1470px;
+  padding: 10px 30px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  color: #005bff;
+}
+.wrapper {
+  position: relative;
+  max-width: 800px;
+  margin: auto 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+.search {
+  flex-grow: 1;
+  background: transparent;
+  border: 4px solid #005bff;
+  border-radius: 8px;
+  color: #001a34;
+  outline: none;
+  padding: 0 0 0 8px;
+  height: 40px;
+}
+
+.button,
+.buttonSearch {
+  color: aliceblue;
+  background-color: #005bff;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.5s;
+
+  &:hover {
+    background-color: #0050e0;
+  }
+}
+.buttonSearch {
+  position: absolute;
+  right: 0;
 }
