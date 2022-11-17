@@ -33,7 +33,7 @@ span {
   right: 0;
   margin-top: 15px;
   background: #ffffff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.09);
+  box-shadow: 0 4px 16px 1px rgba(0, 26, 52, 0.16);
   border-radius: 10px;
   overflow: hidden;
   padding: 10px 0;
@@ -51,7 +51,7 @@ span {
 
   &.active,
   &:hover {
-    background: rgba(254, 95, 30, 0.05);
+    background: aliceblue;
   }
 }
 

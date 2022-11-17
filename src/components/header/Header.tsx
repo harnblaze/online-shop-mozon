@@ -32,14 +32,16 @@ const Header: FC = () => {
             </>
           ) : (
             <>
-              <FaUserCircle className={styles.userLogo} />
+              <div className={styles.userLogo}>
+                <FaUserCircle className={styles.icon} />
+              </div>
 
-              <AiOutlineShoppingCart className={styles.cart} />
-
-              <MdLogout
-                className={styles.logout}
-                onClick={() => setIsAuth(!isAuth)}
-              />
+              <div className={styles.cart}>
+                <AiOutlineShoppingCart className={styles.icon} />
+              </div>
+              <div className={styles.logout} onClick={() => setIsAuth(!isAuth)}>
+                <MdLogout className={styles.icon} />
+              </div>
             </>
           )}
         </div>

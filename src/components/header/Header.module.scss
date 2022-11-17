@@ -29,7 +29,7 @@
   padding: 8px 12px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.5s;
+  transition: background-color 0.3s;
 
   &:hover {
     background-color: #0050e0;
@@ -43,17 +43,17 @@
 }
 
 .userLogo {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   margin-left: 10px;
   border-radius: 50%;
-  border: 3px solid #005bff;
   color: #005bff;
   cursor: pointer;
   transition: all 0.3s;
 
-  :hover {
+  &:hover {
     color: #0050e0;
+    transform: scale(1.2);
   }
 }
 
@@ -61,11 +61,18 @@
 .logout {
   width: 35px;
   height: 35px;
-  margin-left: 10px;
+  margin-left: 15px;
   color: #005bff;
   cursor: pointer;
+  transition: all 0.3s;
 
-  :hover {
+  &:hover {
     color: #0050e0;
+    transform: scale(1.2);
   }
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
 }
