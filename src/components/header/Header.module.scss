@@ -29,8 +29,9 @@
 }
 .search {
   flex-grow: 1;
+  max-width: 800px;
   background: transparent;
-  border: 4px solid #005bff;
+  border: 3px solid #005bff;
   border-radius: 8px;
   color: #001a34;
   outline: none;
@@ -45,6 +46,7 @@
   border-radius: 8px;
   border: none;
   padding: 8px 12px;
+  font-weight: bold;
   cursor: pointer;
   transition: background-color 0.5s;
 
@@ -55,4 +57,23 @@
 .buttonSearch {
   position: absolute;
   right: 0;
+}
+
+.authorization {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userLogo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 3px solid #005bff;
+  color: #005bff;
+  cursor: pointer;
+
+  .button {
+    margin-right: 10px;
+  }
 }

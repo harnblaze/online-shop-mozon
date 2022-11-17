@@ -1,8 +1,9 @@
 import React, { FC, useState } from 'react';
 import styles from './Header.module.scss';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Header: FC = () => {
-  const [isAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -20,11 +21,35 @@ const Header: FC = () => {
           />
           <button className={styles.buttonSearch}>Найти</button>
         </div>
-        {isAuth ? (
-          <button className={styles.button}>Зарегистрироваться</button>
-        ) : (
-          <button className={styles.button}>Войти</button>
-        )}
+        <div className={styles.authorization}>
+          {isAuth ? (
+            <>
+              <button
+                className={styles.button}
+                style={{ marginRight: '10px' }}
+                onClick={() => setIsAuth(!isAuth)}
+              >
+                Зарегистрироваться
+              </button>
+              <button
+                className={styles.button}
+                onClick={() => setIsAuth(!isAuth)}
+              >
+                Войти
+              </button>
+            </>
+          ) : (
+            <>
+              <FaUserCircle className={styles.userLogo} />
+              <button
+                className={styles.button}
+                onClick={() => setIsAuth(!isAuth)}
+              >
+                Выйти
+              </button>
+            </>
+          )}
+        </div>
       </div>
     </header>
   );
