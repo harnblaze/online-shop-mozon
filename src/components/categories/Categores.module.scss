@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .ul {
   display: flex;
   flex-wrap: wrap;
@@ -30,10 +31,13 @@
     color: #fff;
   }
 }
+
 .liActive {
   background-color: #005bff;
   color: #fff;
+
   &:hover {
     background-color: darken(#005bff, 5%);
+    border-color: darken(#005bff, 5%);
   }
 }
