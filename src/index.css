@@ -80,3 +80,12 @@ textarea,
 select {
   font: inherit;
 }
+
+.container {
+  max-width: 1470px;
+  padding: 10px 30px;
+  margin: auto;
+  display: flex;
+  align-items: normal;
+  justify-content: space-between;
+}
