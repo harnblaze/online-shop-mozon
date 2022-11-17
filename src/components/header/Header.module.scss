@@ -17,30 +17,10 @@
 }
 .logo {
   color: #005bff;
-}
-.wrapper {
-  position: relative;
-  max-width: 800px;
-  margin: auto 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
-}
-.search {
-  flex-grow: 1;
-  max-width: 800px;
-  background: transparent;
-  border: 3px solid #005bff;
-  border-radius: 8px;
-  color: #001a34;
-  outline: none;
-  padding: 0 0 0 8px;
-  height: 40px;
+  cursor: pointer;
 }
 
-.button,
-.buttonSearch {
+.button {
   color: aliceblue;
   background-color: #005bff;
   border-radius: 8px;
@@ -54,10 +34,6 @@
     background-color: #0050e0;
   }
 }
-.buttonSearch {
-  position: absolute;
-  right: 0;
-}
 
 .authorization {
   display: flex;
@@ -67,13 +43,18 @@
 .userLogo {
   width: 40px;
   height: 40px;
-  margin-right: 10px;
+  margin-left: 10px;
   border-radius: 50%;
   border: 3px solid #005bff;
   color: #005bff;
   cursor: pointer;
+}
 
-  .button {
-    margin-right: 10px;
-  }
+.cart,
+.logout {
+  width: 35px;
+  height: 35px;
+  margin-left: 10px;
+  color: #005bff;
+  cursor: pointer;
 }

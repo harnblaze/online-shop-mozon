@@ -1,26 +1,18 @@
 import React, { FC, useState } from 'react';
 import styles from './Header.module.scss';
 import { FaUserCircle } from 'react-icons/fa';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { MdLogout } from 'react-icons/md';
+import Search from './search/Search';
 
 const Header: FC = () => {
   const [isAuth, setIsAuth] = useState(false);
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <h2 className={styles.logo}>MOZON</h2>
-        <div className={styles.wrapper}>
-          <input
-            className={styles.search}
-            placeholder="Искать на Mozon"
-            type="text"
-            name="text"
-            autoCapitalize="off"
-            autoComplete="off"
-            autoCorrect="off"
-            spellCheck="false"
-          />
-          <button className={styles.buttonSearch}>Найти</button>
-        </div>
+        <Search />
         <div className={styles.authorization}>
           {isAuth ? (
             <>
@@ -41,12 +33,13 @@ const Header: FC = () => {
           ) : (
             <>
               <FaUserCircle className={styles.userLogo} />
-              <button
-                className={styles.button}
+
+              <AiOutlineShoppingCart className={styles.cart} />
+
+              <MdLogout
+                className={styles.logout}
                 onClick={() => setIsAuth(!isAuth)}
-              >
-                Выйти
-              </button>
+              />
             </>
           )}
         </div>

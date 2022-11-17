@@ -1,0 +1,48 @@
+.wrapper {
+  position: relative;
+  max-width: 800px;
+  margin: auto 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+.search {
+  flex-grow: 1;
+  max-width: 800px;
+  background: transparent;
+  border: 3px solid #005bff;
+  border-radius: 8px;
+  color: #001a34;
+  outline: none;
+  padding: 0 0 0 8px;
+  height: 40px;
+}
+
+.buttonSearch {
+  color: aliceblue;
+  background-color: #005bff;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  position: absolute;
+  right: 0;
+
+  &:hover {
+    background-color: #0050e0;
+  }
+}
+.clearIcon {
+  position: absolute;
+  right: 80px;
+  cursor: pointer;
+  color: #b6b6b6;
+  font-size: 18px;
+  transition: color 0.3s ease;
+  &:hover {
+    color: darken(#b6b6b6, 50%);
+  }
+}
