@@ -50,6 +50,11 @@
   border: 3px solid #005bff;
   color: #005bff;
   cursor: pointer;
+  transition: all 0.3s;
+
+  :hover {
+    color: #0050e0;
+  }
 }
 
 .cart,
@@ -59,4 +64,8 @@
   margin-left: 10px;
   color: #005bff;
   cursor: pointer;
+
+  :hover {
+    color: #0050e0;
+  }
 }
