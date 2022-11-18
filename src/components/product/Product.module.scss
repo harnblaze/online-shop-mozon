@@ -1,6 +1,6 @@
 .product {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   margin-right: 20px;
   transition: all 0.2s ease-in-out;
   display: flex;
@@ -8,10 +8,6 @@
   align-items: center;
   justify-content: end;
   height: 300px;
-
-  //&:hover {
-  //  transform: scale(1.03);
-  //}
 }
 
 .wrapper {
@@ -60,6 +56,7 @@
   justify-content: space-between;
   width: 100%;
 }
+
 .prices {
   display: flex;
   align-items: center;
@@ -112,6 +109,7 @@
   font-weight: bold;
   font-size: 14px;
 }
+
 .star {
   color: #ffb800;
   margin-right: 5px;
