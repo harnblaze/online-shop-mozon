@@ -81,11 +81,21 @@ select {
   font: inherit;
 }
 
-.container {
+.container,
+.content__container {
   max-width: 1470px;
   padding: 10px 30px;
   margin: auto;
   display: flex;
   align-items: normal;
   justify-content: space-between;
+}
+
+.content__container {
+  display: block;
+}
+.content__items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
 }
