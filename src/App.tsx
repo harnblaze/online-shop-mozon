@@ -17,7 +17,7 @@ const App: FC = () => {
   async function fetchProducts(): Promise<void> {
     try {
       const response = await axios.get<IResponse>(
-        'https://dummyjson.com/products?limit=10',
+        'https://dummyjson.com/products?limit=50',
       );
       setProducts(response.data.products);
     } catch (e) {
