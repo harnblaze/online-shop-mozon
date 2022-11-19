@@ -9,9 +9,11 @@ import Product from './components/product/Product';
 
 const App: FC = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
     void fetchProducts();
+    void fetchCategories();
   }, []);
 
   async function fetchProducts(): Promise<void> {
@@ -25,11 +27,22 @@ const App: FC = () => {
     }
   }
 
+  async function fetchCategories(): Promise<void> {
+    try {
+      const response = await axios.get<string[]>(
+        'https://dummyjson.com/products/categories',
+      );
+      setCategories(response.data);
+    } catch (e) {
+      alert(e);
+    }
+  }
+
   return (
     <div className="App">
       <Header />
       <div className="container">
-        <Categories />
+        <Categories categories={categories} />
         <Sort />
       </div>
       <div className="content__container">

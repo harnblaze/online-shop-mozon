@@ -15,7 +15,12 @@ const Product: FC<IProductProps> = ({ product }) => {
     <div className={styles.wrapper}>
       <div className={styles.product}>
         <div className={styles.imageWrapper}>
-          <img className={styles.image} src={thumbnail} alt="product" />
+          <img
+            className={styles.image}
+            src={thumbnail}
+            loading="lazy"
+            alt="product"
+          />
           <div className={styles.discount}>
             -{Math.ceil(discountPercentage)}%
           </div>
