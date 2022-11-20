@@ -1,4 +1,4 @@
-import IProduct from './product';
+import { IProduct } from './product';
 
 interface IResponse {
   limit: number;

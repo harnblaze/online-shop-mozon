@@ -1,31 +1,16 @@
 import React, { FC, useEffect, useState } from 'react';
+import axios from 'axios';
 import Header from './components/header/Header';
 import Categories from './components/categories/Categories';
 import Sort from './components/sort/Sort';
-import IProduct from './types/product';
-import axios from 'axios';
-import IResponse from './types/response';
-import Product from './components/product/Product';
+import ProductsList from './components/productsList/ProductsList';
 
 const App: FC = () => {
-  const [products, setProducts] = useState<IProduct[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
-    void fetchProducts();
     void fetchCategories();
   }, []);
-
-  async function fetchProducts(): Promise<void> {
-    try {
-      const response = await axios.get<IResponse>(
-        'https://dummyjson.com/products?limit=50',
-      );
-      setProducts(response.data.products);
-    } catch (e) {
-      alert(e);
-    }
-  }
 
   async function fetchCategories(): Promise<void> {
     try {
@@ -48,9 +33,7 @@ const App: FC = () => {
       <div className="content__container">
         <h2 className="content__title">Все товары</h2>
         <div className="content__items">
-          {products.map(el => (
-            <Product product={el} key={el.id} />
-          ))}
+          <ProductsList />
         </div>
       </div>
     </div>
