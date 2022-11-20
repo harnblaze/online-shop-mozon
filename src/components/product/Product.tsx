@@ -8,7 +8,6 @@ interface IProductProps {
 }
 
 const Product: FC<IProductProps> = ({ product }) => {
-  console.log(product.title);
   const { thumbnail, title, price, discountPercentage, rating } = product;
   const [count, setCount] = useState(0);
 
