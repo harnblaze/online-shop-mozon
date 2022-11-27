@@ -1,10 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as ProductActionCreators from '../store/actionCreators/product';
 import { AppDispatch } from '../store';
+import ActionCreators from '../store/actionCreators/';
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const useActions = () => {
+export const useActions = (): typeof ActionCreators => {
   const dispatch = useDispatch<AppDispatch>();
-  return bindActionCreators(ProductActionCreators, dispatch);
+  return bindActionCreators(ActionCreators, dispatch);
 };

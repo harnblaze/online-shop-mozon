@@ -34,7 +34,7 @@ interface IFetchProductsAction {
 
 interface IFetchProductsSuccessAction {
   type: ProductActionTypes.FETCH_PRODUCTS_SUCCESS;
-  payload: { products: IProduct[]; total: number };
+  payload: { products: IProduct[]; total: number; skip: number; limit: number };
 }
 
 interface IFetchProductsErrorAction {

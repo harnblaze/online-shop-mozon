@@ -6,11 +6,11 @@ import {
 
 const initialState: IProductState = {
   products: [],
-  loading: false,
+  loading: true,
   error: null,
-  total: 0,
+  total: 10,
   skip: 0,
-  limit: 30,
+  limit: 10,
 };
 
 export const productReducer = (
@@ -26,6 +26,8 @@ export const productReducer = (
         loading: false,
         products: action.payload.products,
         total: action.payload.total,
+        skip: action.payload.skip,
+        limit: action.payload.limit,
       };
     case ProductActionTypes.FETCH_PRODUCTS_ERROR:
       return { ...state, loading: false, error: action.payload };

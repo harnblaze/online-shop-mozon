@@ -1,33 +1,15 @@
-import React, { FC, useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { FC } from 'react';
 import Header from './components/header/Header';
 import Categories from './components/categories/Categories';
 import Sort from './components/sort/Sort';
 import ProductsList from './components/productsList/ProductsList';
 
 const App: FC = () => {
-  const [categories, setCategories] = useState<string[]>([]);
-
-  useEffect(() => {
-    void fetchCategories();
-  }, []);
-
-  async function fetchCategories(): Promise<void> {
-    try {
-      const response = await axios.get<string[]>(
-        'https://dummyjson.com/products/categories',
-      );
-      setCategories(response.data);
-    } catch (e) {
-      alert(e);
-    }
-  }
-
   return (
     <div className="App">
       <Header />
       <div className="container">
-        <Categories categories={categories} />
+        <Categories />
         <Sort />
       </div>
       <div className="content__container">

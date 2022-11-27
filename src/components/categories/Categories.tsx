@@ -1,23 +1,34 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import styles from './Categores.module.scss';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useActions } from '../../hooks/useActions';
 
-interface ICategoriesProps {
-  categories: string[];
-}
+const Categories: FC = () => {
+  const { categories, error, loading, currentCategory } = useTypedSelector(
+    state => state.category,
+  );
+  const { fetchCategories, setCurrentCategory } = useActions();
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
-const Categories: FC<ICategoriesProps> = ({ categories }) => {
-  const [activeItem, setActiveItem] = useState(0);
+  if (loading) {
+    return <h3>Идет загрузка...</h3>;
+  }
+  if (error != null) {
+    return <h3>{error}</h3>;
+  }
 
   const listClasses = (id: number): string =>
-    id === activeItem ? styles.liActive : '';
+    id === currentCategory ? styles.liActive : '';
   return (
     <div className={styles.categories}>
       <ul className={styles.ul}>
-        {categories.map((category, id) => (
+        {categories?.map((category, id) => (
           <li
             className={[styles.li, listClasses(id)].join(' ')}
             key={id}
-            onClick={() => setActiveItem(id)}
+            onClick={() => setCurrentCategory(id)}
           >
             {category}
           </li>

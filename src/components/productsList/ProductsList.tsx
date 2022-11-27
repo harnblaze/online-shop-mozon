@@ -32,7 +32,7 @@ const ProductsList: FC = () => {
 
   return (
     <>
-      {products.map(product => {
+      {products?.map(product => {
         return <Product product={product} key={product.id} />;
       })}
       <div style={{ display: 'flex', gap: '5px' }}>

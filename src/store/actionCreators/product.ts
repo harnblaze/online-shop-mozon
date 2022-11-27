@@ -3,7 +3,7 @@ import { ProductAction, ProductActionTypes } from '../../types/product';
 import { Dispatch } from 'redux';
 import IResponse from '../../types/response';
 
-export const fetchProducts = (limit = 30, skip = 0) => {
+export const fetchProducts = (limit: number, skip = 0) => {
   return async (dispatch: Dispatch<ProductAction>) => {
     try {
       dispatch({ type: ProductActionTypes.FETCH_PRODUCTS });
@@ -21,6 +21,8 @@ export const fetchProducts = (limit = 30, skip = 0) => {
         payload: {
           products: response.data.products,
           total: response.data.total,
+          limit: response.data.limit,
+          skip: response.data.skip,
         },
       });
     } catch (e) {
