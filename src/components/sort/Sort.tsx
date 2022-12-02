@@ -31,13 +31,14 @@ const Sort: FC = () => {
   ): void => {
     setCurrentSort(id);
     const newProducts = !order
-      ? products.sort(
+      ? products.sort((a, b) =>
           // @ts-expect-error
-          (a, b) => b[sortType.sortProperty] - a[sortType.sortProperty],
+
+          a[sortType.sortProperty] > b[sortType.sortProperty] ? -1 : 1,
         )
-      : products.sort(
+      : products.sort((a, b) =>
           // @ts-expect-error
-          (a, b) => a[sortType.sortProperty] - b[sortType.sortProperty],
+          a[sortType.sortProperty] < b[sortType.sortProperty] ? -1 : 1,
         );
     setSortingProductsPage(newProducts, limit, skip, total);
     setIsOpen(false);
