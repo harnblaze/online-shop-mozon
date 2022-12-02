@@ -16,6 +16,9 @@ export enum ProductActionTypes {
   FETCH_PRODUCTS = 'FETCH_PRODUCTS',
   FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS',
   FETCH_PRODUCTS_ERROR = 'FETCH_PRODUCTS_ERROR',
+  FETCH_PRODUCTS_OF_CATEGORY = 'FETCH_PRODUCTS_OF_CATEGORY',
+  FETCH_PRODUCTS_OF_CATEGORY_SUCCESS = 'FETCH_PRODUCTS_OF_CATEGORY_SUCCESS',
+  FETCH_PRODUCTS_OF_CATEGORY_ERROR = 'FETCH_PRODUCTS_OF_CATEGORY_ERROR',
   SET_PRODUCT_PAGE = 'SET_PRODUCT_PAGE',
 }
 
@@ -42,6 +45,19 @@ interface IFetchProductsErrorAction {
   payload: string;
 }
 
+interface IFetchProductsOfCategoryAction {
+  type: ProductActionTypes.FETCH_PRODUCTS_OF_CATEGORY;
+}
+
+interface IFetchProductsOfCategorySuccessAction {
+  type: ProductActionTypes.FETCH_PRODUCTS_OF_CATEGORY_SUCCESS;
+  payload: { products: IProduct[]; total: number; skip: number; limit: number };
+}
+
+interface IFetchProductsOfCategoryErrorAction {
+  type: ProductActionTypes.FETCH_PRODUCTS_OF_CATEGORY_ERROR;
+  payload: string;
+}
 interface ISetProductPage {
   type: ProductActionTypes.SET_PRODUCT_PAGE;
   payload: number;
@@ -51,4 +67,7 @@ export type ProductAction =
   | IFetchProductsAction
   | IFetchProductsSuccessAction
   | IFetchProductsErrorAction
+  | IFetchProductsOfCategoryAction
+  | IFetchProductsOfCategorySuccessAction
+  | IFetchProductsOfCategoryErrorAction
   | ISetProductPage;

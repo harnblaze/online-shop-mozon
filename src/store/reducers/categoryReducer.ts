@@ -8,7 +8,7 @@ const initialState: ICategoryState = {
   categories: [],
   loading: false,
   error: null,
-  currentCategory: 0,
+  currentCategory: null,
 };
 
 export const categoriesReducer = (

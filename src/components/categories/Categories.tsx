@@ -19,16 +19,16 @@ const Categories: FC = () => {
     return <h3>{error}</h3>;
   }
 
-  const listClasses = (id: number): string =>
-    id === currentCategory ? styles.liActive : '';
+  const listClasses = (category: string): string =>
+    category === currentCategory ? styles.liActive : '';
   return (
     <div className={styles.categories}>
       <ul className={styles.ul}>
         {categories?.map((category, id) => (
           <li
-            className={[styles.li, listClasses(id)].join(' ')}
+            className={[styles.li, listClasses(category)].join(' ')}
             key={id}
-            onClick={() => setCurrentCategory(id)}
+            onClick={() => setCurrentCategory(category)}
           >
             {category}
           </li>

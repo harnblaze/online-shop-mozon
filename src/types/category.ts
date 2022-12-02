@@ -9,7 +9,7 @@ export interface ICategoryState {
   categories: string[];
   loading: boolean;
   error: null | string;
-  currentCategory: number;
+  currentCategory: string | null;
 }
 
 interface IFetchCategoriesAction {
@@ -28,7 +28,7 @@ interface IFetchCategoriesErrorAction {
 
 interface ISetCurrentCategoryAction {
   type: CategoryActionTypes.SET_CURRENT_CATEGORY;
-  payload: number;
+  payload: string;
 }
 
 export type CategoryAction =

@@ -34,6 +34,41 @@ export const fetchProducts = (limit: number, skip = 0) => {
   };
 };
 
+export const fetchProductsOfCategory = (
+  category: string,
+  limit: number,
+  skip = 0,
+) => {
+  return async (dispatch: Dispatch<ProductAction>) => {
+    try {
+      dispatch({ type: ProductActionTypes.FETCH_PRODUCTS_OF_CATEGORY });
+      const response = await axios.get<IResponse>(
+        `https://dummyjson.com/products/category/${category}`,
+        {
+          params: {
+            limit,
+            skip,
+          },
+        },
+      );
+      dispatch({
+        type: ProductActionTypes.FETCH_PRODUCTS_OF_CATEGORY_SUCCESS,
+        payload: {
+          products: response.data.products,
+          total: response.data.total,
+          limit: response.data.limit,
+          skip: response.data.skip,
+        },
+      });
+    } catch (e) {
+      dispatch({
+        type: ProductActionTypes.FETCH_PRODUCTS_OF_CATEGORY_ERROR,
+        payload: 'Произошла ошибка при загрузке товаров',
+      });
+    }
+  };
+};
+
 export const setProductPage = (skip: number): ProductAction => {
   return { type: ProductActionTypes.SET_PRODUCT_PAGE, payload: skip };
 };

@@ -9,19 +9,25 @@ const ProductsList: FC = () => {
   const { products, error, loading, limit, skip, total } = useTypedSelector(
     state => state.product,
   );
+  const { currentCategory } = useTypedSelector(state => state.category);
 
   const pagesCount = Math.ceil(total / limit);
   const pages = createArrayOfNumbers(1, pagesCount + 1);
 
-  const { fetchProducts, setProductPage } = useActions();
+  const { fetchProducts, setProductPage, fetchProductsOfCategory } =
+    useActions();
 
   const changePage = (page: number): void => {
     setProductPage(limit * page - limit);
   };
 
   useEffect(() => {
-    fetchProducts(10, skip);
-  }, [skip]);
+    if (currentCategory !== null) {
+      fetchProductsOfCategory(currentCategory, 10, skip);
+    } else {
+      fetchProducts(10, skip);
+    }
+  }, [skip, currentCategory]);
 
   if (loading) {
     return <h3>Идет загрузка...</h3>;
@@ -35,25 +41,27 @@ const ProductsList: FC = () => {
       {products?.map(product => {
         return <Product product={product} key={product.id} />;
       })}
-      <div style={{ display: 'flex', gap: '5px' }}>
-        {pages.map(page => {
-          return (
-            <div
-              key={page}
-              onClick={() => changePage(page)}
-              style={{
-                border:
-                  page === skip / limit + 1
-                    ? '2px solid blue'
-                    : '1px solid gray',
-                padding: 10,
-              }}
-            >
-              {page}
-            </div>
-          );
-        })}
-      </div>
+      {pages.length !== 1 && (
+        <div style={{ display: 'flex', gap: '5px' }}>
+          {pages.map(page => {
+            return (
+              <div
+                key={page}
+                onClick={() => changePage(page)}
+                style={{
+                  border:
+                    page === skip / limit + 1
+                      ? '2px solid blue'
+                      : '1px solid gray',
+                  padding: 10,
+                }}
+              >
+                {page}
+              </div>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 };

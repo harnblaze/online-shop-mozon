@@ -31,6 +31,19 @@ export const productReducer = (
       };
     case ProductActionTypes.FETCH_PRODUCTS_ERROR:
       return { ...state, loading: false, error: action.payload };
+    case ProductActionTypes.FETCH_PRODUCTS_OF_CATEGORY:
+      return { ...state, loading: true };
+    case ProductActionTypes.FETCH_PRODUCTS_OF_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        products: action.payload.products,
+        total: action.payload.total,
+        skip: action.payload.skip,
+        limit: action.payload.limit,
+      };
+    case ProductActionTypes.FETCH_PRODUCTS_OF_CATEGORY_ERROR:
+      return { ...state, loading: false, error: action.payload };
     case ProductActionTypes.SET_PRODUCT_PAGE:
       return { ...state, skip: action.payload };
     default:
