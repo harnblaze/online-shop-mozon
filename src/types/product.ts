@@ -20,6 +20,7 @@ export enum ProductActionTypes {
   FETCH_PRODUCTS_OF_CATEGORY_SUCCESS = 'FETCH_PRODUCTS_OF_CATEGORY_SUCCESS',
   FETCH_PRODUCTS_OF_CATEGORY_ERROR = 'FETCH_PRODUCTS_OF_CATEGORY_ERROR',
   SET_PRODUCT_PAGE = 'SET_PRODUCT_PAGE',
+  SET_SORTING_PRODUCTS = 'SET_SORTING_PRODUCTS',
 }
 
 export interface IProductState {
@@ -63,6 +64,11 @@ interface ISetProductPage {
   payload: number;
 }
 
+interface ISetSortingProductsAction {
+  type: ProductActionTypes.SET_SORTING_PRODUCTS;
+  payload: { products: IProduct[]; total: number; skip: number; limit: number };
+}
+
 export type ProductAction =
   | IFetchProductsAction
   | IFetchProductsSuccessAction
@@ -70,4 +76,5 @@ export type ProductAction =
   | IFetchProductsOfCategoryAction
   | IFetchProductsOfCategorySuccessAction
   | IFetchProductsOfCategoryErrorAction
-  | ISetProductPage;
+  | ISetProductPage
+  | ISetSortingProductsAction;

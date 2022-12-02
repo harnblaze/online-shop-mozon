@@ -46,6 +46,14 @@ export const productReducer = (
       return { ...state, loading: false, error: action.payload };
     case ProductActionTypes.SET_PRODUCT_PAGE:
       return { ...state, skip: action.payload };
+    case ProductActionTypes.SET_SORTING_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload.products,
+        total: action.payload.total,
+        skip: action.payload.skip,
+        limit: action.payload.limit,
+      };
     default:
       return state;
   }

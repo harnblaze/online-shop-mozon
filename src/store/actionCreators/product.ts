@@ -1,5 +1,9 @@
 import axios from 'axios';
-import { ProductAction, ProductActionTypes } from '../../types/product';
+import {
+  IProduct,
+  ProductAction,
+  ProductActionTypes,
+} from '../../types/product';
 import { Dispatch } from 'redux';
 import IResponse from '../../types/response';
 
@@ -71,4 +75,16 @@ export const fetchProductsOfCategory = (
 
 export const setProductPage = (skip: number): ProductAction => {
   return { type: ProductActionTypes.SET_PRODUCT_PAGE, payload: skip };
+};
+
+export const setSortingProductsPage = (
+  products: IProduct[],
+  limit: number,
+  skip: number,
+  total: number,
+): ProductAction => {
+  return {
+    type: ProductActionTypes.SET_SORTING_PRODUCTS,
+    payload: { products, limit, skip, total },
+  };
 };
