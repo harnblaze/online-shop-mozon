@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styles from './Categores.module.scss';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
@@ -8,6 +8,9 @@ const Categories: FC = () => {
     state => state.category,
   );
   const { fetchCategories, setCurrentCategory } = useActions();
+
+  const [isOpen, setIsOpen] = useState(false);
+
   useEffect(() => {
     fetchCategories();
   }, []);
@@ -19,21 +22,43 @@ const Categories: FC = () => {
     return <h3>{error}</h3>;
   }
 
-  const listClasses = (category: string): string =>
+  const listClasses = (category: string | null): string =>
     category === currentCategory ? styles.liActive : '';
+  const wrapperClasses = (): string => {
+    return isOpen ? styles.open : '';
+  };
+
+  const handleCategoryClick = (category: string | null): void => {
+    setIsOpen(false);
+    setCurrentCategory(category);
+  };
+
   return (
-    <div className={styles.categories}>
-      <ul className={styles.ul}>
-        {categories?.map((category, id) => (
+    <div>
+      <div className={[styles.categories, wrapperClasses()].join(' ')}>
+        <ul className={styles.ul}>
           <li
-            className={[styles.li, listClasses(category)].join(' ')}
-            key={id}
-            onClick={() => setCurrentCategory(category)}
+            className={[styles.li, listClasses(null)].join(' ')}
+            onClick={() => handleCategoryClick(null)}
           >
-            {category}
+            all categories
           </li>
-        ))}
-      </ul>
+          {categories?.map((category, id) => (
+            <li
+              className={[styles.li, listClasses(category)].join(' ')}
+              key={id}
+              onClick={() => handleCategoryClick(category)}
+            >
+              {category}
+            </li>
+          ))}
+        </ul>
+      </div>
+      {!isOpen && (
+        <span onClick={() => setIsOpen(prevState => !prevState)}>
+          Show more categories...
+        </span>
+      )}
     </div>
   );
 };

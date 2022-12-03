@@ -1,8 +1,15 @@
 .categories {
   margin: auto;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
+  overflow: hidden;
+  height: 50px;
+}
+
+.open {
+  height: auto;
+  animation: slideOut 0.5s;
 }
 
 .ul {
@@ -40,5 +47,14 @@
   &:hover {
     background-color: darken(#005bff, 5%);
     border-color: darken(#005bff, 5%);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    height: 50px;
+  }
+  to {
+    height: 200px;
   }
 }

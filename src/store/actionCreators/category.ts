@@ -22,6 +22,6 @@ export const fetchCategories = () => {
   };
 };
 
-export const setCurrentCategory = (category: string): CategoryAction => {
+export const setCurrentCategory = (category: string | null): CategoryAction => {
   return { type: CategoryActionTypes.SET_CURRENT_CATEGORY, payload: category };
 };

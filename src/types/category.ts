@@ -28,7 +28,7 @@ interface IFetchCategoriesErrorAction {
 
 interface ISetCurrentCategoryAction {
   type: CategoryActionTypes.SET_CURRENT_CATEGORY;
-  payload: string;
+  payload: string | null;
 }
 
 export type CategoryAction =
