@@ -14,9 +14,7 @@ const App: FC = () => {
       </div>
       <div className="content__container">
         <h2 className="content__title">Все товары</h2>
-        <div className="content__items">
-          <ProductsList />
-        </div>
+        <ProductsList />
       </div>
     </div>
   );

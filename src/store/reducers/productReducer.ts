@@ -10,7 +10,6 @@ const initialState: IProductState = {
   error: null,
   total: 10,
   skip: 0,
-  limit: 10,
 };
 
 export const productReducer = (
@@ -27,7 +26,6 @@ export const productReducer = (
         products: action.payload.products,
         total: action.payload.total,
         skip: action.payload.skip,
-        limit: action.payload.limit,
       };
     case ProductActionTypes.FETCH_PRODUCTS_ERROR:
       return { ...state, loading: false, error: action.payload };
@@ -40,7 +38,6 @@ export const productReducer = (
         products: action.payload.products,
         total: action.payload.total,
         skip: action.payload.skip,
-        limit: action.payload.limit,
       };
     case ProductActionTypes.FETCH_PRODUCTS_OF_CATEGORY_ERROR:
       return { ...state, loading: false, error: action.payload };
@@ -52,7 +49,6 @@ export const productReducer = (
         products: action.payload.products,
         total: action.payload.total,
         skip: action.payload.skip,
-        limit: action.payload.limit,
       };
     default:
       return state;

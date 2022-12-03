@@ -16,9 +16,7 @@ const Sort: FC = () => {
       sortProperty: 'title',
     },
   ];
-  const { products, limit, skip, total } = useTypedSelector(
-    state => state.product,
-  );
+  const { products, skip, total } = useTypedSelector(state => state.product);
   const { setSortingProductsPage } = useActions();
 
   const handleOrderClick = (): void => {
@@ -40,7 +38,7 @@ const Sort: FC = () => {
           // @ts-expect-error
           a[sortType.sortProperty] < b[sortType.sortProperty] ? -1 : 1,
         );
-    setSortingProductsPage(newProducts, limit, skip, total);
+    setSortingProductsPage(newProducts, skip, total);
     setIsOpen(false);
   };
   return (

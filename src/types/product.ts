@@ -29,7 +29,6 @@ export interface IProductState {
   error: null | string;
   total: number;
   skip: number;
-  limit: number;
 }
 
 interface IFetchProductsAction {
@@ -38,7 +37,7 @@ interface IFetchProductsAction {
 
 interface IFetchProductsSuccessAction {
   type: ProductActionTypes.FETCH_PRODUCTS_SUCCESS;
-  payload: { products: IProduct[]; total: number; skip: number; limit: number };
+  payload: { products: IProduct[]; total: number; skip: number };
 }
 
 interface IFetchProductsErrorAction {
@@ -52,7 +51,7 @@ interface IFetchProductsOfCategoryAction {
 
 interface IFetchProductsOfCategorySuccessAction {
   type: ProductActionTypes.FETCH_PRODUCTS_OF_CATEGORY_SUCCESS;
-  payload: { products: IProduct[]; total: number; skip: number; limit: number };
+  payload: { products: IProduct[]; total: number; skip: number };
 }
 
 interface IFetchProductsOfCategoryErrorAction {
@@ -66,7 +65,7 @@ interface ISetProductPage {
 
 interface ISetSortingProductsAction {
   type: ProductActionTypes.SET_SORTING_PRODUCTS;
-  payload: { products: IProduct[]; total: number; skip: number; limit: number };
+  payload: { products: IProduct[]; total: number; skip: number };
 }
 
 export type ProductAction =

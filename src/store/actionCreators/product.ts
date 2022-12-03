@@ -25,7 +25,6 @@ export const fetchProducts = (limit: number, skip = 0) => {
         payload: {
           products: response.data.products,
           total: response.data.total,
-          limit: response.data.limit,
           skip: response.data.skip,
         },
       });
@@ -60,7 +59,6 @@ export const fetchProductsOfCategory = (
         payload: {
           products: response.data.products,
           total: response.data.total,
-          limit: response.data.limit,
           skip: response.data.skip,
         },
       });
@@ -79,12 +77,12 @@ export const setProductPage = (skip: number): ProductAction => {
 
 export const setSortingProductsPage = (
   products: IProduct[],
-  limit: number,
+
   skip: number,
   total: number,
 ): ProductAction => {
   return {
     type: ProductActionTypes.SET_SORTING_PRODUCTS,
-    payload: { products, limit, skip, total },
+    payload: { products, skip, total },
   };
 };

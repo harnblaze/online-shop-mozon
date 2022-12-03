@@ -3,29 +3,32 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Product from '../product/Product';
 
 import { useActions } from '../../hooks/useActions';
-import { createArrayOfNumbers } from '../../utils/utils';
+
+import Pagination from '../pagination/Pagination';
 
 const ProductsList: FC = () => {
-  const { products, error, loading, limit, skip, total } = useTypedSelector(
+  const { products, error, loading, skip, total } = useTypedSelector(
     state => state.product,
   );
   const { currentCategory } = useTypedSelector(state => state.category);
-
-  const pagesCount = Math.ceil(total / limit);
-  const pages = createArrayOfNumbers(1, pagesCount + 1);
-
   const { fetchProducts, setProductPage, fetchProductsOfCategory } =
     useActions();
 
+  const limitPage = 10;
+  const pagesCount = Math.ceil(total / limitPage);
+  let currentPage = skip / limitPage + 1;
+
   const changePage = (page: number): void => {
-    setProductPage(limit * page - limit);
+    currentPage = page;
+    setProductPage(limitPage * page - limitPage);
+    console.log(currentPage, page);
   };
 
   useEffect(() => {
     if (currentCategory !== null) {
-      fetchProductsOfCategory(currentCategory, 10, skip);
+      fetchProductsOfCategory(currentCategory, limitPage, skip);
     } else {
-      fetchProducts(10, skip);
+      fetchProducts(limitPage, skip);
     }
   }, [skip, currentCategory]);
 
@@ -38,30 +41,16 @@ const ProductsList: FC = () => {
 
   return (
     <>
-      {products?.map(product => {
-        return <Product product={product} key={product.id} />;
-      })}
-      {pages.length !== 1 && (
-        <div style={{ display: 'flex', gap: '5px' }}>
-          {pages.map(page => {
-            return (
-              <div
-                key={page}
-                onClick={() => changePage(page)}
-                style={{
-                  border:
-                    page === skip / limit + 1
-                      ? '2px solid blue'
-                      : '1px solid gray',
-                  padding: 10,
-                }}
-              >
-                {page}
-              </div>
-            );
-          })}
-        </div>
-      )}
+      <div className="content__items">
+        {products?.map(product => {
+          return <Product product={product} key={product.id} />;
+        })}
+      </div>
+      <Pagination
+        pagesCount={pagesCount}
+        currentPage={currentPage}
+        changePage={changePage}
+      />
     </>
   );
 };
