@@ -1,21 +1,25 @@
 import React, { FC } from 'react';
 import Header from './components/header/Header';
-import Categories from './components/categories/Categories';
-import Sort from './components/sort/Sort';
-import ProductsList from './components/productsList/ProductsList';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import Products from './layouts/Products';
+import Login from './layouts/Login';
+import Cart from './layouts/Cart';
+import NotFound from './layouts/NotFound';
+import ProductPage from './layouts/ProductPage';
 
 const App: FC = () => {
   return (
     <div className="App">
       <Header />
-      <div className="container">
-        <Categories />
-        <Sort />
-      </div>
-      <div className="content__container">
-        <h2 className="content__title">Все товары</h2>
-        <ProductsList />
-      </div>
+      <Switch>
+        <Route path="/" exact component={Products} />
+        <Route path="/product/:id" component={ProductPage} />
+        <Route path="/login" component={Login} />
+        <Route path="/cart" component={Cart} />
+        <Route path="/404" component={NotFound} />
+
+        <Redirect to="/404" />
+      </Switch>
     </div>
   );
 };

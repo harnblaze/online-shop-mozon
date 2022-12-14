@@ -62,6 +62,12 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
+/* Удаляем стандартную стилизацию для всех a, у которых есть атрибут class*/
+a[class] {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Упрощаем работу с изображениями */
 img {
   max-width: 100%;

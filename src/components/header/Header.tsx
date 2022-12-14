@@ -4,14 +4,16 @@ import { FaUserCircle } from 'react-icons/fa';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { MdLogout } from 'react-icons/md';
 import Search from './search/Search';
+import { Link } from 'react-router-dom';
 
 const Header: FC = () => {
   const [isAuth, setIsAuth] = useState(false);
-
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <h2 className={styles.logo}>MOZON</h2>
+        <Link to="/" className="link">
+          <h2 className={styles.logo}>MOZON</h2>
+        </Link>
         <Search />
         <div className={styles.authorization}>
           {isAuth ? (
@@ -32,13 +34,18 @@ const Header: FC = () => {
             </>
           ) : (
             <>
-              <div className={styles.userLogo}>
-                <FaUserCircle className={styles.icon} />
-              </div>
+              <Link to="/login">
+                <div className={styles.userLogo}>
+                  <FaUserCircle className={styles.icon} />
+                </div>
+              </Link>
 
-              <div className={styles.cart}>
-                <AiOutlineShoppingCart className={styles.icon} />
-              </div>
+              <Link to="/cart">
+                <div className={styles.cart}>
+                  <AiOutlineShoppingCart className={styles.icon} />
+                </div>
+              </Link>
+
               <div className={styles.logout} onClick={() => setIsAuth(!isAuth)}>
                 <MdLogout className={styles.icon} />
               </div>
