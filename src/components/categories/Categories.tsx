@@ -55,7 +55,10 @@ const Categories: FC = () => {
         </ul>
       </div>
       {!isOpen && (
-        <span onClick={() => setIsOpen(prevState => !prevState)}>
+        <span
+          className={styles.showMore}
+          onClick={() => setIsOpen(prevState => !prevState)}
+        >
           Show more categories...
         </span>
       )}

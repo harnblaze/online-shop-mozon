@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { IProduct } from '../../../types/products';
-import styles from './Product.module.scss';
+import styles from './ProductItem.module.scss';
 import { AiFillStar, AiOutlinePlus } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
