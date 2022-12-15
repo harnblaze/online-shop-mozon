@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import Product from '../product/Product';
+import ProductItem from './productItem/ProductItem';
 
 import { useActions } from '../../hooks/useActions';
 
@@ -8,7 +8,7 @@ import Pagination from '../pagination/Pagination';
 
 const ProductsList: FC = () => {
   const { products, error, loading, skip, total } = useTypedSelector(
-    state => state.product,
+    state => state.products,
   );
   const { currentCategory } = useTypedSelector(state => state.category);
   const { fetchProducts, setProductPage, fetchProductsOfCategory } =
@@ -43,7 +43,7 @@ const ProductsList: FC = () => {
     <>
       <div className="content__items">
         {products?.map(product => {
-          return <Product product={product} key={product.id} />;
+          return <ProductItem product={product} key={product.id} />;
         })}
       </div>
       <Pagination

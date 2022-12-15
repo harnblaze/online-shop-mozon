@@ -16,7 +16,7 @@ const Sort: FC = () => {
       sortProperty: 'title',
     },
   ];
-  const { products, skip, total } = useTypedSelector(state => state.product);
+  const { products, skip, total } = useTypedSelector(state => state.products);
   const { setSortingProductsPage } = useActions();
 
   const handleOrderClick = (): void => {
