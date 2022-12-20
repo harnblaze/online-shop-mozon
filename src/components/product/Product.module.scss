@@ -51,60 +51,6 @@
   width: 100%;
 }
 
-.gallery {
-  display: flex;
-  height: 500px;
-  width: 30%;
-}
-
-.mainImage {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin-left: 14px;
-  width: calc(100% - 70px);
-
-  img {
-    object-fit: scale-down;
-    max-height: 500px;
-  }
-}
-
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  width: 56px;
-}
-
-.image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 3px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  img {
-    object-fit: scale-down;
-  }
-
-  &:hover {
-    border: 1px solid #99bdff;
-  }
-
-  &:active {
-    border: 1px solid #005bff;
-  }
-}
-
-.activeImage {
-  border: 1px solid #005bff;
-  &:hover {
-    border: 1px solid #005bff;
-  }
-}
-
 .paragraphList {
   margin-left: 20px;
   margin-right: 20px;

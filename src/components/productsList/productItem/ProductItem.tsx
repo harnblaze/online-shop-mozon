@@ -15,21 +15,19 @@ const ProductItem: FC<IProductProps> = ({ product }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.product}>
-        <Link to={`/product/${id}`} className={styles.product}>
-          <div className={styles.imageWrapper}>
-            <img
-              className={styles.image}
-              src={thumbnail}
-              loading="lazy"
-              alt="product"
-            />
-            <div className={styles.discount}>
-              -{Math.ceil(discountPercentage)}%
-            </div>
-            <div className={styles.rating}>
-              <AiFillStar className={styles.star} />
-              {rating.toFixed(1)}
-            </div>
+        <Link to={`/product/${id}`} className={styles.imageWrapper}>
+          <img
+            className={styles.image}
+            src={thumbnail}
+            loading="lazy"
+            alt="product"
+          />
+          <div className={styles.discount}>
+            -{Math.ceil(discountPercentage)}%
+          </div>
+          <div className={styles.rating}>
+            <AiFillStar className={styles.star} />
+            {rating.toFixed(1)}
           </div>
         </Link>
         <Link to={`/product/${id}`} className="link">

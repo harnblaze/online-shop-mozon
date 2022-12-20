@@ -1,7 +1,8 @@
 import React, { FC, useState } from 'react';
 import { IProduct } from '../../types/products';
-import styles from './Product.module.scss';
 import { AiOutlinePlus } from 'react-icons/ai';
+import ImageGallery from './ImageGallery/ImageGallery';
+import styles from './Product.module.scss';
 
 const Product: FC<IProduct> = ({
   title,
@@ -39,28 +40,11 @@ const Product: FC<IProduct> = ({
       </div>
       <div className={styles.separator}></div>
       <div className={styles.content}>
-        <div className={styles.gallery}>
-          <div className={styles.list}>
-            {images.map((image, id) => {
-              const classes =
-                image === mainImage
-                  ? [styles.activeImage, styles.image].join(' ')
-                  : styles.image;
-              return (
-                <div
-                  className={classes}
-                  key={id}
-                  onClick={() => handleImageClick(image)}
-                >
-                  <img src={image} alt={`image${id}`} width={48} height={48} />
-                </div>
-              );
-            })}
-          </div>
-          <div className={styles.mainImage}>
-            <img src={mainImage} alt={`main image`} />
-          </div>
-        </div>
+        <ImageGallery
+          images={images}
+          mainImage={mainImage}
+          handleImageClick={handleImageClick}
+        />
         <div className={styles.paragraphList}>
           <p className={styles.paragraph}>
             <h4 className={styles.descriptionTitle}>Описание : </h4>
