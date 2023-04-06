@@ -1,5 +1,5 @@
 export interface IProduct {
-  id: number;
+  id: string;
   title: string;
   description: string;
   price: number;
@@ -24,11 +24,9 @@ export enum ProductsActionTypes {
 }
 
 export interface IProductsState {
-  products: IProduct[];
-  loading: boolean;
+  entities: IProduct[];
+  isLoading: boolean;
   error: null | string;
-  total: number;
-  skip: number;
 }
 
 interface IFetchProductsAction {
