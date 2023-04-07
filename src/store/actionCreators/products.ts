@@ -5,7 +5,7 @@ import productService from '../../services/product.service';
 const { productsRequested, productsRequestFailed, productsReceived } =
   productsActions;
 
-export const loadProductsList =
+export const fetchingProductsList =
   () => async (dispatch: AppDispatch, getState?: () => RootState) => {
     if (getState !== undefined) {
       dispatch(productsRequested());

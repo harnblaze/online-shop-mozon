@@ -5,11 +5,9 @@ export enum CategoryActionTypes {
   SET_CURRENT_CATEGORY = 'SET_CURRENT_CATEGORY',
 }
 
-export interface ICategoryState {
-  categories: string[];
-  loading: boolean;
-  error: null | string;
-  currentCategory: string | null;
+export interface ICategory {
+  _id: string;
+  name: string;
 }
 
 interface IFetchCategoriesAction {
@@ -18,7 +16,7 @@ interface IFetchCategoriesAction {
 
 interface IFetchCategoriesSuccessAction {
   type: CategoryActionTypes.FETCH_CATEGORIES_SUCCESS;
-  payload: string[];
+  payload: ICategory[];
 }
 
 interface IFetchCategoriesErrorAction {

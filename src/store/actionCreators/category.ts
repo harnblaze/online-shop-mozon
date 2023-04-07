@@ -1,27 +1,22 @@
-import axios from 'axios';
-import { Dispatch } from 'redux';
-import { CategoryAction, CategoryActionTypes } from '../../types/category';
+import { categoriesActions } from '../reducers/categoryReducer';
+import { AppDispatch, RootState } from '../index';
+import categoryService from '../../services/category.service';
 
-export const fetchCategories = () => {
-  return async (dispatch: Dispatch<CategoryAction>) => {
-    try {
-      dispatch({ type: CategoryActionTypes.FETCH_CATEGORIES });
-      const response = await axios.get<string[]>(
-        'https://dummyjson.com/products/categories',
-      );
-      dispatch({
-        type: CategoryActionTypes.FETCH_CATEGORIES_SUCCESS,
-        payload: response.data,
-      });
-    } catch (e) {
-      dispatch({
-        type: CategoryActionTypes.FETCH_CATEGORIES_ERROR,
-        payload: 'Произошла ошибка при загрузке категорий товаров',
-      });
-    }
-  };
+const { categoryRequested, categoryRequestFailed, categoryReceived } =
+  categoriesActions;
+
+export const fetchingCategories = () => async (dispatch: AppDispatch) => {
+  dispatch(categoryRequested());
+  try {
+    const { content } = await categoryService.get();
+    dispatch(categoryReceived(content));
+  } catch (e: any) {
+    categoryRequestFailed(e.message);
+    console.dir(e);
+  }
 };
 
-export const setCurrentCategory = (category: string | null): CategoryAction => {
-  return { type: CategoryActionTypes.SET_CURRENT_CATEGORY, payload: category };
-};
+export const getCategories = () => (state: RootState) =>
+  state.categories.entities;
+export const getCategoriesLoadingStatus = () => (state: RootState) =>
+  state.categories.isLoading;

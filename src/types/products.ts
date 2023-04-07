@@ -23,12 +23,6 @@ export enum ProductsActionTypes {
   SET_SORTING_PRODUCTS = 'SET_SORTING_PRODUCTS',
 }
 
-export interface IProductsState {
-  entities: IProduct[];
-  isLoading: boolean;
-  error: null | string;
-}
-
 interface IFetchProductsAction {
   type: ProductsActionTypes.FETCH_PRODUCTS;
 }

@@ -6,7 +6,7 @@ import Product from '../components/product/Product';
 
 const ProductPage: FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { product, loading, error } = useTypedSelector(state => state.product);
+  const {} = useTypedSelector();
   const { fetchSingleProduct } = useActions();
 
   useEffect(() => {

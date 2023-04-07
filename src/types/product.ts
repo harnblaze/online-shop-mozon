@@ -6,12 +6,6 @@ export enum ProductActionTypes {
   FETCH_PRODUCT_ERROR = 'FETCH_PRODUCT_ERROR',
 }
 
-export interface IProductState {
-  product: IProduct | undefined;
-  loading: boolean;
-  error: null | string;
-}
-
 interface IFetchProductAction {
   type: ProductActionTypes.FETCH_PRODUCT;
 }

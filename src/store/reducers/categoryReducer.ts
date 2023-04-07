@@ -1,34 +1,36 @@
-import {
-  CategoryAction,
-  CategoryActionTypes,
-  ICategoryState,
-} from '../../types/category';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ICategory } from '../../types/category';
+
+export interface ICategoryState {
+  entities: ICategory[];
+  isLoading: boolean;
+  error: null | string;
+  currentCategory: string | null;
+}
 
 const initialState: ICategoryState = {
-  categories: [],
-  loading: false,
+  entities: [],
+  isLoading: false,
   error: null,
   currentCategory: null,
 };
 
-export const categoriesReducer = (
-  state = initialState,
-  action: CategoryAction,
-): ICategoryState => {
-  switch (action.type) {
-    case CategoryActionTypes.FETCH_CATEGORIES:
-      return { ...state, loading: true };
-    case CategoryActionTypes.FETCH_CATEGORIES_SUCCESS:
-      return { ...state, loading: false, categories: action.payload };
-    case CategoryActionTypes.FETCH_CATEGORIES_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
-      };
-    case CategoryActionTypes.SET_CURRENT_CATEGORY:
-      return { ...state, currentCategory: action.payload };
-    default:
-      return state;
-  }
-};
+const categorySlice = createSlice({
+  name: 'category',
+  initialState,
+  reducers: {
+    categoryRequested: state => {
+      state.isLoading = true;
+    },
+    categoryReceived: (state, action: PayloadAction<ICategory[]>) => {
+      state.entities = action.payload;
+      state.isLoading = false;
+    },
+    categoryRequestFailed: state => {
+      state.isLoading = true;
+    },
+  },
+});
+
+export const { reducer: categoriesReducer, actions: categoriesActions } =
+  categorySlice;

@@ -1,5 +1,11 @@
-import { IProduct, IProductsState } from '../../types/products';
+import { IProduct } from '../../types/products';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+export interface IProductsState {
+  entities: IProduct[];
+  isLoading: boolean;
+  error: null | string;
+}
 
 const initialState: IProductsState = {
   entities: [],
