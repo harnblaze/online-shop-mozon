@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { IProduct } from '../../types/products';
+import { IProduct } from '../../../types/products';
 import styles from './Product.module.scss';
 import { AiOutlinePlus } from 'react-icons/ai';
 

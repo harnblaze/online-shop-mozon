@@ -3,7 +3,7 @@ import styles from './Header.module.scss';
 import { FaUserCircle } from 'react-icons/fa';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { MdLogout } from 'react-icons/md';
-import Search from './search/Search';
+import Search from '../search/Search';
 import { Link } from 'react-router-dom';
 
 const Header: FC = () => {

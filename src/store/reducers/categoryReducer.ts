@@ -5,14 +5,14 @@ export interface ICategoryState {
   entities: ICategory[];
   isLoading: boolean;
   error: null | string;
-  currentCategory: string | null;
+  currentCategory: string | undefined;
 }
 
 const initialState: ICategoryState = {
   entities: [],
-  isLoading: false,
+  isLoading: true,
   error: null,
-  currentCategory: null,
+  currentCategory: undefined,
 };
 
 const categorySlice = createSlice({
@@ -26,8 +26,17 @@ const categorySlice = createSlice({
       state.entities = action.payload;
       state.isLoading = false;
     },
-    categoryRequestFailed: state => {
+    categoryRequestFailed: (state, action: PayloadAction<string>) => {
       state.isLoading = true;
+      state.error = action.payload;
+    },
+    currentCategoryChanged: (
+      state,
+      action: PayloadAction<string | undefined>,
+    ) => {
+      state.currentCategory = state.entities.find(
+        category => category._id === action.payload,
+      )?._id;
     },
   },
 });

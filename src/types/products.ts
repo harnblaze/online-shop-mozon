@@ -11,6 +11,17 @@ export interface IProduct {
   thumbnail: string;
   images: string[];
 }
+export type ISortProperty = keyof Pick<IProduct, 'rating' | 'price' | 'title'>;
+
+export interface ISortType {
+  sortName: string;
+  sortProperty: ISortProperty;
+}
+
+export interface ISortPayload {
+  order: boolean;
+  currentSort: ISortType;
+}
 
 export enum ProductsActionTypes {
   FETCH_PRODUCTS = 'FETCH_PRODUCTS',

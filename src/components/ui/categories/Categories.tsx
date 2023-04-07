@@ -1,34 +1,25 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import styles from './Categores.module.scss';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import {
+  getCategories,
+  getCurrentCategory,
+  setCurrentCategory,
+} from '../../../store/actionCreators/category';
 
 const Categories: FC = () => {
-  const { categories, error, loading, currentCategory } = useTypedSelector(
-    state => state.category,
-  );
-  const { fetchCategories, setCurrentCategory } = useActions();
+  const categories = useTypedSelector(getCategories());
+  const currentCategory = useTypedSelector(getCurrentCategory());
 
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
-  if (loading) {
-    return <h3>Идет загрузка...</h3>;
-  }
-  if (error != null) {
-    return <h3>{error}</h3>;
-  }
-
-  const listClasses = (category: string | null): string =>
+  const listClasses = (category: string | undefined): string =>
     category === currentCategory ? styles.liActive : '';
   const wrapperClasses = (): string => {
     return isOpen ? styles.open : '';
   };
 
-  const handleCategoryClick = (category: string | null): void => {
+  const handleCategoryClick = (category: string | undefined): void => {
     setIsOpen(false);
     setCurrentCategory(category);
   };
@@ -38,18 +29,18 @@ const Categories: FC = () => {
       <div className={[styles.categories, wrapperClasses()].join(' ')}>
         <ul className={styles.ul}>
           <li
-            className={[styles.li, listClasses(null)].join(' ')}
-            onClick={() => handleCategoryClick(null)}
+            className={[styles.li, listClasses(undefined)].join(' ')}
+            onClick={() => handleCategoryClick(undefined)}
           >
             all categories
           </li>
           {categories?.map((category, id) => (
             <li
-              className={[styles.li, listClasses(category)].join(' ')}
+              className={[styles.li, listClasses(category._id)].join(' ')}
               key={id}
-              onClick={() => handleCategoryClick(category)}
+              onClick={() => handleCategoryClick(category._id)}
             >
-              {category}
+              {category.name}
             </li>
           ))}
         </ul>

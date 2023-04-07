@@ -1,14 +1,20 @@
 import React, { FC, useState } from 'react';
 import styles from './Sort.module.scss';
 import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
-import { useActions } from '../../hooks/useActions';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { ISortType } from '../../../types/products';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import {
+  getOrder,
+  getSort,
+  setSortingProducts,
+} from '../../../store/actionCreators/products';
 
 const Sort: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [order, setOrder] = useState(false);
-  const [currentSort, setCurrentSort] = useState(0);
-  const sort = [
+  const order = useTypedSelector(getOrder());
+  const currentSort = useTypedSelector(getSort());
+
+  const sort: ISortType[] = [
     { sortName: 'популярности', sortProperty: 'rating' },
     { sortName: 'цене', sortProperty: 'price' },
     {
@@ -16,31 +22,14 @@ const Sort: FC = () => {
       sortProperty: 'title',
     },
   ];
-  const { products, skip, total } = useTypedSelector(state => state.products);
-  const { setSortingProductsPage } = useActions();
 
   const handleOrderClick = (): void => {
-    setOrder(prevState => !prevState);
-    handleSortingClick(sort[currentSort], currentSort);
+    setSortingProducts({ currentSort, order: !order });
   };
-  const handleSortingClick = (
-    sortType: { sortName: string; sortProperty: string },
-    id: number,
-  ): void => {
-    setCurrentSort(id);
-    const newProducts = !order
-      ? products.sort((a, b) =>
-          // @ts-expect-error
-
-          a[sortType.sortProperty] > b[sortType.sortProperty] ? -1 : 1,
-        )
-      : products.sort((a, b) =>
-          // @ts-expect-error
-          a[sortType.sortProperty] < b[sortType.sortProperty] ? -1 : 1,
-        );
-    setSortingProductsPage(newProducts, skip, total);
+  const handleSortingClick = (sortType: ISortType, id: number): void => {
     setIsOpen(false);
   };
+
   return (
     <div className={styles.sort}>
       <div className={isOpen ? styles.label : styles.labelDown}>
@@ -50,9 +39,7 @@ const Sort: FC = () => {
           <AiFillCaretUp className={styles.svg} />
         )}
         <b onClick={() => handleOrderClick()}>Сортировать по:</b>
-        <span onClick={() => setIsOpen(!isOpen)}>
-          {sort[currentSort].sortName}
-        </span>
+        <span onClick={() => setIsOpen(!isOpen)}>{currentSort.sortName}</span>
       </div>
       {isOpen && (
         <div className={styles.popup}>
@@ -60,7 +47,11 @@ const Sort: FC = () => {
             {sort.map((sortType, id) => (
               <li
                 onClick={() => handleSortingClick(sortType, id)}
-                className={currentSort === id ? styles.liActive : styles.li}
+                className={
+                  currentSort.sortProperty === sortType.sortProperty
+                    ? styles.liActive
+                    : styles.li
+                }
                 key={sortType.sortName}
               >
                 {sortType.sortName}

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { createArrayOfNumbers } from '../../utils/utils';
+import { createArrayOfNumbers } from '../../../utils/utils';
 import styles from './Pagination.module.scss';
 
 interface IPaginationProps {

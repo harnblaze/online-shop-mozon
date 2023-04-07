@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import Categories from '../components/categories/Categories';
-import Sort from '../components/sort/Sort';
-import ProductsList from '../components/productsList/ProductsList';
+import Categories from '../components/ui/categories/Categories';
+import Sort from '../components/ui/sort/Sort';
+import ProductsList from '../components/ui/productsList/ProductsList';
 
 const Products: FC = () => {
   return (
