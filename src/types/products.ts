@@ -1,5 +1,5 @@
 export interface IProduct {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   price: number;
@@ -11,6 +11,7 @@ export interface IProduct {
   thumbnail: string;
   images: string[];
 }
+
 export type ISortProperty = keyof Pick<IProduct, 'rating' | 'price' | 'title'>;
 
 export interface ISortType {
@@ -61,6 +62,7 @@ interface IFetchProductsOfCategoryErrorAction {
   type: ProductsActionTypes.FETCH_PRODUCTS_OF_CATEGORY_ERROR;
   payload: string;
 }
+
 interface ISetProductsPage {
   type: ProductsActionTypes.SET_PRODUCTS_PAGE;
   payload: number;

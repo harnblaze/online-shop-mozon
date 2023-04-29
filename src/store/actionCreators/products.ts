@@ -33,7 +33,7 @@ export const getProductsLoadingStatus = () => (state: RootState) =>
 export const getProductsErrors = () => (state: RootState) =>
   state.products.error;
 export const getProductById = (productId: string) => (state: RootState) => {
-  return state.products.entities.find(prod => prod.id === productId);
+  return state.products.entities.find(prod => prod._id === productId);
 };
 export const getOrder = () => (state: RootState) => state.products.order;
 export const getSort = () => (state: RootState) => state.products.currentSort;

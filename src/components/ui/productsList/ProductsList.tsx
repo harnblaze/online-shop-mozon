@@ -1,28 +1,20 @@
 import React, { FC } from 'react';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import ProductItem from '../productItem/ProductItem';
+import { Container, Row } from 'react-bootstrap';
 
 const ProductsList: FC = () => {
-  const {
-    entities: products,
-    error,
-    isLoading,
-  } = useTypedSelector(state => state.products);
-
-  if (isLoading) {
-    return <h3>Идет загрузка...</h3>;
-  }
-  if (error != null) {
-    return <h3>{error}</h3>;
-  }
+  const { entities: products } = useTypedSelector(state => state.products);
 
   return (
     <>
-      <div className="content__items">
-        {products?.map(product => {
-          return <ProductItem product={product} key={product.id} />;
-        })}
-      </div>
+      <Container>
+        <Row>
+          {products?.map(product => {
+            return <ProductItem product={product} key={product._id} />;
+          })}
+        </Row>
+      </Container>
       {/* <Pagination */}
       {/*  pagesCount={pagesCount */}
       {/*  currentPage={currentPage} */}

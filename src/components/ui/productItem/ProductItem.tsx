@@ -1,60 +1,72 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { IProduct } from '../../../types/products';
-import styles from './ProductItem.module.scss';
-import { AiFillStar, AiOutlinePlus } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { Button, Card, Col, Row } from 'react-bootstrap';
+import { FaRegStar, FaStar } from 'react-icons/fa';
 
 interface IProductProps {
   product: IProduct;
 }
 
 const ProductItem: FC<IProductProps> = ({ product }) => {
-  const { id, thumbnail, title, price, discountPercentage, rating } = product;
-  const [count, setCount] = useState(0);
+  const { _id, thumbnail, title, price, description, rating } = product;
+
+  const stars = Array.from({ length: 5 }, (_, i) => {
+    const isFilled = i < rating;
+    return isFilled ? (
+      <FaStar key={i} className="text-warning mb-1" />
+    ) : (
+      <FaRegStar key={i} className="text-warning mb-1" />
+    );
+  });
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.product}>
-        <Link to={`/product/${id}`} className={styles.product}>
-          <div className={styles.imageWrapper}>
-            <img
-              className={styles.image}
-              src={thumbnail}
-              loading="lazy"
-              alt="product"
-            />
-            <div className={styles.discount}>
-              -{Math.ceil(discountPercentage)}%
-            </div>
-            <div className={styles.rating}>
-              <AiFillStar className={styles.star} />
-              {rating.toFixed(1)}
-            </div>
-          </div>
+    <Col sm={6} md={4} lg={4} xl={3} className={'mb-5 d-flex'}>
+      <Card className="shadow flex-grow-1">
+        <Link to={`/product/${_id}`}>
+          <Card.Img
+            variant="top"
+            src={thumbnail}
+            loading="lazy"
+            style={{
+              objectFit: 'cover',
+              objectPosition: 'center',
+              height: '10rem',
+            }}
+          />
         </Link>
-        <Link to={`/product/${id}`} className="link">
-          <h4 className={styles.title}>{title}</h4>
-        </Link>
-        <div className={styles.bottom}>
-          <div className={styles.prices}>
-            <div className={styles.price}>{price} $</div>
-            <div className={styles.secondPrice}>
-              {Math.ceil(price * (1 + discountPercentage / 100))} $
-            </div>
-          </div>
-          <button onClick={() => setCount(count + 1)} className={styles.button}>
-            {count === 0 ? (
-              'В корзину'
-            ) : (
-              <>
-                <AiOutlinePlus />
-                <i>{count} шт.</i>
-              </>
-            )}
-          </button>
-        </div>
-      </div>
-    </div>
+        <Card.Body className={'d-flex flex-column justify-content-around'}>
+          <Row className="mb-2">
+            <Col>
+              <Link to={`/product/${_id}`}>
+                <Card.Title className="text-decoration-none">
+                  {title}
+                </Card.Title>
+              </Link>
+            </Col>
+            <Col xs="auto">
+              <Card.Text className="font-weight-bold">
+                ${price.toFixed(2)}
+              </Card.Text>
+            </Col>
+          </Row>
+          <Card.Text style={{ textOverflow: 'ellipsis' }}>
+            {description}
+          </Card.Text>
+          <Row>
+            <Col>
+              <Button variant="primary">Add to Cart</Button>
+            </Col>
+            <Col xs="auto">
+              <div className="mt-2">
+                {stars}
+                {` ${rating}`}
+              </div>
+            </Col>
+          </Row>
+        </Card.Body>
+      </Card>
+    </Col>
   );
 };
 

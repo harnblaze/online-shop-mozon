@@ -21,6 +21,9 @@ const AppLoader: FC<PropsWithChildren> = ({ children }) => {
   );
   const categoriesError = useTypedSelector(getProductsErrors());
   useEffect(() => {
+    // for (const prod of products) {
+    //   void httpService.put(`product/${prod._id}`, prod);
+    // }
     void dispatch(fetchingProductsList());
     void dispatch(fetchingCategories());
   }, []);
