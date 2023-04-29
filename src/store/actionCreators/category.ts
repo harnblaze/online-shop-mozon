@@ -16,7 +16,6 @@ export const fetchingCategories = () => async (dispatch: AppDispatch) => {
     dispatch(categoryReceived(content));
   } catch (e: any) {
     categoryRequestFailed(e.message);
-    console.dir(e);
   }
 };
 
@@ -29,7 +28,6 @@ export const getCategoriesError = () => (state: RootState) =>
 export const getCurrentCategory = () => (state: RootState) =>
   state.categories.currentCategory;
 export const setCurrentCategory =
-  (category: string | undefined) =>
-  (dispatch: AppDispatch, state: RootState) => {
+  (category: string | undefined) => (dispatch: AppDispatch) => {
     dispatch(currentCategoryChanged(category));
   };

@@ -1,6 +1,4 @@
-import React, { FC, useState } from 'react';
-import styles from './Sort.module.scss';
-import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
+import React, { FC, ReactElement } from 'react';
 import { ISortType } from '../../../types/products';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import {
@@ -8,9 +6,12 @@ import {
   getSort,
   setSortingProducts,
 } from '../../../store/actionCreators/products';
+import { Button, Col, Form, Row } from 'react-bootstrap';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { BsSortDownAlt, BsSortUp } from 'react-icons/bs';
 
 const Sort: FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useAppDispatch();
   const order = useTypedSelector(getOrder());
   const currentSort = useTypedSelector(getSort());
 
@@ -23,44 +24,49 @@ const Sort: FC = () => {
     },
   ];
 
-  const handleOrderClick = (): void => {
-    setSortingProducts({ currentSort, order: !order });
+  const onSortOptionChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ): void => {
+    const newSort = sort.find(el => el.sortProperty === event.target.value);
+    if (newSort !== undefined) {
+      dispatch(setSortingProducts({ currentSort: newSort, order }));
+    }
   };
-  const handleSortingClick = (sortType: ISortType, id: number): void => {
-    setIsOpen(false);
+
+  const onSortReverseChange = (): void => {
+    dispatch(setSortingProducts({ currentSort, order: !order }));
+  };
+
+  const getSortIcon = (): ReactElement => {
+    if (order) {
+      return <BsSortUp />;
+    }
+    return <BsSortDownAlt />;
   };
 
   return (
-    <div className={styles.sort}>
-      <div className={isOpen ? styles.label : styles.labelDown}>
-        {order ? (
-          <AiFillCaretDown className={styles.svg} />
-        ) : (
-          <AiFillCaretUp className={styles.svg} />
-        )}
-        <b onClick={() => handleOrderClick()}>Сортировать по:</b>
-        <span onClick={() => setIsOpen(!isOpen)}>{currentSort.sortName}</span>
-      </div>
-      {isOpen && (
-        <div className={styles.popup}>
-          <ul className={styles.ul}>
-            {sort.map((sortType, id) => (
-              <li
-                onClick={() => handleSortingClick(sortType, id)}
-                className={
-                  currentSort.sortProperty === sortType.sortProperty
-                    ? styles.liActive
-                    : styles.li
-                }
-                key={sortType.sortName}
-              >
-                {sortType.sortName}
-              </li>
+    <Form.Group controlId="sort-select">
+      <Form.Label>Сортировать по:</Form.Label>
+      <Row>
+        <Col xs={'auto'}>
+          <Form.Select
+            value={currentSort.sortProperty}
+            onChange={onSortOptionChange}
+          >
+            {sort.map(option => (
+              <option key={option.sortProperty} value={option.sortProperty}>
+                {option.sortName}
+              </option>
             ))}
-          </ul>
-        </div>
-      )}
-    </div>
+          </Form.Select>
+        </Col>
+        <Col>
+          <Button variant="link" onClick={onSortReverseChange}>
+            {getSortIcon()}
+          </Button>
+        </Col>
+      </Row>
+    </Form.Group>
   );
 };
 

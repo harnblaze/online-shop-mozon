@@ -1,59 +1,38 @@
-import React, { FC, useState } from 'react';
-import styles from './Categores.module.scss';
+import React, { FC } from 'react';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import {
   getCategories,
   getCurrentCategory,
   setCurrentCategory,
 } from '../../../store/actionCreators/category';
+import { Form } from 'react-bootstrap';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
 
 const Categories: FC = () => {
+  const dispatch = useAppDispatch();
   const categories = useTypedSelector(getCategories());
   const currentCategory = useTypedSelector(getCurrentCategory());
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const listClasses = (category: string | undefined): string =>
-    category === currentCategory ? styles.liActive : '';
-  const wrapperClasses = (): string => {
-    return isOpen ? styles.open : '';
-  };
-
-  const handleCategoryClick = (category: string | undefined): void => {
-    setIsOpen(false);
-    setCurrentCategory(category);
+  console.log(currentCategory);
+  const onCategoryChange = (category: string): void => {
+    dispatch(setCurrentCategory(category));
   };
 
   return (
-    <div>
-      <div className={[styles.categories, wrapperClasses()].join(' ')}>
-        <ul className={styles.ul}>
-          <li
-            className={[styles.li, listClasses(undefined)].join(' ')}
-            onClick={() => handleCategoryClick(undefined)}
-          >
-            all categories
-          </li>
-          {categories?.map((category, id) => (
-            <li
-              className={[styles.li, listClasses(category._id)].join(' ')}
-              key={id}
-              onClick={() => handleCategoryClick(category._id)}
-            >
-              {category.name}
-            </li>
-          ))}
-        </ul>
-      </div>
-      {!isOpen && (
-        <span
-          className={styles.showMore}
-          onClick={() => setIsOpen(prevState => !prevState)}
-        >
-          Show more categories...
-        </span>
-      )}
-    </div>
+    <Form.Group controlId="category-select">
+      <Form.Label>Выберите категорию:</Form.Label>
+      <Form.Control
+        as="select"
+        value={currentCategory}
+        onChange={e => onCategoryChange(e.target.value)}
+      >
+        <option value={undefined}>All</option>
+        {categories.map(category => (
+          <option key={category._id} value={category.name}>
+            {category.name}
+          </option>
+        ))}
+      </Form.Control>
+    </Form.Group>
   );
 };
 

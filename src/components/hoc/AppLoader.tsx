@@ -1,5 +1,5 @@
 import React, { FC, PropsWithChildren, useEffect } from 'react';
-import { useAppDispatch } from '../../hooks/useTypedDispatch';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import {
   fetchingProductsList,
@@ -24,6 +24,11 @@ const AppLoader: FC<PropsWithChildren> = ({ children }) => {
     // for (const prod of products) {
     //   void httpService.put(`product/${prod._id}`, prod);
     // }
+    //
+    // for (const cat of categories) {
+    //   void httpService.put(`category/${cat._id}`, cat);
+    // }
+
     void dispatch(fetchingProductsList());
     void dispatch(fetchingCategories());
   }, []);

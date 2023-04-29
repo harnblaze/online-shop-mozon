@@ -23,7 +23,7 @@ export const fetchingProductsList =
     }
   };
 export const setSortingProducts =
-  (payload: ISortPayload) => (dispatch: AppDispatch, state: RootState) => {
+  (payload: ISortPayload) => (dispatch: AppDispatch) => {
     dispatch(sortChanged(payload));
   };
 
