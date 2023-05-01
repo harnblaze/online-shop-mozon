@@ -1,9 +1,9 @@
 import React, { FC, useMemo } from 'react';
-import Categories from '../components/ui/categories/Categories';
-import Sort from '../components/ui/sort/Sort';
-import ProductsList from '../components/ui/productsList/ProductsList';
+import Categories from '../components/ui/Categories';
+import Sort from '../components/ui/Sort';
+import ProductsList from '../components/ui/ProductsList';
 import { Col, Container, Row } from 'react-bootstrap';
-import Search from '../components/ui/search/Search';
+import Search from '../components/ui/Search';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { getCurrentCategory } from '../store/actionCreators/category';
 import { getProducts } from '../store/actionCreators/products';

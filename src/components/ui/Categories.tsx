@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
-import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import {
   getCategories,
   getCurrentCategory,
   setCurrentCategory,
-} from '../../../store/actionCreators/category';
+} from '../../store/actionCreators/category';
 import { Form } from 'react-bootstrap';
-import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
 
 const Categories: FC = () => {
   const dispatch = useAppDispatch();

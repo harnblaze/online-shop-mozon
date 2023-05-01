@@ -1,13 +1,13 @@
 import React, { FC, ReactElement } from 'react';
-import { ISortType } from '../../../types/products';
-import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import { ISortType } from '../../types/products';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import {
   getOrder,
   getSort,
   setSortingProducts,
-} from '../../../store/actionCreators/sort';
+} from '../../store/actionCreators/sort';
 import { Button, Col, Form, Row } from 'react-bootstrap';
-import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { BsSortDown, BsSortDownAlt } from 'react-icons/bs';
 
 const Sort: FC = () => {

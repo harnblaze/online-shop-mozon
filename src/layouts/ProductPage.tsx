@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTypedSelector } from '../hooks/useTypedSelector';
-import Product from '../components/ui/product/Product';
+import Product from '../components/ui/Product';
 import { getProductById } from '../store/actionCreators/products';
 
 const ProductPage: FC = () => {

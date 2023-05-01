@@ -6,10 +6,10 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import ProductItem from '../productItem/ProductItem';
+import ProductItem from './ProductItem';
 import { Container, Row } from 'react-bootstrap';
-import { IProduct } from '../../../types/products';
-import MyPagination from '../pagination/MyPagination';
+import { IProduct } from '../../types/products';
+import MyPagination from '../common/MyPagination';
 
 interface IProductsListProps {
   products: IProduct[];

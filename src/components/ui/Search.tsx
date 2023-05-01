@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
-import { useAppDispatch } from '../../../hooks/useAppDispatch';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { Button, Form, FormControl } from 'react-bootstrap';
-import { setSearchQuery } from '../../../store/actionCreators/search';
+import { setSearchQuery } from '../../store/actionCreators/search';
 import { BsX } from 'react-icons/bs';
 
 const Search: FC = () => {

@@ -1,5 +1,5 @@
 import React, { FC, memo } from 'react';
-import { IProduct } from '../../../types/products';
+import { IProduct } from '../../types/products';
 import { Link } from 'react-router-dom';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { FaRegStar, FaStar } from 'react-icons/fa';

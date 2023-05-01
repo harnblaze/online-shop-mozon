@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
-import { IProduct } from '../../../types/products';
+import { IProduct } from '../../types/products';
 import { Badge, Button, Col, Container, Image, Row } from 'react-bootstrap';
-import BackButton from '../../common/BackButton';
-import SettingsButton from '../../common/SettingsButton';
+import BackButton from '../common/BackButton';
+import SettingsButton from '../common/SettingsButton';
 
 const Product: FC<IProduct> = ({
   title,

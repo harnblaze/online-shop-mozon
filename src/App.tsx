@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Header from './components/ui/header/Header';
+import Header from './components/ui/Header';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import Products from './layouts/Products';
 import Login from './layouts/Login';
