@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 const Header: FC = () => {
-  const [isAuth] = useState(true);
+  const [isAuth] = useState(false);
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand>
+        <Navbar.Brand as={'div'}>
           <Link
             to="/"
             className={'text-decoration-none'}
@@ -23,7 +23,7 @@ const Header: FC = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className={'flex-grow-0'}>
           <Nav className="ml-auto">
-            <Nav.Link>
+            <Nav.Link as={'div'}>
               <Link to="/cart">
                 <AiOutlineShoppingCart size={30} />
               </Link>
@@ -51,9 +51,13 @@ const Header: FC = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
-              <Nav.Link>
-                <Link to="/login" className={'text-decoration-none'}>
-                  Login/Register
+              <Nav.Link as={'div'}>
+                <Link
+                  to="/auth/register"
+                  className={'text-decoration-none'}
+                  style={{ color: 'rgb(13,110,253)' }}
+                >
+                  Вход/Регистрация
                 </Link>
               </Nav.Link>
             )}

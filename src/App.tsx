@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import Header from './components/ui/Header';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import Products from './layouts/Products';
-import Login from './layouts/Login';
+import Auth from './layouts/Auth';
 import Cart from './layouts/Cart';
 import NotFound from './layouts/NotFound';
 import ProductPage from './layouts/ProductPage';
@@ -19,7 +19,7 @@ const App: FC = () => {
           <Switch>
             <Route path="/" exact component={Products} />
             <Route path="/product/:id" component={ProductPage} />
-            <Route path="/login" component={Login} />
+            <Route path="/auth/:type?" component={Auth} />
             <Route path="/cart" component={Cart} />
             <Route path="/404" component={NotFound} />
 
