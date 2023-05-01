@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import ProductItem from '../productItem/ProductItem';
 import { Container, Row } from 'react-bootstrap';
 import { IProduct } from '../../../types/products';
@@ -26,4 +26,4 @@ const ProductsList: FC<IProductsListProps> = ({ products }) => {
   );
 };
 
-export default ProductsList;
+export default memo(ProductsList);

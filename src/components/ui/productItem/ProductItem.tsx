@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { IProduct } from '../../../types/products';
 import { Link } from 'react-router-dom';
 import { Button, Card, Col, Row } from 'react-bootstrap';
@@ -70,4 +70,4 @@ const ProductItem: FC<IProductProps> = ({ product }) => {
   );
 };
 
-export default ProductItem;
+export default memo(ProductItem);

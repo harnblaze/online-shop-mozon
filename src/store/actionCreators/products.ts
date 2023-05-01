@@ -24,5 +24,7 @@ export const getProductsLoadingStatus = () => (state: RootState) =>
 export const getProductsErrors = () => (state: RootState) =>
   state.products.error;
 export const getProductById = (productId: string) => (state: RootState) => {
-  return state.products.entities.find(prod => prod._id === productId);
+  if (state.products.entities.length > 0) {
+    return state.products.entities.find(prod => prod._id === productId);
+  }
 };

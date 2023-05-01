@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import Categories from '../components/ui/categories/Categories';
 import Sort from '../components/ui/sort/Sort';
 import ProductsList from '../components/ui/productsList/ProductsList';
@@ -18,7 +18,7 @@ const Products: FC = () => {
   const order = useTypedSelector(getOrder());
   const sortType = useTypedSelector(getSort());
 
-  const sortedProducts = (): IProduct[] => {
+  const sortedProducts = useMemo((): IProduct[] => {
     let filteredUsers = products;
     if (searchQuery !== '') {
       filteredUsers = filteredUsers.filter(prod =>
@@ -45,15 +45,7 @@ const Products: FC = () => {
     });
 
     return filteredUsers;
-  };
-  console.log(
-    products,
-    currentCategory,
-    searchQuery,
-    order,
-    sortType,
-    sortedProducts(),
-  );
+  }, [products, currentCategory, order, sortType, searchQuery]);
   return (
     <>
       <Container>
@@ -69,7 +61,7 @@ const Products: FC = () => {
           </Col>
         </Row>
       </Container>
-      <ProductsList products={sortedProducts()} />
+      <ProductsList products={sortedProducts} />
     </>
   );
 };

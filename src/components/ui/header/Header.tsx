@@ -1,57 +1,66 @@
 import React, { FC, useState } from 'react';
-import styles from './Header.module.scss';
+
 import { FaUserCircle } from 'react-icons/fa';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { MdLogout } from 'react-icons/md';
+
 import { Link } from 'react-router-dom';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 const Header: FC = () => {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth] = useState(true);
   return (
-    <header className={styles.header}>
-      <div className={styles.container}>
-        <Link to="/" className="link">
-          <h2 className={styles.logo}>MOZON</h2>
-        </Link>
-        <div className={styles.authorization}>
-          {isAuth ? (
-            <>
-              <button
-                className={styles.button}
-                style={{ marginRight: '10px' }}
-                onClick={() => setIsAuth(!isAuth)}
-              >
-                Зарегистрироваться
-              </button>
-              <button
-                className={styles.button}
-                onClick={() => setIsAuth(!isAuth)}
-              >
-                Войти
-              </button>
-            </>
-          ) : (
-            <>
-              <Link to="/login">
-                <div className={styles.userLogo}>
-                  <FaUserCircle className={styles.icon} />
-                </div>
-              </Link>
-
+    <Navbar bg="light" expand="lg">
+      <Container>
+        <Navbar.Brand>
+          <Link
+            to="/"
+            className={'text-decoration-none'}
+            style={{ color: 'rgb(13,110,253)' }}
+          >
+            MOZON
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav" className={'flex-grow-0'}>
+          <Nav className="ml-auto">
+            <Nav.Link>
               <Link to="/cart">
-                <div className={styles.cart}>
-                  <AiOutlineShoppingCart className={styles.icon} />
-                </div>
+                <AiOutlineShoppingCart size={30} />
               </Link>
-
-              <div className={styles.logout} onClick={() => setIsAuth(!isAuth)}>
-                <MdLogout className={styles.icon} />
-              </div>
-            </>
-          )}
-        </div>
-      </div>
-    </header>
+            </Nav.Link>
+            {isAuth ? (
+              <NavDropdown
+                title={
+                  <FaUserCircle
+                    size={30}
+                    style={{ color: 'rgb(13,110,253)' }}
+                  />
+                }
+                id="basic-nav-dropdown"
+              >
+                <NavDropdown.Item>
+                  <Link to="/profile" className={'text-decoration-auto'}>
+                    Profile
+                  </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Link to="/logout" className={'text-decoration-none'}>
+                    Logout
+                  </Link>
+                </NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <Nav.Link>
+                <Link to="/login" className={'text-decoration-none'}>
+                  Login/Register
+                </Link>
+              </Nav.Link>
+            )}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 

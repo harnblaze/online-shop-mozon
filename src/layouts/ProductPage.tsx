@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTypedSelector } from '../hooks/useTypedSelector';
-import { useActions } from '../hooks/useActions';
 import Product from '../components/ui/product/Product';
+import { getProductById } from '../store/actionCreators/products';
 
 const ProductPage: FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { getProductById } = useActions();
+
   const product = useTypedSelector(getProductById(id));
 
   if (product === undefined)

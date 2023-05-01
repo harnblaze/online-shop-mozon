@@ -13,7 +13,6 @@ const Categories: FC = () => {
   const categories = useTypedSelector(getCategories());
   const currentCategory = useTypedSelector(getCurrentCategory());
   const onCategoryChange = (category: string): void => {
-    console.log(category);
     dispatch(setCurrentCategory(category));
   };
 

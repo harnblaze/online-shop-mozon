@@ -8,7 +8,7 @@ import {
 } from '../../../store/actionCreators/sort';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
-import { BsSortDownAlt, BsSortUp } from 'react-icons/bs';
+import { BsSortDown, BsSortDownAlt } from 'react-icons/bs';
 
 const Sort: FC = () => {
   const dispatch = useAppDispatch();
@@ -38,10 +38,7 @@ const Sort: FC = () => {
   };
 
   const getSortIcon = (): ReactElement => {
-    if (order) {
-      return <BsSortUp />;
-    }
-    return <BsSortDownAlt />;
+    return order ? <BsSortDown /> : <BsSortDownAlt />;
   };
 
   return (
