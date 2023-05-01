@@ -5,7 +5,7 @@ import {
   getOrder,
   getSort,
   setSortingProducts,
-} from '../../../store/actionCreators/products';
+} from '../../../store/actionCreators/sort';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { BsSortDownAlt, BsSortUp } from 'react-icons/bs';

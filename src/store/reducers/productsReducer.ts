@@ -1,20 +1,16 @@
-import { IProduct, ISortPayload, ISortType } from '../../types/products';
+import { IProduct } from '../../types/products';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface IProductsState {
   entities: IProduct[];
   isLoading: boolean;
   error: null | string;
-  currentSort: ISortType;
-  order: boolean;
 }
 
 const initialState: IProductsState = {
   entities: [],
   isLoading: true,
   error: null,
-  currentSort: { sortName: 'алфавиту', sortProperty: 'title' },
-  order: false,
 };
 
 const productSlice = createSlice({
@@ -31,10 +27,6 @@ const productSlice = createSlice({
     productsRequestFailed: (state, action: PayloadAction<string>) => {
       state.isLoading = true;
       state.error = action.payload;
-    },
-    sortChanged: (state, action: PayloadAction<ISortPayload>) => {
-      state.currentSort = action.payload.currentSort;
-      state.order = action.payload.order;
     },
   },
 });

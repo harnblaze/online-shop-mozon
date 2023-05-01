@@ -1,11 +1,13 @@
 import React, { FC } from 'react';
-import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import ProductItem from '../productItem/ProductItem';
 import { Container, Row } from 'react-bootstrap';
+import { IProduct } from '../../../types/products';
 
-const ProductsList: FC = () => {
-  const { entities: products } = useTypedSelector(state => state.products);
+interface IProductsListProps {
+  products: IProduct[];
+}
 
+const ProductsList: FC<IProductsListProps> = ({ products }) => {
   return (
     <>
       <Container>

@@ -12,8 +12,8 @@ const Categories: FC = () => {
   const dispatch = useAppDispatch();
   const categories = useTypedSelector(getCategories());
   const currentCategory = useTypedSelector(getCurrentCategory());
-  console.log(currentCategory);
   const onCategoryChange = (category: string): void => {
+    console.log(category);
     dispatch(setCurrentCategory(category));
   };
 
@@ -25,9 +25,9 @@ const Categories: FC = () => {
         value={currentCategory}
         onChange={e => onCategoryChange(e.target.value)}
       >
-        <option value={undefined}>All</option>
+        <option value={'All'}>All</option>
         {categories.map(category => (
-          <option key={category._id} value={category.name}>
+          <option key={category._id} value={category._id}>
             {category.name}
           </option>
         ))}
