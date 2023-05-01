@@ -1,111 +1,65 @@
 import React, { FC, useState } from 'react';
 import { IProduct } from '../../../types/products';
-import styles from './Product.module.scss';
-import { AiOutlinePlus } from 'react-icons/ai';
+import { Badge, Button, Col, Container, Image, Row } from 'react-bootstrap';
+import BackButton from '../../common/BackButton';
+import SettingsButton from '../../common/SettingsButton';
 
 const Product: FC<IProduct> = ({
   title,
   images,
+  thumbnail,
   description,
   price,
   rating,
   brand,
-  category,
   discountPercentage,
-  stock,
 }) => {
-  const [mainImage, setMainImage] = useState<string>(images[0]);
-  const [count, setCount] = useState<number>(0);
-
-  const handleImageClick = (image: string): void => {
-    setMainImage(image);
+  const handleAddToCart = (): void => {
+    // TODO: add the product and the selected quantity to the cart
   };
-  const starWidth = ((rating / 5) * 100).toString() + '%';
-
+  const [image, setImage] = useState(thumbnail);
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.heading}>
-        <h1>{title}</h1>
-        <div className={styles.ratingWrapper}>
-          <div className={styles.rating}>
-            <div className={styles.stars}></div>
-            <div
-              className={styles.ratingStar}
-              style={{ width: starWidth }}
-            ></div>
+    <Container>
+      <Row>
+        <Col md={6} className={'d-flex flex-wrap'}>
+          <Image src={image} fluid />
+
+          {images.map((url, index) => (
+            <Button variant={'link'} key={index}>
+              <Image
+                src={url}
+                className="mt-3 mr-3 flex-shrink-0"
+                style={{ width: '30%' }}
+                onClick={() => setImage(url)}
+              />
+            </Button>
+          ))}
+        </Col>
+        <Col md={6}>
+          <h2>{title}</h2>
+          <h5>{brand}</h5>
+          <p>{description}</p>
+          <p>Price: {price} $</p>
+          {discountPercentage !== 0 && (
+            <p>
+              Discount: <Badge bg="success">{discountPercentage}% off</Badge>
+            </p>
+          )}
+          <p>Rating: {rating}/5</p>
+          <hr />
+          <div className={'d-flex justify-content-between'}>
+            <BackButton />
+            <SettingsButton />
+            <Button variant="primary" onClick={handleAddToCart}>
+              Добавить в корзину
+            </Button>
           </div>
-          <div>{rating}</div>
-        </div>
-      </div>
-      <div className={styles.separator}></div>
-      <div className={styles.content}>
-        <div className={styles.gallery}>
-          <div className={styles.list}>
-            {images.map((image, id) => {
-              const classes =
-                image === mainImage
-                  ? [styles.activeImage, styles.image].join(' ')
-                  : styles.image;
-              return (
-                <div
-                  className={classes}
-                  key={id}
-                  onClick={() => handleImageClick(image)}
-                >
-                  <img src={image} alt={`image${id}`} width={48} height={48} />
-                </div>
-              );
-            })}
-          </div>
-          <div className={styles.mainImage}>
-            <img src={mainImage} alt={`main image`} />
-          </div>
-        </div>
-        <div className={styles.paragraphList}>
-          <p className={styles.paragraph}>
-            <h4 className={styles.descriptionTitle}>Описание : </h4>
-            <span className={styles.description}>{description}</span>
-          </p>
-          <p className={styles.paragraph}>
-            <h4 className={styles.descriptionTitle}>Бренд : </h4>
-            <span className={styles.description}>{brand}</span>
-          </p>
-          <p className={styles.paragraph}>
-            <h4 className={styles.name}>Категория : </h4>
-            <span className={styles.description}>{category}</span>
-          </p>
-        </div>
-        <div className={styles.priceBlock}>
-          <div className={styles.priceWrapper}>
-            <div className={styles.prices}>
-              <div className={styles.price}>{price} $</div>
-              <div className={styles.secondPrice}>
-                {Math.ceil(price * (1 + discountPercentage / 100))} $
-              </div>
-              <div className={styles.discount}>
-                -{Math.ceil(discountPercentage)}%
-              </div>
-            </div>
-            <div className={styles.stock}>{`Осталось: ${
-              stock - count
-            } шт.`}</div>
-            <button
-              onClick={() => setCount(count + 1)}
-              className={styles.button}
-            >
-              {count === 0 ? (
-                'В корзину'
-              ) : (
-                <>
-                  <AiOutlinePlus />
-                  <i>{count} шт.</i>
-                </>
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col></Col>
+      </Row>
+    </Container>
   );
 };
 
