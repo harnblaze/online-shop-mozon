@@ -43,7 +43,7 @@ const ProductsList: FC<IProductsListProps> = ({ products }) => {
 
   useEffect(() => {
     handlePageChange(1);
-  }, [currentProducts]);
+  }, [products]);
 
   return (
     <>

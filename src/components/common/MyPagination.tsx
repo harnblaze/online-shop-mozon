@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { Pagination } from 'react-bootstrap';
 
 interface IPaginationProps {
@@ -31,4 +31,4 @@ const MyPagination: FC<IPaginationProps> = ({
   );
 };
 
-export default MyPagination;
+export default memo(MyPagination);
