@@ -9,6 +9,8 @@ import ProductPage from './layouts/ProductPage';
 import AppLoader from './components/hoc/AppLoader';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ProtectedRoute from './components/common/ProtectedRoute';
+import LogOut from './layouts/LogOut';
 
 const App: FC = () => {
   return (
@@ -17,10 +19,15 @@ const App: FC = () => {
         <div className="App">
           <Header />
           <Switch>
-            <Route path="/" exact component={Products} />
-            <Route path="/product/:id" component={ProductPage} />
+            <ProtectedRoute path="/" exact={true} component={Products} />
+            <ProtectedRoute
+              exact={false}
+              path="/product/:id"
+              component={ProductPage}
+            />
             <Route path="/auth/:type?" component={Auth} />
-            <Route path="/cart" component={Cart} />
+            <Route path="/logout" component={LogOut} />
+            <ProtectedRoute exact={false} path="/cart" component={Cart} />
             <Route path="/404" component={NotFound} />
 
             <Redirect to="/404" />

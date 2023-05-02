@@ -1,13 +1,19 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 
 import { FaUserCircle } from 'react-icons/fa';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 import { Link } from 'react-router-dom';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import {
+  getCurrentUserEmail,
+  getIsLoggedIn,
+} from '../../store/actionCreators/auth';
 
 const Header: FC = () => {
-  const [isAuth] = useState(false);
+  const isAuth = useTypedSelector(getIsLoggedIn());
+  const email = useTypedSelector(getCurrentUserEmail());
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -38,13 +44,9 @@ const Header: FC = () => {
                 }
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item>
-                  <Link to="/profile" className={'text-decoration-auto'}>
-                    Profile
-                  </Link>
-                </NavDropdown.Item>
+                <NavDropdown.Item as={'div'}>{email}</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item>
+                <NavDropdown.Item as={'div'}>
                   <Link to="/logout" className={'text-decoration-none'}>
                     Logout
                   </Link>

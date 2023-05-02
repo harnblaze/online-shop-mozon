@@ -5,9 +5,11 @@ import { useForm } from 'react-hook-form';
 import { Button, Form } from 'react-bootstrap';
 import { signIn } from '../../store/actionCreators/auth';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useHistory } from 'react-router-dom';
 
 const LoginForm: FC = () => {
   const dispatch = useAppDispatch();
+  const history = useHistory<any>();
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .required('Вы должны ввести  email')
@@ -23,9 +25,12 @@ const LoginForm: FC = () => {
   } = useForm(formOptions);
 
   const onSubmit = (values: any): void => {
-    console.log('Values:::', values);
-    console.log('Values:::', JSON.stringify(values));
-    void dispatch(signIn({ payload: values, redirect: '/' }));
+    const redirect =
+      history.location?.state?.from?.pathname !== undefined &&
+      history.location?.state?.from?.pathname !== '/login'
+        ? history.location.state.from.pathname
+        : '/';
+    void dispatch(signIn({ payload: values, redirect }));
   };
 
   const onError = (error: any): void => {

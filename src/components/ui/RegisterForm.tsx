@@ -34,8 +34,6 @@ const RegistrationForm: React.FC = () => {
   } = useForm(formOptions);
 
   const onSubmit = async (values: any): Promise<void> => {
-    console.log('Values:::', values);
-    // console.log('Values:::', JSON.stringify(values));
     await dispatch(singUp(values));
   };
 

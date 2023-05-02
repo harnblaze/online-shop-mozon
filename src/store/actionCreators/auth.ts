@@ -43,7 +43,9 @@ export const signIn =
     try {
       const data = await authService.login(payload);
       localStorageService.setTokens(data);
-      dispatch(authRequestSuccess(data.localId));
+      dispatch(
+        authRequestSuccess({ userId: data.localId, userEmail: data.email }),
+      );
       history.push(redirect);
     } catch (e: any) {
       const { code, message } = e.response.data.error;
@@ -63,7 +65,9 @@ export const singUp =
     try {
       const data = await authService.register(payload);
       localStorageService.setTokens(data);
-      dispatch(authRequestSuccess(data.localId));
+      dispatch(
+        authRequestSuccess({ userId: data.localId, userEmail: data.email }),
+      );
       void dispatch(createUser(payload));
     } catch (e: any) {
       dispatch(authRequestFailed(e.message));
@@ -92,4 +96,7 @@ export const getIsLoggedIn = () => (state: RootState) => state.auth.isLoggedIn;
 export const getUsersLoadingStatus = () => (state: RootState) =>
   state.auth.isLoading;
 export const getCurrentUserId = () => (state: RootState) => state.auth.userId;
+export const getCurrentUserEmail = () => (state: RootState) =>
+  state.auth.userEmail;
+
 export const getAuthErrors = () => (state: RootState) => state.auth.error;

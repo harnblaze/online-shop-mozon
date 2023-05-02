@@ -1,21 +1,20 @@
-import localStorageService, {
-  ISignUpResponse,
-} from '../../services/localStorage.service';
+import localStorageService from '../../services/localStorage.service';
 import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IUsersSliceState {
   isLoading: boolean;
   error: any | null;
   userId: string;
-  userData: ISignUpResponse | null;
+  userEmail: string;
   isLoggedIn: boolean;
 }
+
 const initialState: IUsersSliceState = {
-  userData: null,
   isLoading: true,
   error: null,
   userId: localStorageService.getUserID(),
-  isLoggedIn: true,
+  userEmail: '',
+  isLoggedIn: false,
 };
 const AuthSlice = createSlice({
   name: 'auth',
@@ -24,8 +23,12 @@ const AuthSlice = createSlice({
     authRequested: state => {
       state.error = null;
     },
-    authRequestSuccess: (state, action: PayloadAction<string>) => {
-      state.userId = action.payload;
+    authRequestSuccess: (
+      state,
+      action: PayloadAction<{ userId: string; userEmail: string }>,
+    ) => {
+      state.userId = action.payload.userId;
+      state.userEmail = action.payload.userEmail;
       state.isLoggedIn = true;
     },
     authRequestFailed: (state, action) => {
