@@ -3,8 +3,11 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { Button, Form } from 'react-bootstrap';
+import { signIn } from '../../store/actionCreators/auth';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
 
 const LoginForm: FC = () => {
+  const dispatch = useAppDispatch();
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .required('Вы должны ввести  email')
@@ -22,15 +25,18 @@ const LoginForm: FC = () => {
   const onSubmit = (values: any): void => {
     console.log('Values:::', values);
     console.log('Values:::', JSON.stringify(values));
+    void dispatch(signIn({ payload: values, redirect: '/' }));
   };
 
   const onError = (error: any): void => {
     console.log('ERROR:::', error);
   };
 
+  /* eslint-disable @typescript-eslint/no-misused-promises */
+
   return (
     <Form
-      onSubmit={() => handleSubmit(onSubmit, onError)}
+      onSubmit={handleSubmit(onSubmit, onError)}
       className={'d-flex flex-column'}
     >
       <Form.Label as={'h5'} className={'text-center'}>

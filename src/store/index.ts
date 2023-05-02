@@ -3,12 +3,14 @@ import { productsReducer } from './reducers/productsReducer';
 import { categoriesReducer } from './reducers/categoryReducer';
 import { searchReducer } from './reducers/searchReducer';
 import { sortReducer } from './reducers/sortReducer';
+import { authReducer } from './reducers/authReducer';
 
 const rootReducer = combineReducers({
   products: productsReducer,
   categories: categoriesReducer,
   search: searchReducer,
   sort: sortReducer,
+  auth: authReducer,
 });
 
 const store = configureStore({
