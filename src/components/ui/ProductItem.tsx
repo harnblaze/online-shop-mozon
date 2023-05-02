@@ -3,6 +3,8 @@ import { IProduct } from '../../types/products';
 import { Link } from 'react-router-dom';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { FaRegStar, FaStar } from 'react-icons/fa';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { addItem } from '../../store/actionCreators/cart';
 
 interface IProductProps {
   product: IProduct;
@@ -10,6 +12,11 @@ interface IProductProps {
 
 const ProductItem: FC<IProductProps> = ({ product }) => {
   const { _id, thumbnail, title, price, description, rating } = product;
+  const dispatch = useAppDispatch();
+
+  const addToCart = (): void => {
+    dispatch(addItem({ _id, title, price, quantity: 1 }));
+  };
 
   const stars = Array.from({ length: 5 }, (_, i) => {
     const isFilled = i < rating;
@@ -55,7 +62,9 @@ const ProductItem: FC<IProductProps> = ({ product }) => {
           </Card.Text>
           <Row>
             <Col>
-              <Button variant="primary">Add to Cart</Button>
+              <Button variant="primary" onClick={addToCart}>
+                Add to Cart
+              </Button>
             </Col>
             <Col xs="auto">
               <div className="mt-2">

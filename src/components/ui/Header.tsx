@@ -4,16 +4,18 @@ import { FaUserCircle } from 'react-icons/fa';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 import { Link } from 'react-router-dom';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Badge, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import {
   getCurrentUserEmail,
   getIsLoggedIn,
 } from '../../store/actionCreators/auth';
+import { selectCartItemsCount } from '../../store/actionCreators/cart';
 
 const Header: FC = () => {
   const isAuth = useTypedSelector(getIsLoggedIn());
   const email = useTypedSelector(getCurrentUserEmail());
+  const cartItemCount = useTypedSelector(selectCartItemsCount());
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -29,9 +31,20 @@ const Header: FC = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className={'flex-grow-0'}>
           <Nav className="ml-auto">
-            <Nav.Link as={'div'}>
+            <Nav.Link as={'div'} className={'position-relative'}>
               <Link to="/cart">
-                <AiOutlineShoppingCart size={30} />
+                <AiOutlineShoppingCart
+                  size={30}
+                  className={'position-relative'}
+                />
+                {cartItemCount > 0 && (
+                  <Badge
+                    bg="primary"
+                    className={'position-absolute top-50 start-50'}
+                  >
+                    {cartItemCount}
+                  </Badge>
+                )}
               </Link>
             </Nav.Link>
             {isAuth ? (

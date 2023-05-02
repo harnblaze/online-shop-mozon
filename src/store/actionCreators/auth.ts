@@ -93,8 +93,6 @@ export const updateUser =
   };
 
 export const getIsLoggedIn = () => (state: RootState) => state.auth.isLoggedIn;
-export const getUsersLoadingStatus = () => (state: RootState) =>
-  state.auth.isLoading;
 export const getCurrentUserId = () => (state: RootState) => state.auth.userId;
 export const getCurrentUserEmail = () => (state: RootState) =>
   state.auth.userEmail;
