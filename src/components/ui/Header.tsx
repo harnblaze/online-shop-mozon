@@ -28,6 +28,15 @@ const Header: FC = () => {
             MOZON
           </Link>
         </Navbar.Brand>
+        <Nav.Link as={'div'}>
+          <Link
+            to="/dashboard"
+            className={'text-decoration-none'}
+            style={{ color: 'rgb(13,110,253)' }}
+          >
+            Админ панель
+          </Link>
+        </Nav.Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className={'flex-grow-0'}>
           <Nav className="ml-auto">

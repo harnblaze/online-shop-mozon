@@ -7,12 +7,9 @@ import { AppDispatch, RootState } from '../index';
 import userService from '../../services/user.service';
 import history from '../../utils/history';
 import localStorageService from '../../services/localStorage.service';
-import {
-  authActions,
-  userCreateFailed,
-  userUpdateFailed,
-} from '../reducers/authReducer';
+import { authActions } from '../reducers/authReducer';
 import { generateAuthError } from '../../utils/generateAuthErrors';
+import { createAction } from '@reduxjs/toolkit';
 
 const {
   authRequested,
@@ -24,6 +21,9 @@ const {
   userUpdateSuccess,
   userLoggedOut,
 } = authActions;
+
+export const userCreateFailed = createAction('auth/userCreateFailed');
+export const userUpdateFailed = createAction('auth/userUpdateFailed');
 
 const createUser = (payload: ISignUpData) => async (dispatch: AppDispatch) => {
   dispatch(userCreateRequested());

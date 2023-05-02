@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import LogOut from './layouts/LogOut';
+import Dashboard from './layouts/Dashboard';
 
 const App: FC = () => {
   return (
@@ -20,6 +21,11 @@ const App: FC = () => {
           <Header />
           <Switch>
             <ProtectedRoute path="/" exact={true} component={Products} />
+            <ProtectedRoute
+              path="/dashboard"
+              exact={true}
+              component={Dashboard}
+            />
             <ProtectedRoute
               exact={false}
               path="/product/:id"

@@ -9,18 +9,18 @@ import { useAppDispatch } from '../../hooks/useAppDispatch';
 const validationSchema = Yup.object().shape({
   firstName: Yup.string()
     .required('Вы должны ввести имя')
-    .min(3, 'Имя должно быть больше 3 символов')
-    .max(20, 'Имя должно быть не больше 20 символов'),
+    .min(3, 'Имя должно быть больше 3-х символов')
+    .max(20, 'Имя должно быть не больше 20-ти символов'),
   lastName: Yup.string()
     .required('Вы должны ввести фамилию')
-    .min(3, 'Фамилия должна быть больше 3 символов')
-    .max(20, 'Фамилия должна быть не больше 20 символов'),
+    .min(3, 'Фамилия должна быть больше 3-х символов')
+    .max(20, 'Фамилия должна быть не больше 20-ти символов'),
   email: Yup.string()
     .required('Вы должны ввести  email')
     .email('email не верный'),
   password: Yup.string()
     .required('Вы должны ввести пароль')
-    .min(8, 'Пароль должен содержать не менее 8 символов'),
+    .min(8, 'Пароль должен содержать не менее 8-ми символов'),
 });
 const formOptions = { resolver: yupResolver(validationSchema) };
 

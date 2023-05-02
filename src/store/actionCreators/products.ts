@@ -1,9 +1,27 @@
 import { productsActions } from '../reducers/productsReducer';
 import { AppDispatch, RootState } from '../index';
 import productService from '../../services/product.service';
+import { createAction } from '@reduxjs/toolkit';
+import { IProduct } from '../../types/products';
+import { nanoid } from 'nanoid';
 
-const { productsRequested, productsRequestFailed, productsReceived } =
-  productsActions;
+const {
+  productsRequested,
+  productsRequestFailed,
+  productsReceived,
+  productRemoved,
+  productCreated,
+  productUpdated,
+} = productsActions;
+export const productRemoveRequested = createAction(
+  'products/productRemoveRequested',
+);
+export const productCreateRequested = createAction(
+  'products/productCreateRequested',
+);
+export const productUpdateRequested = createAction(
+  'products/productUpdateRequested',
+);
 
 export const fetchingProductsList =
   () => async (dispatch: AppDispatch, getState?: () => RootState) => {
@@ -15,6 +33,45 @@ export const fetchingProductsList =
       dispatch(productsReceived(content));
     } catch (e: any) {
       dispatch(productsRequestFailed(e.message));
+    }
+  };
+
+export const removeProduct =
+  (productId: string) => async (dispatch: AppDispatch) => {
+    dispatch(productRemoveRequested());
+    try {
+      const { content } = await productService.removeProduct(productId);
+      if (content === null) {
+        dispatch(productRemoved(productId));
+      }
+    } catch (e: any) {
+      dispatch(productsRequestFailed(e.message));
+    }
+  };
+
+export const createProduct =
+  (payload: Omit<IProduct, '_id'>) => async (dispatch: AppDispatch) => {
+    dispatch(productCreateRequested());
+    const product: IProduct = {
+      ...payload,
+      _id: nanoid().toString(),
+    };
+    try {
+      const { content } = await productService.createProduct(product);
+      dispatch(productCreated(content));
+    } catch (error: any) {
+      dispatch(productsRequestFailed(error.message));
+    }
+  };
+
+export const updateProduct =
+  (payload: IProduct) => async (dispatch: AppDispatch) => {
+    productUpdateRequested();
+    try {
+      const { content } = await productService.update(payload);
+      await dispatch(productUpdated(content));
+    } catch (e: any) {
+      dispatch(productsRequestFailed(e));
     }
   };
 

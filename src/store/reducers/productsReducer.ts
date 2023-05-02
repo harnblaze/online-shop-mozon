@@ -28,6 +28,17 @@ const productSlice = createSlice({
       state.isLoading = true;
       state.error = action.payload;
     },
+    productRemoved: (state, action: PayloadAction<string>) => {
+      state.entities.filter(el => el._id !== action.payload);
+    },
+    productCreated: (state, action: PayloadAction<IProduct>) => {
+      state.entities.push(action.payload);
+    },
+    productUpdated: (state, action: PayloadAction<IProduct>) => {
+      state.entities[
+        state.entities.findIndex(user => user._id === action.payload._id)
+      ] = action.payload;
+    },
   },
 });
 

@@ -24,7 +24,7 @@ const Product: FC<IProduct> = ({
         <Col md={6} className={'d-flex flex-wrap'}>
           <Image src={image} fluid />
 
-          {images.map((url, index) => (
+          {images?.map((url, index) => (
             <Button variant={'link'} key={index}>
               <Image
                 src={url}

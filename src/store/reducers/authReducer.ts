@@ -1,5 +1,5 @@
 import localStorageService from '../../services/localStorage.service';
-import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IUsersSliceState {
   isLoading: boolean;
@@ -52,9 +52,5 @@ const AuthSlice = createSlice({
     },
   },
 });
-
-export const userCreateFailed = createAction('auth/userCreateFailed');
-
-export const userUpdateFailed = createAction('auth/userUpdateFailed');
 
 export const { reducer: authReducer, actions: authActions } = AuthSlice;
