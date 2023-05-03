@@ -1,30 +1,48 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { Controller, useForm } from 'react-hook-form';
+
 import {
   createProduct,
-  getProductById,
   updateProduct,
 } from '../../store/actionCreators/products';
 import { Button, Form, Modal } from 'react-bootstrap';
+import { IProduct } from '../../types/products';
+import { getCategories } from '../../store/actionCreators/category';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 interface ProductFormProps {
-  productId?: string;
+  product?: IProduct;
   onClose: () => void;
   show: boolean;
 }
 
 const ProductForm: React.FC<ProductFormProps> = ({
-  productId,
+  product,
   onClose,
   show,
 }) => {
   const dispatch = useAppDispatch();
-  const product = useTypedSelector(getProductById(productId ?? ''));
-  console.log(product);
+  const categories = useTypedSelector(getCategories());
+
+  useEffect(
+    () =>
+      reset({
+        title: product?.title ?? '',
+        description: product?.description ?? '',
+        category: product?.category ?? '',
+        brand: product?.brand ?? '',
+        price: product?.price ?? 0,
+        rating: product?.rating ?? 0,
+        thumbnail: product?.thumbnail ?? '',
+        discountPercentage: product?.discountPercentage ?? 0,
+        stock: product?.stock ?? 0,
+      }),
+    [product],
+  );
+
   const validationSchema = Yup.object().shape({
     title: Yup.string()
       .required('Вы должны ввести  название')
@@ -38,26 +56,38 @@ const ProductForm: React.FC<ProductFormProps> = ({
       .required('Вы должны ввести бренд')
       .min(3, 'Название бренда должно быть больше 3-х символов'),
     price: Yup.number().required('Вы должны ввести цену'),
-    rating: Yup.number().required('Вы должны ввести рейтинг'),
+    rating: Yup.number()
+      .required('Вы должны ввести рейтинг')
+      .max(5, 'Рейтинг не может быть больше 5'),
     thumbnail: Yup.string().url('Введите корректный url'),
-    discountPercentage: Yup.number().required('Вы должны ввести скидку'),
+    discountPercentage: Yup.number()
+      .required('Вы должны ввести скидку')
+      .max(10, 'Скидка не может быть больше 100%'),
     stock: Yup.number().required('Вы должны ввести количество в наличии'),
   });
-  const formOptions = { resolver: yupResolver(validationSchema) };
+  const formOptions = {
+    resolver: yupResolver(validationSchema),
+  };
 
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm(formOptions);
 
+  const onHide = (): void => {
+    reset();
+    onClose();
+  };
+
   const onSubmit = async (values: any): Promise<void> => {
-    if (productId !== undefined) {
-      await dispatch(updateProduct(values));
+    if (product !== undefined) {
+      await dispatch(updateProduct({ ...values, _id: product._id }));
     } else {
       await dispatch(createProduct(values));
     }
-    onClose();
+    onHide();
   };
 
   const onError = (error: any): void => {
@@ -65,18 +95,30 @@ const ProductForm: React.FC<ProductFormProps> = ({
   };
 
   return (
-    <Modal show={show}>
+    <Modal
+      show={show}
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+      onHide={onHide}
+    >
       {/* eslint-disable @typescript-eslint/no-misused-promises */}
       <Modal.Body>
         <Form onSubmit={handleSubmit(onSubmit, onError)}>
-          <Form.Group controlId="title">
+          <Form.Group controlId="title" className={'mb-4'}>
             <Form.Label>Название</Form.Label>
-            <Form.Control
-              type="text"
-              value={product?.title}
-              placeholder="Введите название"
-              aria-invalid={errors.title !== undefined ? 'true' : 'false'}
-              {...register('title')}
+            <Controller
+              name="title"
+              control={control}
+              render={({ field }) => (
+                <Form.Control
+                  {...field}
+                  type="text"
+                  placeholder="Введите название"
+                  aria-invalid={
+                    errors.description !== undefined ? 'true' : 'false'
+                  }
+                />
+              )}
             />
             {errors.title !== undefined && (
               <Form.Text className="text-danger">
@@ -84,9 +126,187 @@ const ProductForm: React.FC<ProductFormProps> = ({
               </Form.Text>
             )}
           </Form.Group>
+          <Form.Group controlId="description" className={'mb-4'}>
+            <Form.Label>Описание</Form.Label>
+            <Controller
+              name="description"
+              control={control}
+              render={({ field }) => (
+                <Form.Control
+                  {...field}
+                  type="text"
+                  placeholder="Введите описание"
+                  aria-invalid={
+                    errors.description !== undefined ? 'true' : 'false'
+                  }
+                />
+              )}
+            />
+            {errors.description !== undefined && (
+              <Form.Text className="text-danger">
+                {errors.description?.message as string}
+              </Form.Text>
+            )}
+          </Form.Group>
+          <Form.Group controlId="category" className={'mb-4'}>
+            <Form.Label>Категория</Form.Label>
+            <Controller
+              name="category"
+              control={control}
+              render={({ field }) => (
+                <Form.Select
+                  {...field}
+                  aria-invalid={
+                    errors.category !== undefined ? 'true' : 'false'
+                  }
+                >
+                  <option value={''} disabled={true}>
+                    Выберите категорию
+                  </option>
+                  {categories.map(category => (
+                    <option key={category._id} value={category._id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </Form.Select>
+              )}
+            />
+            {errors.category !== undefined && (
+              <Form.Text className="text-danger">
+                {errors.category?.message as string}
+              </Form.Text>
+            )}
+          </Form.Group>
+          <Form.Group controlId="brand" className={'mb-4'}>
+            <Form.Label>Бренд</Form.Label>
+            <Controller
+              name="brand"
+              control={control}
+              render={({ field }) => (
+                <Form.Control
+                  {...field}
+                  type="text"
+                  placeholder="Введите бренд"
+                  aria-invalid={errors.brand !== undefined ? 'true' : 'false'}
+                />
+              )}
+            />
+            {errors.brand !== undefined && (
+              <Form.Text className="text-danger">
+                {errors.brand?.message as string}
+              </Form.Text>
+            )}
+          </Form.Group>
+          <Form.Group controlId="price" className={'mb-4'}>
+            <Form.Label>Цена, $</Form.Label>
+            <Controller
+              name="price"
+              control={control}
+              render={({ field }) => (
+                <Form.Control
+                  {...field}
+                  type="number"
+                  placeholder="Введите цену"
+                  aria-invalid={errors.price !== undefined ? 'true' : 'false'}
+                />
+              )}
+            />
+            {errors.price !== undefined && (
+              <Form.Text className="text-danger">
+                {errors.price?.message as string}
+              </Form.Text>
+            )}
+          </Form.Group>
+          <Form.Group controlId="rating" className={'mb-4'}>
+            <Form.Label>Рейтинг</Form.Label>
+            <Controller
+              name="rating"
+              control={control}
+              render={({ field }) => (
+                <Form.Control
+                  {...field}
+                  type="number"
+                  placeholder="Введите рейтинг"
+                  aria-invalid={errors.rating !== undefined ? 'true' : 'false'}
+                />
+              )}
+            />
+            {errors.rating !== undefined && (
+              <Form.Text className="text-danger">
+                {errors.rating?.message as string}
+              </Form.Text>
+            )}
+          </Form.Group>
+
+          <Form.Group controlId="thumbnail" className={'mb-4'}>
+            <Form.Label>Изображение</Form.Label>
+            <Controller
+              name="thumbnail"
+              control={control}
+              render={({ field }) => (
+                <Form.Control
+                  {...field}
+                  type="text"
+                  placeholder="Введите ссылку ни изображение"
+                  aria-invalid={
+                    errors.thumbnail !== undefined ? 'true' : 'false'
+                  }
+                />
+              )}
+            />
+            {errors.thumbnail !== undefined && (
+              <Form.Text className="text-danger">
+                {errors.thumbnail?.message as string}
+              </Form.Text>
+            )}
+          </Form.Group>
+
+          <Form.Group controlId="discountPercentage" className={'mb-4'}>
+            <Form.Label>Скидка, %</Form.Label>
+            <Controller
+              name="discountPercentage"
+              control={control}
+              render={({ field }) => (
+                <Form.Control
+                  {...field}
+                  type="number"
+                  placeholder="Введите скидку"
+                  aria-invalid={
+                    errors.discountPercentage !== undefined ? 'true' : 'false'
+                  }
+                />
+              )}
+            />
+            {errors.discountPercentage !== undefined && (
+              <Form.Text className="text-danger">
+                {errors.discountPercentage?.message as string}
+              </Form.Text>
+            )}
+          </Form.Group>
+
+          <Form.Group controlId="stock" className={'mb-4'}>
+            <Form.Label>Кол-во</Form.Label>
+            <Controller
+              name="stock"
+              control={control}
+              render={({ field }) => (
+                <Form.Control
+                  {...field}
+                  type="number"
+                  placeholder="Введите количество товара"
+                  aria-invalid={errors.stock !== undefined ? 'true' : 'false'}
+                />
+              )}
+            />
+            {errors.stock !== undefined && (
+              <Form.Text className="text-danger">
+                {errors.stock?.message as string}
+              </Form.Text>
+            )}
+          </Form.Group>
 
           <Button variant="primary" type="submit">
-            {productId !== undefined ? 'Update' : 'Add'}
+            {product !== undefined ? 'Update' : 'Add'}
           </Button>
         </Form>
       </Modal.Body>

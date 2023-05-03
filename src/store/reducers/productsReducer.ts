@@ -29,7 +29,7 @@ const productSlice = createSlice({
       state.error = action.payload;
     },
     productRemoved: (state, action: PayloadAction<string>) => {
-      state.entities.filter(el => el._id !== action.payload);
+      state.entities = state.entities.filter(el => el._id !== action.payload);
     },
     productCreated: (state, action: PayloadAction<IProduct>) => {
       state.entities.push(action.payload);
