@@ -122,7 +122,6 @@ const RegistrationForm: React.FC = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicAdmin">
-          {/* <Form.Label>Вы админ?</Form.Label> */}
           <Form.Check
             label={'Вы админ?'}
             type="checkbox"

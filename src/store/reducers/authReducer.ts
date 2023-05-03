@@ -1,34 +1,52 @@
 import localStorageService from '../../services/localStorage.service';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ISignUpData } from '../../services/auth.service';
 
 interface IUsersSliceState {
   isLoading: boolean;
   error: any | null;
   userId: string;
-  userEmail: string;
+  userData: ISignUpData | null;
   isLoggedIn: boolean;
 }
 
-const initialState: IUsersSliceState = {
-  isLoading: true,
-  error: null,
-  userId: localStorageService.getUserID(),
-  userEmail: '',
-  isLoggedIn: false,
-};
+const initialState: IUsersSliceState =
+  localStorageService.getAccessToken() !== ''
+    ? {
+        isLoading: true,
+        error: null,
+        userId: localStorageService.getUserID(),
+        userData: null,
+        isLoggedIn: true,
+      }
+    : {
+        isLoading: false,
+        error: null,
+        userId: '',
+        userData: null,
+        isLoggedIn: false,
+      };
+
 const AuthSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    userRequested: state => {
+      state.isLoading = true;
+    },
+    userReceived: (state, action: PayloadAction<any>) => {
+      state.userData = action.payload;
+      state.isLoading = false;
+    },
+    userRequestFailed: (state, action: PayloadAction<any>) => {
+      state.error = action.payload;
+      state.isLoading = false;
+    },
     authRequested: state => {
       state.error = null;
     },
-    authRequestSuccess: (
-      state,
-      action: PayloadAction<{ userId: string; userEmail: string }>,
-    ) => {
-      state.userId = action.payload.userId;
-      state.userEmail = action.payload.userEmail;
+    authRequestSuccess: (state, action: PayloadAction<string>) => {
+      state.userId = action.payload;
       state.isLoggedIn = true;
     },
     authRequestFailed: (state, action) => {
@@ -49,6 +67,7 @@ const AuthSlice = createSlice({
     userLoggedOut: state => {
       state.isLoggedIn = false;
       state.userId = '';
+      state.userData = null;
     },
   },
 });

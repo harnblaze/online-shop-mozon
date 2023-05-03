@@ -6,6 +6,7 @@ import { Button, Container, Image, Table } from 'react-bootstrap';
 import ProductForm from '../components/ui/ProductForm';
 import { getCategories } from '../store/actionCreators/category';
 import { IProduct } from '../types/products';
+import { toast } from 'react-toastify';
 
 const Dashboard: FC = () => {
   const dispatch = useAppDispatch();
@@ -23,8 +24,9 @@ const Dashboard: FC = () => {
     setShowProductForm(true);
   };
 
-  const handleDelete = (productId: string): void => {
-    void dispatch(removeProduct(productId));
+  const handleDelete = async (productId: string): Promise<void> => {
+    await dispatch(removeProduct(productId));
+    toast.success('Товар был успешно удален');
   };
 
   const handleCloseProductForm = (): void => {
@@ -64,7 +66,11 @@ const Dashboard: FC = () => {
               <td>
                 <Image
                   src={product.thumbnail}
-                  className="mt-3 mr-3 flex-shrink-0"
+                  style={{
+                    objectFit: 'contain',
+                    objectPosition: 'center',
+                    height: '5rem',
+                  }}
                 />
               </td>
               <td>{product.title}</td>
@@ -77,16 +83,19 @@ const Dashboard: FC = () => {
               <td>{product.discountPercentage}</td>
               <td>{product.rating}</td>
               <td>{product.stock}</td>
-              <td className={'d-block'}>
+              <td className={''}>
                 <Button
                   variant="warning"
                   onClick={() => handleEdit(product._id)}
+                  className={'mb-2'}
                 >
                   Edit
-                </Button>{' '}
+                </Button>
                 <Button
                   variant="danger"
-                  onClick={() => handleDelete(product._id)}
+                  onClick={() => {
+                    void handleDelete(product._id);
+                  }}
                 >
                   Delete
                 </Button>

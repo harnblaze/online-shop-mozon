@@ -7,15 +7,16 @@ import { Link } from 'react-router-dom';
 import { Badge, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import {
-  getCurrentUserEmail,
+  getCurrentUserData,
   getIsLoggedIn,
 } from '../../store/actionCreators/auth';
 import { selectCartItemsCount } from '../../store/actionCreators/cart';
 
 const Header: FC = () => {
   const isAuth = useTypedSelector(getIsLoggedIn());
-  const email = useTypedSelector(getCurrentUserEmail());
+  const userData = useTypedSelector(getCurrentUserData());
   const cartItemCount = useTypedSelector(selectCartItemsCount());
+  console.log(userData);
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -28,65 +29,65 @@ const Header: FC = () => {
             MOZON
           </Link>
         </Navbar.Brand>
-        <Nav.Link as={'div'}>
-          <Link
-            to="/dashboard"
-            className={'text-decoration-none'}
-            style={{ color: 'rgb(13,110,253)' }}
-          >
-            Админ панель
-          </Link>
-        </Nav.Link>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" className={'flex-grow-0'}>
-          <Nav className="ml-auto">
-            <Nav.Link as={'div'} className={'position-relative'}>
-              <Link to="/cart">
-                <AiOutlineShoppingCart
-                  size={30}
-                  className={'position-relative'}
-                />
-                {cartItemCount > 0 && (
-                  <Badge
-                    bg="primary"
-                    className={'position-absolute top-50 start-50'}
-                  >
-                    {cartItemCount}
-                  </Badge>
-                )}
+        {userData?.isAdmin === true && (
+          <Nav.Link as={'div'}>
+            <Link
+              to="/dashboard"
+              className={'text-decoration-none'}
+              style={{ color: 'rgb(13,110,253)' }}
+            >
+              Админ панель
+            </Link>
+          </Nav.Link>
+        )}
+
+        <Nav className="ml-auto">
+          <Nav.Link as={'div'} className={'position-relative'}>
+            <Link to="/cart">
+              <AiOutlineShoppingCart
+                size={30}
+                className={'position-relative'}
+              />
+              {cartItemCount > 0 && (
+                <Badge
+                  bg="primary"
+                  className={'position-absolute top-50 start-50'}
+                >
+                  {cartItemCount}
+                </Badge>
+              )}
+            </Link>
+          </Nav.Link>
+          {isAuth ? (
+            <NavDropdown
+              title={
+                <FaUserCircle size={30} style={{ color: 'rgb(13,110,253)' }} />
+              }
+              id="basic-nav-dropdown"
+            >
+              <NavDropdown.Item as={'div'}>
+                {userData?.firstName} {userData?.lastName}
+              </NavDropdown.Item>
+              <NavDropdown.Item as={'div'}>{userData?.email}</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item as={'div'}>
+                <Link to="/logout" className={'text-decoration-none'}>
+                  Logout
+                </Link>
+              </NavDropdown.Item>
+            </NavDropdown>
+          ) : (
+            <Nav.Link as={'div'}>
+              <Link
+                to="/auth/register"
+                className={'text-decoration-none'}
+                style={{ color: 'rgb(13,110,253)' }}
+              >
+                Вход/Регистрация
               </Link>
             </Nav.Link>
-            {isAuth ? (
-              <NavDropdown
-                title={
-                  <FaUserCircle
-                    size={30}
-                    style={{ color: 'rgb(13,110,253)' }}
-                  />
-                }
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item as={'div'}>{email}</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item as={'div'}>
-                  <Link to="/logout" className={'text-decoration-none'}>
-                    Logout
-                  </Link>
-                </NavDropdown.Item>
-              </NavDropdown>
-            ) : (
-              <Nav.Link as={'div'}>
-                <Link
-                  to="/auth/register"
-                  className={'text-decoration-none'}
-                  style={{ color: 'rgb(13,110,253)' }}
-                >
-                  Вход/Регистрация
-                </Link>
-              </Nav.Link>
-            )}
-          </Nav>
-        </Navbar.Collapse>
+          )}
+        </Nav>
       </Container>
     </Navbar>
   );

@@ -3,6 +3,7 @@ import { useAppDispatch } from '../../hooks/useAppDispatch';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 import {
   createProduct,
@@ -55,15 +56,21 @@ const ProductForm: React.FC<ProductFormProps> = ({
     brand: Yup.string()
       .required('Вы должны ввести бренд')
       .min(3, 'Название бренда должно быть больше 3-х символов'),
-    price: Yup.number().required('Вы должны ввести цену'),
+    price: Yup.number()
+      .required('Вы должны ввести цену')
+      .moreThan(0, 'Цена не может быть 0? или меньше'),
     rating: Yup.number()
       .required('Вы должны ввести рейтинг')
+      .min(0, 'Рейтинг не может быть меньше 0')
       .max(5, 'Рейтинг не может быть больше 5'),
     thumbnail: Yup.string().url('Введите корректный url'),
     discountPercentage: Yup.number()
       .required('Вы должны ввести скидку')
-      .max(10, 'Скидка не может быть больше 100%'),
-    stock: Yup.number().required('Вы должны ввести количество в наличии'),
+      .min(0, 'Скидка не может быть меньше 0%')
+      .max(100, 'Скидка не может быть больше 100%'),
+    stock: Yup.number()
+      .required('Вы должны ввести количество в наличии')
+      .min(0, 'Количество товара не может быть меньше 0'),
   });
   const formOptions = {
     resolver: yupResolver(validationSchema),
@@ -84,14 +91,12 @@ const ProductForm: React.FC<ProductFormProps> = ({
   const onSubmit = async (values: any): Promise<void> => {
     if (product !== undefined) {
       await dispatch(updateProduct({ ...values, _id: product._id }));
+      toast.success('Товар был успешно обновлен');
     } else {
       await dispatch(createProduct(values));
+      toast.success('Товар был успешно создан');
     }
     onHide();
-  };
-
-  const onError = (error: any): void => {
-    console.log('ERROR:::', error);
   };
 
   return (
@@ -103,7 +108,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
     >
       {/* eslint-disable @typescript-eslint/no-misused-promises */}
       <Modal.Body>
-        <Form onSubmit={handleSubmit(onSubmit, onError)}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group controlId="title" className={'mb-4'}>
             <Form.Label>Название</Form.Label>
             <Controller

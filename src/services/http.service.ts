@@ -19,7 +19,7 @@ http.interceptors.request.use(
 );
 
 const transformData = (data: any): unknown[] => {
-  return Boolean(data) && data._id === undefined
+  return Boolean(data) && data._id === undefined && data.email === undefined
     ? Object.keys(data).map(el => ({ ...data[el] }))
     : data;
 };

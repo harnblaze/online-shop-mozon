@@ -12,6 +12,9 @@ import { generateAuthError } from '../../utils/generateAuthErrors';
 import { createAction } from '@reduxjs/toolkit';
 
 const {
+  userRequested,
+  userReceived,
+  userRequestFailed,
   authRequested,
   authRequestFailed,
   authRequestSuccess,
@@ -43,9 +46,7 @@ export const signIn =
     try {
       const data = await authService.login(payload);
       localStorageService.setTokens(data);
-      dispatch(
-        authRequestSuccess({ userId: data.localId, userEmail: data.email }),
-      );
+      dispatch(authRequestSuccess(data.localId));
       history.push(redirect);
     } catch (e: any) {
       const { code, message } = e.response.data.error;
@@ -65,9 +66,7 @@ export const singUp =
     try {
       const data = await authService.register(payload);
       localStorageService.setTokens(data);
-      dispatch(
-        authRequestSuccess({ userId: data.localId, userEmail: data.email }),
-      );
+      dispatch(authRequestSuccess(data.localId));
       void dispatch(createUser(payload));
     } catch (e: any) {
       dispatch(authRequestFailed(e.message));
@@ -92,9 +91,19 @@ export const updateUser =
     }
   };
 
-export const getIsLoggedIn = () => (state: RootState) => state.auth.isLoggedIn;
-export const getCurrentUserId = () => (state: RootState) => state.auth.userId;
-export const getCurrentUserEmail = () => (state: RootState) =>
-  state.auth.userEmail;
+export const loadUserData = () => async (dispatch: AppDispatch) => {
+  dispatch(userRequested());
+  try {
+    const { content } = await userService.getCurrentUser();
+    dispatch(userReceived(content));
+  } catch (e: any) {
+    dispatch(userRequestFailed(e.message));
+  }
+};
 
+export const getIsLoggedIn = () => (state: RootState) => state.auth.isLoggedIn;
+export const getCurrentUserData = () => (state: RootState) =>
+  state.auth.userData;
+export const getIsLoadingUser = () => (state: RootState) =>
+  state.auth.isLoading;
 export const getAuthErrors = () => (state: RootState) => state.auth.error;

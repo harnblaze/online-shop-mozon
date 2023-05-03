@@ -11,6 +11,13 @@ import {
   getCategoriesLoadingStatus,
 } from '../../store/actionCreators/category';
 import { toast } from 'react-toastify';
+import {
+  getAuthErrors,
+  getIsLoadingUser,
+  loadUserData,
+} from '../../store/actionCreators/auth';
+import Loader from '../common/Loader';
+import { getUserID } from '../../services/localStorage.service';
 
 const AppLoader: FC<PropsWithChildren> = ({ children }) => {
   const dispatch = useAppDispatch();
@@ -20,25 +27,27 @@ const AppLoader: FC<PropsWithChildren> = ({ children }) => {
     getCategoriesLoadingStatus(),
   );
   const categoriesError = useTypedSelector(getProductsErrors());
-  useEffect(() => {
-    // for (const prod of products) {
-    //   void httpService.put(`product/${prod._id}`, prod);
-    // }
-    //
-    // for (const cat of categories) {
-    //   void httpService.put(`category/${cat._id}`, cat);
-    // }
+  const userLoadingStatus = useTypedSelector(getIsLoadingUser());
+  const userError = useTypedSelector(getAuthErrors());
+  const userIid = useTypedSelector(getUserID);
 
+  useEffect(() => {
+    void dispatch(loadUserData());
     void dispatch(fetchingProductsList());
     void dispatch(fetchingCategories());
-  }, []);
+  }, [userIid]);
+
   if (productsError !== null) {
     toast.error(productsError);
   }
   if (categoriesError !== null) {
     toast.error(categoriesError);
   }
-  if (productsStatusLoading && categoriesStatusLoading) return <>Loading...</>;
+  if (userError !== null) {
+    toast.error(userError);
+  }
+  if (productsStatusLoading && categoriesStatusLoading && userLoadingStatus)
+    return <Loader />;
   return <>{children}</>;
 };
 export default AppLoader;

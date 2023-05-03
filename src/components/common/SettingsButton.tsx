@@ -1,17 +1,14 @@
 import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { BsGear } from 'react-icons/bs';
 
-const SettingsButton: FC = () => {
-  const history = useHistory();
+interface ISettingsButtonProps {
+  onClick: () => void;
+}
 
-  const handleClickEdit = (): void => {
-    history.push(history.location.pathname + '/edit');
-  };
-
+const SettingsButton: FC<ISettingsButtonProps> = ({ onClick }) => {
   return (
-    <Button variant="secondary" onClick={handleClickEdit}>
+    <Button variant="secondary" onClick={onClick}>
       <BsGear className={'mb-1'} /> &nbsp;Редактировать
     </Button>
   );
