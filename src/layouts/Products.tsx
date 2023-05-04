@@ -6,13 +6,14 @@ import { Col, Container, Row } from 'react-bootstrap';
 import Search from '../components/ui/Search';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { getCurrentCategory } from '../store/actionCreators/category';
-import { getProducts } from '../store/actionCreators/products';
 import { getOrder, getSort } from '../store/actionCreators/sort';
 import { getSearchQuery } from '../store/actionCreators/search';
 import { IProduct } from '../types/products';
 
-const Products: FC = () => {
-  const products = useTypedSelector(getProducts());
+interface IProductsProps {
+  products: IProduct[];
+}
+const Products: FC<IProductsProps> = ({ products }) => {
   const currentCategory = useTypedSelector(getCurrentCategory());
   const searchQuery = useTypedSelector(getSearchQuery());
   const order = useTypedSelector(getOrder());
@@ -26,7 +27,6 @@ const Products: FC = () => {
       );
     }
     if (currentCategory !== undefined) {
-      console.log(currentCategory);
       filteredUsers = filteredUsers.filter(
         prod => prod.category === currentCategory,
       );
@@ -46,6 +46,7 @@ const Products: FC = () => {
 
     return filteredUsers;
   }, [products, currentCategory, order, sortType, searchQuery]);
+
   return (
     <>
       <Container>

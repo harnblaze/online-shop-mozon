@@ -311,7 +311,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
           </Form.Group>
 
           <Button variant="primary" type="submit">
-            {product !== undefined ? 'Update' : 'Add'}
+            {product !== undefined ? 'Изменить' : 'Добавить'}
           </Button>
         </Form>
       </Modal.Body>

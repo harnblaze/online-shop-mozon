@@ -7,7 +7,7 @@ const BackHistoryButton: FC = () => {
   const history = useHistory();
   return (
     <Button variant="secondary" onClick={() => history.goBack()}>
-      <AiFillCaretLeft className={'mb-1'} /> &nbsp; Назад
+      <AiFillCaretLeft className={'mb-1 d-none d-sm-inline'} /> &nbsp; Назад
     </Button>
   );
 };

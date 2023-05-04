@@ -16,7 +16,7 @@ const Header: FC = () => {
   const isAuth = useTypedSelector(getIsLoggedIn());
   const userData = useTypedSelector(getCurrentUserData());
   const cartItemCount = useTypedSelector(selectCartItemsCount());
-  console.log(userData);
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>

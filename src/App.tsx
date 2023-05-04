@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import Header from './components/ui/Header';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import Products from './layouts/Products';
 import Auth from './layouts/Auth';
 import Cart from './layouts/Cart';
 import NotFound from './layouts/NotFound';
@@ -13,6 +12,7 @@ import ProtectedRoute from './components/common/ProtectedRoute';
 import LogOut from './layouts/LogOut';
 import Dashboard from './layouts/Dashboard';
 import ProtectedAdminRoute from './components/common/ProtectedAdminRoute';
+import Catalog from './components/ui/Catalog';
 
 const App: FC = () => {
   return (
@@ -21,7 +21,7 @@ const App: FC = () => {
         <div className="App">
           <Header />
           <Switch>
-            <ProtectedRoute path="/" exact={true} component={Products} />
+            <ProtectedRoute path="/" exact={true} component={Catalog} />
             <ProtectedAdminRoute
               path="/dashboard"
               exact={true}

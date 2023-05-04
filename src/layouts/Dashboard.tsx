@@ -7,6 +7,8 @@ import ProductForm from '../components/ui/ProductForm';
 import { getCategories } from '../store/actionCreators/category';
 import { IProduct } from '../types/products';
 import { toast } from 'react-toastify';
+import MockDataButton from '../components/ui/MockDataButton';
+import NoProducts from '../components/common/NoProducts';
 
 const Dashboard: FC = () => {
   const dispatch = useAppDispatch();
@@ -33,19 +35,25 @@ const Dashboard: FC = () => {
     setShowProductForm(false);
     setSelectedProductId(undefined);
   };
+  if (products === null || products?.length === 0) return <NoProducts />;
 
   return (
     <Container className={'flex-column align-items-center'}>
-      <Button
-        className={'mb-3'}
-        style={{ maxWidth: '250px' }}
-        onClick={() => {
-          setSelectedProductId(undefined);
-          setShowProductForm(true);
-        }}
+      <div
+        className={'d-flex align-items-center justify-content-center flex-wrap'}
       >
-        Добавить новый продукт
-      </Button>
+        <Button
+          className={'mb-3 mx-5'}
+          style={{ maxWidth: '250px' }}
+          onClick={() => {
+            setSelectedProductId(undefined);
+            setShowProductForm(true);
+          }}
+        >
+          Добавить новый продукт
+        </Button>
+        <MockDataButton />
+      </div>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -92,7 +100,7 @@ const Dashboard: FC = () => {
                   onClick={() => handleEdit(product._id)}
                   className={'mb-2'}
                 >
-                  Edit
+                  Изменить
                 </Button>
                 <Button
                   variant="danger"
@@ -100,7 +108,7 @@ const Dashboard: FC = () => {
                     void handleDelete(product._id);
                   }}
                 >
-                  Delete
+                  Удалить
                 </Button>
               </td>
             </tr>

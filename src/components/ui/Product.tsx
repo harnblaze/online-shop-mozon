@@ -63,7 +63,7 @@ const Product: FC<IProduct> = ({
           )}
           <p>Рейтинг: {rating}/5</p>
           <hr />
-          <div className={'d-flex justify-content-between'}>
+          <div className={'d-flex justify-content-center flex-wrap gap-2'}>
             <BackButton />
             {userData?.isAdmin === true && (
               <SettingsButton onClick={handleEdit} />

@@ -9,7 +9,7 @@ interface ISettingsButtonProps {
 const SettingsButton: FC<ISettingsButtonProps> = ({ onClick }) => {
   return (
     <Button variant="secondary" onClick={onClick}>
-      <BsGear className={'mb-1'} /> &nbsp;Редактировать
+      <BsGear className={'mb-1 d-none d-sm-inline'} /> &nbsp;Редактировать
     </Button>
   );
 };
