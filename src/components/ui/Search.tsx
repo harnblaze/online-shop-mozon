@@ -25,9 +25,12 @@ const Search: FC = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className={'text-center'}>
       <Form.Label>Поиск на Mozon:</Form.Label>
-      <div className="position-relative d-flex">
+      <div
+        className="position-relative d-flex mx-auto"
+        style={{ maxWidth: '800px' }}
+      >
         <FormControl
           type="text"
           placeholder="Я ищу..."

@@ -12,6 +12,7 @@ const {
   productRemoved,
   productCreated,
   productUpdated,
+  mockDataLoaded,
 } = productsActions;
 export const productRemoveRequested = createAction(
   'products/productRemoveRequested',
@@ -75,6 +76,10 @@ export const updateProduct =
     }
   };
 
+export const loadMockData = () => (dispatch: AppDispatch) => {
+  dispatch(mockDataLoaded());
+};
+
 export const getProducts = () => (state: RootState) => state.products.entities;
 export const getProductsLoadingStatus = () => (state: RootState) =>
   state.products.isLoading;
@@ -85,3 +90,5 @@ export const getProductById = (productId: string) => (state: RootState) => {
     return state.products.entities.find(prod => prod._id === productId);
   }
 };
+export const getIsMockDataLoaded = () => (state: RootState) =>
+  state.products.isMockDataLoaded;

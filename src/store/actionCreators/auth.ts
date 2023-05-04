@@ -33,7 +33,7 @@ const createUser = (payload: ISignUpData) => async (dispatch: AppDispatch) => {
   try {
     const { content } = await userService.create(payload);
     dispatch(userCreateSuccess(content));
-    history.push('/users');
+    history.push('/');
   } catch (error: any) {
     dispatch(userCreateFailed(error.message));
   }
@@ -74,6 +74,7 @@ export const singUp =
   };
 
 export const logOut = () => (dispatch: AppDispatch) => {
+  console.log('logout');
   localStorageService.removeAuthData();
   dispatch(userLoggedOut());
   history.push('/');

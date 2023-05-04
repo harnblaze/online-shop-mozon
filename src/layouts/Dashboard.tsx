@@ -35,7 +35,13 @@ const Dashboard: FC = () => {
     setShowProductForm(false);
     setSelectedProductId(undefined);
   };
-  if (products === null || products?.length === 0) return <NoProducts />;
+  if (products === null || products?.length === 0)
+    return (
+      <>
+        <NoProducts />
+        <MockDataButton />
+      </>
+    );
 
   return (
     <Container className={'flex-column align-items-center'}>
@@ -52,7 +58,6 @@ const Dashboard: FC = () => {
         >
           Добавить новый продукт
         </Button>
-        <MockDataButton />
       </div>
       <Table striped bordered hover>
         <thead>

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import categories from '../mockData/categories';
 import products from '../mockData/products';
 import httpService from '../services/http.service';
+import { useAppDispatch } from './useAppDispatch';
+import { loadMockData } from '../store/actionCreators/products';
 
 interface IUseMockData {
   error: string | null;
@@ -21,7 +23,7 @@ const useMockData = (): IUseMockData => {
   const [status, setStatus] = useState(statusConst.idle);
   const [progress, setProgress] = useState(0);
   const [count, setCount] = useState(0);
-
+  const dispatch = useAppDispatch();
   const incrementCount = (): void => {
     setCount(prevState => prevState + 1);
   };
@@ -36,6 +38,7 @@ const useMockData = (): IUseMockData => {
     }
     if (newProgress === 100) {
       setStatus(statusConst.success);
+      dispatch(loadMockData());
     }
   };
 

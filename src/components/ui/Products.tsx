@@ -1,18 +1,19 @@
 import React, { FC, useMemo } from 'react';
-import Categories from '../components/ui/Categories';
-import Sort from '../components/ui/Sort';
-import ProductsList from '../components/ui/ProductsList';
+import Categories from './Categories';
+import Sort from './Sort';
+import ProductsList from './ProductsList';
 import { Col, Container, Row } from 'react-bootstrap';
-import Search from '../components/ui/Search';
-import { useTypedSelector } from '../hooks/useTypedSelector';
-import { getCurrentCategory } from '../store/actionCreators/category';
-import { getOrder, getSort } from '../store/actionCreators/sort';
-import { getSearchQuery } from '../store/actionCreators/search';
-import { IProduct } from '../types/products';
+import Search from './Search';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { getCurrentCategory } from '../../store/actionCreators/category';
+import { getOrder, getSort } from '../../store/actionCreators/sort';
+import { getSearchQuery } from '../../store/actionCreators/search';
+import { IProduct } from '../../types/products';
 
 interface IProductsProps {
   products: IProduct[];
 }
+
 const Products: FC<IProductsProps> = ({ products }) => {
   const currentCategory = useTypedSelector(getCurrentCategory());
   const searchQuery = useTypedSelector(getSearchQuery());

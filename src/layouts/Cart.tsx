@@ -86,7 +86,7 @@ const Cart: FC = () => {
           </div>
         </>
       ) : (
-        <p>Your cart is empty.</p>
+        <p>Ваша корзина пуста.</p>
       )}
     </Container>
   );

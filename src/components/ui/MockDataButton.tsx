@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import useMockData from '../../hooks/useMockData';
+import { Button, Container } from 'react-bootstrap';
 
 const MockDataButton: FC = () => {
   const { error, initialize, progress, status } = useMockData();
@@ -7,7 +8,7 @@ const MockDataButton: FC = () => {
     void initialize();
   };
   return (
-    <div className={'d-flex align-items-center'}>
+    <Container className={'align-items-center justify-content-center'}>
       <ul>
         <h5>Загрузка данных в firebase</h5>
         <li>Статус: {status}</li>
@@ -15,11 +16,11 @@ const MockDataButton: FC = () => {
         {error !== null ? <li>Ошибка:{error}</li> : ''}
       </ul>
       <div>
-        <button className={'btn btn-primary'} onClick={handleClick}>
+        <Button className={'mx-4'} onClick={handleClick}>
           Загрузить
-        </button>
+        </Button>
       </div>
-    </div>
+    </Container>
   );
 };
 

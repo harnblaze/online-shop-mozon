@@ -5,12 +5,14 @@ export interface IProductsState {
   entities: IProduct[];
   isLoading: boolean;
   error: null | string;
+  isMockDataLoaded: boolean;
 }
 
 const initialState: IProductsState = {
   entities: [],
   isLoading: true,
   error: null,
+  isMockDataLoaded: false,
 };
 
 const productSlice = createSlice({
@@ -38,6 +40,9 @@ const productSlice = createSlice({
       state.entities[
         state.entities.findIndex(user => user._id === action.payload._id)
       ] = action.payload;
+    },
+    mockDataLoaded: state => {
+      state.isMockDataLoaded = true;
     },
   },
 });

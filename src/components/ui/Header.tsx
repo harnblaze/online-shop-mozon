@@ -73,7 +73,7 @@ const Header: FC = () => {
               <NavDropdown.Item as={'div'}>{userData?.email}</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item as={'div'}>
-                <Link to="/logout" className={'text-decoration-none'}>
+                <Link to="/logout" className={'text-decoration-none d-block'}>
                   Logout
                 </Link>
               </NavDropdown.Item>
