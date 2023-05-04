@@ -35,9 +35,10 @@ const Dashboard: FC = () => {
   };
 
   return (
-    <Container className={'d-block text-center'}>
+    <Container className={'flex-column align-items-center'}>
       <Button
         className={'mb-3'}
+        style={{ maxWidth: '250px' }}
         onClick={() => {
           setSelectedProductId(undefined);
           setShowProductForm(true);
@@ -48,22 +49,22 @@ const Dashboard: FC = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Фото</th>
+            <th className={'d-none d-sm-table-cell'}>Фото</th>
             <th>Название</th>
-            <th>Описание</th>
-            <th>Категория</th>
-            <th>Бренд</th>
+            <th className={'d-none d-xl-table-cell'}>Описание</th>
+            <th className={'d-none d-sm-table-cell'}>Категория</th>
+            <th className={'d-none d-md-table-cell'}>Бренд</th>
             <th>Цена</th>
             <th>Скидка</th>
-            <th>Рейтинг</th>
-            <th>Кол-во</th>
+            <th className={'d-none d-md-table-cell'}>Рейтинг</th>
+            <th className={'d-none d-lg-table-cell'}>Кол-во</th>
             <th>Действия</th>
           </tr>
         </thead>
         <tbody>
           {products.map(product => (
             <tr key={product._id}>
-              <td>
+              <td className={'d-none d-sm-table-cell'}>
                 <Image
                   src={product.thumbnail}
                   style={{
@@ -74,15 +75,17 @@ const Dashboard: FC = () => {
                 />
               </td>
               <td>{product.title}</td>
-              <td>{product.description}</td>
-              <td>
+              <td className={'d-none d-xl-table-cell'}>
+                {product.description}
+              </td>
+              <td className={'d-none d-sm-table-cell'}>
                 {categories.find(el => el._id === product.category)?.name}
               </td>
-              <td>{product.brand}</td>
+              <td className={'d-none d-md-table-cell'}>{product.brand}</td>
               <td>{product.price}</td>
               <td>{product.discountPercentage}</td>
-              <td>{product.rating}</td>
-              <td>{product.stock}</td>
+              <td className={'d-none d-md-table-cell'}>{product.rating}</td>
+              <td className={'d-none d-lg-table-cell'}>{product.stock}</td>
               <td className={''}>
                 <Button
                   variant="warning"

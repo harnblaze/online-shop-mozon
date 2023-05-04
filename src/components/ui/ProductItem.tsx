@@ -60,16 +60,20 @@ const ProductItem: FC<IProductProps> = ({ product }) => {
           <Card.Text style={{ textOverflow: 'ellipsis' }}>
             {description}
           </Card.Text>
-          <Row>
-            <Col>
-              <Button variant="primary" onClick={addToCart}>
-                Add to Cart
+          <Row className={'text-center'}>
+            <Col xs={100}>
+              <Button
+                variant="primary"
+                onClick={addToCart}
+                className={'justify-content-center'}
+              >
+                Добавить в корзину
               </Button>
             </Col>
-            <Col xs="auto">
+            <Col>
               <div className="mt-2">
                 {stars}
-                {` ${rating}`}
+                {` ${rating.toFixed(2)}`}
               </div>
             </Col>
           </Row>

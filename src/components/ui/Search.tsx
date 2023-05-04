@@ -25,7 +25,7 @@ const Search: FC = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} style={{ minWidth: '500px' }}>
+    <Form onSubmit={handleSubmit}>
       <Form.Label>Поиск на Mozon:</Form.Label>
       <div className="position-relative d-flex">
         <FormControl

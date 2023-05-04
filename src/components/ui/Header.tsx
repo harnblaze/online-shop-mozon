@@ -41,7 +41,7 @@ const Header: FC = () => {
           </Nav.Link>
         )}
 
-        <Nav className="ml-auto">
+        <div className={'d-flex gap-2'}>
           <Nav.Link as={'div'} className={'position-relative'}>
             <Link to="/cart">
               <AiOutlineShoppingCart
@@ -64,6 +64,8 @@ const Header: FC = () => {
                 <FaUserCircle size={30} style={{ color: 'rgb(13,110,253)' }} />
               }
               id="basic-nav-dropdown"
+              className={'position-relative'}
+              align={'end'}
             >
               <NavDropdown.Item as={'div'}>
                 {userData?.firstName} {userData?.lastName}
@@ -87,7 +89,7 @@ const Header: FC = () => {
               </Link>
             </Nav.Link>
           )}
-        </Nav>
+        </div>
       </Container>
     </Navbar>
   );

@@ -15,7 +15,7 @@ const MyPagination: FC<IPaginationProps> = ({
   if (pageNumbers.length === 1) return null;
 
   return (
-    <Pagination className={'mb-4 mx-3'}>
+    <Pagination className={'pb-4 px-3'}>
       {pageNumbers.map(number => {
         return (
           <Pagination.Item

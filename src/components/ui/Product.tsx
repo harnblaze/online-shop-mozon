@@ -13,7 +13,6 @@ import { getCurrentUserData } from '../../store/actionCreators/auth';
 const Product: FC<IProduct> = ({
   _id,
   title,
-  images,
   thumbnail,
   description,
   price,
@@ -24,7 +23,6 @@ const Product: FC<IProduct> = ({
   const dispatch = useAppDispatch();
   const userData = useTypedSelector(getCurrentUserData());
   const products = useTypedSelector(getProducts());
-  const [image, setImage] = useState(thumbnail);
   const [showProductForm, setShowProductForm] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState<
     IProduct | undefined
@@ -49,30 +47,21 @@ const Product: FC<IProduct> = ({
     <Container>
       <Row>
         <Col md={6} className={'d-flex flex-wrap'}>
-          <Image src={image} fluid />
-
-          {images?.map((url, index) => (
-            <Button variant={'link'} key={index}>
-              <Image
-                src={url}
-                className="mt-3 mr-3 flex-shrink-0"
-                style={{ width: '30%' }}
-                onClick={() => setImage(url)}
-              />
-            </Button>
-          ))}
+          <Image src={thumbnail} fluid />
         </Col>
         <Col md={6}>
           <h2>{title}</h2>
-          <h5>{brand}</h5>
+          <h5>
+            <Badge bg={'info'}>{brand}</Badge>
+          </h5>
           <p>{description}</p>
-          <p>Price: {price} $</p>
+          <p>Цена: {price} $</p>
           {discountPercentage !== 0 && (
             <p>
-              Discount: <Badge bg="success">{discountPercentage}% off</Badge>
+              Скидка: <Badge bg="success">{discountPercentage}%</Badge>
             </p>
           )}
-          <p>Rating: {rating}/5</p>
+          <p>Рейтинг: {rating}/5</p>
           <hr />
           <div className={'d-flex justify-content-between'}>
             <BackButton />

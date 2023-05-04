@@ -41,10 +41,18 @@ const Cart: FC = () => {
       <td>{item.price}$</td>
       <td>{item.quantity}</td>
       <td>
-        <Button variant="danger" onClick={() => handleRemoveItem(item._id)}>
+        <Button
+          variant="danger"
+          onClick={() => handleRemoveItem(item._id)}
+          className={'m-1'}
+        >
           Убрать
-        </Button>{' '}
-        <Button variant="success" onClick={() => handleAddItem(item)}>
+        </Button>
+        <Button
+          variant="success"
+          onClick={() => handleAddItem(item)}
+          className={'m-1'}
+        >
           Добавить
         </Button>
       </td>
@@ -52,7 +60,7 @@ const Cart: FC = () => {
   ));
 
   return (
-    <Container className={'d-block text-center'}>
+    <Container className={'flex-column align-items-center'}>
       <h2 className={'mb-4'}>Корзина</h2>
       {cartItems.length > 0 ? (
         <>
@@ -61,23 +69,21 @@ const Cart: FC = () => {
               <tr>
                 <th>Название</th>
                 <th>Цена</th>
-                <th>Количество</th>
+                <th>Кол-во</th>
                 <th>Действия</th>
               </tr>
             </thead>
             <tbody>{cartRows}</tbody>
           </Table>
           <p>Итого: {cartTotal}$</p>
-          <Button
-            variant="danger"
-            onClick={handleClearCart}
-            className={'flex-shrink-0'}
-          >
-            Очистить корзину
-          </Button>{' '}
-          <Button variant="primary" onClick={handleCheckout}>
-            Оформить заказ
-          </Button>
+          <div className={'d-flex gap-2'}>
+            <Button variant="danger" onClick={handleClearCart}>
+              Очистить корзину
+            </Button>{' '}
+            <Button variant="primary" onClick={handleCheckout}>
+              Оформить заказ
+            </Button>
+          </div>
         </>
       ) : (
         <p>Your cart is empty.</p>

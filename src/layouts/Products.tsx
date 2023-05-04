@@ -49,8 +49,13 @@ const Products: FC = () => {
   return (
     <>
       <Container>
-        <Row className={'justify-content-around flex-grow-1'}>
-          <Col xs={'auto'}>
+        <Row
+          className={
+            'justify-content-md-center justify-content-sm-start flex-grow-1'
+          }
+          xs={1}
+        >
+          <Col xs={100}>
             <Search />
           </Col>
           <Col xs={'auto'}>

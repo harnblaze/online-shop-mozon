@@ -42,7 +42,7 @@ const Sort: FC = () => {
   };
 
   return (
-    <Form.Group controlId="sort-select">
+    <Form.Group controlId="sort-select" className={'mt-3'}>
       <Form.Label>Сортировать по:</Form.Label>
       <Row>
         <Col xs={'auto'}>

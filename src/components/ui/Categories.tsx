@@ -17,7 +17,7 @@ const Categories: FC = () => {
   };
 
   return (
-    <Form.Group controlId="category-select">
+    <Form.Group controlId="category-select" className={'mt-3'}>
       <Form.Label>Выберите категорию:</Form.Label>
       <Form.Control
         as="select"
