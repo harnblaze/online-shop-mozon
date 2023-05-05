@@ -19,9 +19,18 @@ class TokenService {
     }
     return Token.create({ user, refreshToken });
   }
+
   validateRefresh(refreshToken) {
     try {
       return jwt.verify(refreshToken, config.get("refreshSecret"));
+    } catch (e) {
+      return null;
+    }
+  }
+
+  validateAccess(accessToken) {
+    try {
+      return jwt.verify(accessToken, config.get("accessSecret"));
     } catch (e) {
       return null;
     }
