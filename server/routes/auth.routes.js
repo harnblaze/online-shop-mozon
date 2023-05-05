@@ -6,7 +6,6 @@ const router = express.Router({mergeParams: true});
 const tokenService = require("../services/token.service");
 
 function isTokenInvalid(data, dbToken) {
-    console.log(data, dbToken)
     return !data || !dbToken || data._id !== dbToken?.user?.toString()
 }
 
@@ -47,7 +46,6 @@ router.post("/signUp", [
 
             return res.status(201).send({...tokens, userId: newUser._id});
         } catch (e) {
-            console.log(e)
             res
                 .status(500)
                 .json({message: "НА сервере произошла ошибка. Попробуйте позже"});
@@ -98,7 +96,6 @@ router.post("/signInWithPassword", [
             await tokenService.save(existingUser._id, tokens.refreshToken);
             res.status(200).send({...tokens, userId: existingUser._id});
         } catch (e) {
-            console.log(e)
             res
                 .status(500)
                 .json({message: "НА сервере произошла ошибка. Попробуйте позже"});
