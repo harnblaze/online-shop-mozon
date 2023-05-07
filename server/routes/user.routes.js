@@ -16,6 +16,7 @@ router.get("/:userId", auth, async (req, res) => {
             res.status(401).json({message: "Access denied"});
         }
     } catch (e) {
+        console.log(e)
         res
             .status(500)
             .json({message: "НА сервере произошла ошибка. Попробуйте позже"});

@@ -8,7 +8,7 @@
     "rating": 4.69,
     "stock": 94,
     "brand": "Apple",
-    "category": "128bc0e8-12e9-44b4-8db3-eb2bcf3fe945",
+    "category": "smartphones",
     "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
   },
   {
@@ -20,7 +20,7 @@
     "rating": 4.44,
     "stock": 34,
     "brand": "Apple",
-    "category": "128bc0e8-12e9-44b4-8db3-eb2bcf3fe945",
+    "category": "smartphones",
     "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
   },
   {
@@ -32,7 +32,7 @@
     "rating": 4.09,
     "stock": 36,
     "brand": "Samsung",
-    "category": "128bc0e8-12e9-44b4-8db3-eb2bcf3fe945",
+    "category": "smartphones",
     "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg"
   },
   {
@@ -44,7 +44,7 @@
     "rating": 4.3,
     "stock": 123,
     "brand": "OPPO",
-    "category": "128bc0e8-12e9-44b4-8db3-eb2bcf3fe945",
+    "category": "smartphones",
     "thumbnail": "https://i.dummyjson.com/data/products/4/thumbnail.jpg"
   },
   {
@@ -56,7 +56,7 @@
     "rating": 4.09,
     "stock": 32,
     "brand": "Huawei",
-    "category": "128bc0e8-12e9-44b4-8db3-eb2bcf3fe945",
+    "category": "smartphones",
     "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg"
   },
   {
@@ -68,7 +68,7 @@
     "rating": 4.57,
     "stock": 83,
     "brand": "Apple",
-    "category": "09780c7d-7604-4d6c-b693-8fdba0ceedca",
+    "category": "laptops",
     "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png"
   },
   {
@@ -80,7 +80,7 @@
     "rating": 4.25,
     "stock": 50,
     "brand": "Samsung",
-    "category": "09780c7d-7604-4d6c-b693-8fdba0ceedca",
+    "category": "laptops",
     "thumbnail": "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
   },
   {
@@ -92,7 +92,7 @@
     "rating": 4.43,
     "stock": 68,
     "brand": "Microsoft Surface",
-    "category": "09780c7d-7604-4d6c-b693-8fdba0ceedca",
+    "category": "laptops",
     "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
   },
   {
@@ -104,7 +104,7 @@
     "rating": 4.54,
     "stock": 96,
     "brand": "Infinix",
-    "category": "09780c7d-7604-4d6c-b693-8fdba0ceedca",
+    "category": "laptops",
     "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
   },
   {
@@ -116,7 +116,7 @@
     "rating": 4.43,
     "stock": 89,
     "brand": "HP Pavilion",
-    "category": "09780c7d-7604-4d6c-b693-8fdba0ceedca",
+    "category": "laptops",
     "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"
   },
   {

@@ -14,26 +14,12 @@ const {
     authRequested,
     authRequestFailed,
     authRequestSuccess,
-    userCreateRequested,
-    userCreateSuccess,
     userUpdateRequested,
     userUpdateSuccess,
     userLoggedOut,
 } = authActions;
 
-export const userCreateFailed = createAction('auth/userCreateFailed');
 export const userUpdateFailed = createAction('auth/userUpdateFailed');
-
-const createUser = (payload: ISignUpData) => async (dispatch: AppDispatch) => {
-    dispatch(userCreateRequested());
-    try {
-        const {content} = await userService.create(payload);
-        dispatch(userCreateSuccess(content));
-        history.push('/');
-    } catch (error: any) {
-        dispatch(userCreateFailed(error.message));
-    }
-};
 
 export const signIn =
     ({payload, redirect}: { payload: ISignInData; redirect: string }) =>
@@ -42,7 +28,7 @@ export const signIn =
             try {
                 const data = await authService.login(payload);
                 localStorageService.setTokens(data);
-                dispatch(authRequestSuccess(data.localId));
+                dispatch(authRequestSuccess(data.userId));
                 history.push(redirect);
             } catch (e: any) {
                 const {code, message} = e.response.data.error;
@@ -61,8 +47,8 @@ export const singUp =
         try {
             const data = await authService.register(payload);
             localStorageService.setTokens(data);
-            dispatch(authRequestSuccess(data.localId));
-            void dispatch(createUser(payload));
+            dispatch(authRequestSuccess(data.userId));
+            history.push('/')
         } catch (e: any) {
             dispatch(authRequestFailed(e.message));
         }
@@ -89,8 +75,8 @@ export const updateUser =
 export const loadUserData = () => async (dispatch: AppDispatch) => {
     dispatch(userRequested());
     try {
-        const {content} = await userService.getCurrentUser();
-        dispatch(userReceived(content));
+        const data = await userService.getCurrentUser();
+        dispatch(userReceived(data?.content ?? null));
     } catch (e: any) {
         dispatch(userRequestFailed(e.message));
     }

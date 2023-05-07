@@ -30,10 +30,11 @@ router.put("/:productId", auth, async (req, res) => {
 router.put("/", auth, async (req, res) => {
     try {
         const currentUser = await User.findById(req.user._id)
-
+        const product = req.body
+        delete product._id
         if (currentUser.isAdmin) {
             const newProduct = await Product.create({
-                ...req.body,
+                ...product,
             });
             res.status(201).send(newProduct);
         } else {
@@ -46,7 +47,7 @@ router.put("/", auth, async (req, res) => {
     }
 });
 
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const products = await Product.find();
         res.status(200).send(products);

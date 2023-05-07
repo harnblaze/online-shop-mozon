@@ -1,7 +1,7 @@
 const config = {
-  apiEndpoint:
-    'https://ozon-shop-8905c-default-rtdb.europe-west1.firebasedatabase.app/',
-  isFireBase: true,
+    apiEndpoint:
+        'http://localhost:8080/api',
+    isFireBase: false,
 };
 
 export default config;
