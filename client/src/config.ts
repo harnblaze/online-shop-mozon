@@ -1,6 +1,6 @@
 const config = {
     apiEndpoint:
-        'http://188.68.221.9/api',
+        'http://mozon.onrender.com/api',
     isFireBase: false,
 };
 
