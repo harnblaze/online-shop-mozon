@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const config = require('config')
 const chalk = require('chalk')
 const cors = require('cors')
+const path = require('path')
 const initDatabase = require('./startUp/initDatabase')
 const routes = require('./routes')
 
@@ -32,6 +33,14 @@ const start = async () => {
         console.log(chalk.red('Error', e.message))
         process.exit(1)
     }
+}
+
+if (process.env.NODE_ENV === 'production') {
+    app.use('/', express.static(path.join(__dirname, 'client')))
+    const indexPath = path.join(__dirname, 'client', 'index.html')
+    app.get('*', (res, req) => {
+        res.sendFile(indexPath)
+    })
 }
 
 start()
