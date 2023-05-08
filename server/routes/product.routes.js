@@ -2,6 +2,7 @@ const express = require("express");
 const Product = require("../models/Products");
 const User = require("../models/User");
 const auth = require("../middleware/auth.middleware");
+const Category = require("../models/Categories");
 
 const router = express.Router({mergeParams: true});
 
@@ -33,8 +34,10 @@ router.put("/", auth, async (req, res) => {
         const product = req.body
         delete product._id
         if (currentUser.isAdmin) {
+            const category = await Category.findOne({name: product.category})
+
             const newProduct = await Product.create({
-                ...product,
+                ...product, category: category._id
             });
             res.status(201).send(newProduct);
         } else {

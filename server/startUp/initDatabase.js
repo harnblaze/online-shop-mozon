@@ -9,7 +9,14 @@ const createInitialEntity = async (Model, data) => {
         data.map(async (item) => {
             try {
                 delete item._id
-                const newItem = new Model(item)
+                let newItem
+                if (item.category) {
+                    const category = await Category.findOne({name: item.category})
+                    newItem = new Model({...item, category: category._id})
+                } else {
+                    newItem = new Model(item)
+                }
+
                 await newItem.save()
                 return newItem
             } catch (e) {

@@ -25,10 +25,9 @@ const schema = new Schema({
     }, thumbnail: {
         type: String,
         required: true
-    }, category: {
-        
-        type: {type: Schema.Types.ObjectId, ref: 'Category'}
-    },
+    }, category:
+        {type: Schema.Types.ObjectId, ref: 'Category'}
+    ,
 }, {
     timestamps: true
 })

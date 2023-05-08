@@ -30,7 +30,7 @@ const products: IProduct[] = [
         rating: 4.44,
         stock: 34,
         brand: 'Apple',
-        category: '128bc0e8-12e9-44b4-8db3-eb2bcf3fe945',
+        category: 'smartphones',
         thumbnail: 'https://i.dummyjson.com/data/products/2/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/2/1.jpg',
@@ -49,7 +49,7 @@ const products: IProduct[] = [
         rating: 4.09,
         stock: 36,
         brand: 'Samsung',
-        category: '128bc0e8-12e9-44b4-8db3-eb2bcf3fe945',
+        category: 'smartphones',
         thumbnail: 'https://i.dummyjson.com/data/products/3/thumbnail.jpg',
         images: ['https://i.dummyjson.com/data/products/3/1.jpg'],
     },
@@ -62,7 +62,7 @@ const products: IProduct[] = [
         rating: 4.3,
         stock: 123,
         brand: 'OPPO',
-        category: '128bc0e8-12e9-44b4-8db3-eb2bcf3fe945',
+        category: 'smartphones',
         thumbnail: 'https://i.dummyjson.com/data/products/4/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/4/1.jpg',
@@ -82,7 +82,7 @@ const products: IProduct[] = [
         rating: 4.09,
         stock: 32,
         brand: 'Huawei',
-        category: '128bc0e8-12e9-44b4-8db3-eb2bcf3fe945',
+        category: 'smartphones',
         thumbnail: 'https://i.dummyjson.com/data/products/5/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/5/1.jpg',
@@ -100,7 +100,7 @@ const products: IProduct[] = [
         rating: 4.57,
         stock: 83,
         brand: 'Apple',
-        category: '09780c7d-7604-4d6c-b693-8fdba0ceedca',
+        category: 'laptops',
         thumbnail: 'https://i.dummyjson.com/data/products/6/thumbnail.png',
         images: [
             'https://i.dummyjson.com/data/products/6/1.png',
@@ -119,7 +119,7 @@ const products: IProduct[] = [
         rating: 4.25,
         stock: 50,
         brand: 'Samsung',
-        category: '09780c7d-7604-4d6c-b693-8fdba0ceedca',
+        category: 'laptops',
         thumbnail: 'https://i.dummyjson.com/data/products/7/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/7/1.jpg',
@@ -138,7 +138,7 @@ const products: IProduct[] = [
         rating: 4.43,
         stock: 68,
         brand: 'Microsoft Surface',
-        category: '09780c7d-7604-4d6c-b693-8fdba0ceedca',
+        category: 'laptops',
         thumbnail: 'https://i.dummyjson.com/data/products/8/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/8/1.jpg',
@@ -158,7 +158,7 @@ const products: IProduct[] = [
         rating: 4.54,
         stock: 96,
         brand: 'Infinix',
-        category: '09780c7d-7604-4d6c-b693-8fdba0ceedca',
+        category: 'laptops',
         thumbnail: 'https://i.dummyjson.com/data/products/9/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/9/1.jpg',
@@ -178,7 +178,7 @@ const products: IProduct[] = [
         rating: 4.43,
         stock: 89,
         brand: 'HP Pavilion',
-        category: '09780c7d-7604-4d6c-b693-8fdba0ceedca',
+        category: 'laptops',
         thumbnail: 'https://i.dummyjson.com/data/products/10/thumbnail.jpeg',
         images: [
             'https://i.dummyjson.com/data/products/10/1.jpg',
@@ -197,7 +197,7 @@ const products: IProduct[] = [
         rating: 4.26,
         stock: 65,
         brand: 'Impression of Acqua Di Gio',
-        category: '4a3b3700-fbff-46a8-8022-b67b3f3abe5d',
+        category: 'fragrances',
         thumbnail: 'https://i.dummyjson.com/data/products/11/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/11/1.jpg',
@@ -215,7 +215,7 @@ const products: IProduct[] = [
         rating: 4,
         stock: 52,
         brand: 'Royal_Mirage',
-        category: '4a3b3700-fbff-46a8-8022-b67b3f3abe5d',
+        category: 'fragrances',
         thumbnail: 'https://i.dummyjson.com/data/products/12/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/12/1.jpg',
@@ -235,7 +235,7 @@ const products: IProduct[] = [
         rating: 4.59,
         stock: 61,
         brand: 'Fog Scent Xpressio',
-        category: '4a3b3700-fbff-46a8-8022-b67b3f3abe5d',
+        category: 'fragrances',
         thumbnail: 'https://i.dummyjson.com/data/products/13/thumbnail.webp',
         images: [
             'https://i.dummyjson.com/data/products/13/1.jpg',
@@ -255,7 +255,7 @@ const products: IProduct[] = [
         rating: 4.21,
         stock: 114,
         brand: 'Al Munakh',
-        category: '4a3b3700-fbff-46a8-8022-b67b3f3abe5d',
+        category: 'fragrances',
         thumbnail: 'https://i.dummyjson.com/data/products/14/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/14/1.jpg',
@@ -274,7 +274,7 @@ const products: IProduct[] = [
         rating: 4.7,
         stock: 105,
         brand: 'Lord - Al-Rehab',
-        category: '4a3b3700-fbff-46a8-8022-b67b3f3abe5d',
+        category: 'fragrances',
         thumbnail: 'https://i.dummyjson.com/data/products/15/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/15/1.jpg',
@@ -294,7 +294,7 @@ const products: IProduct[] = [
         rating: 4.83,
         stock: 110,
         brand: "L'Oreal Paris",
-        category: '87e8869b-72bd-4507-a76d-61fef9f4ed3e',
+        category: 'skincare',
         thumbnail: 'https://i.dummyjson.com/data/products/16/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/16/1.png',
@@ -314,7 +314,7 @@ const products: IProduct[] = [
         rating: 4.52,
         stock: 78,
         brand: 'Hemani Tea',
-        category: '87e8869b-72bd-4507-a76d-61fef9f4ed3e',
+        category: 'skincare',
         thumbnail: 'https://i.dummyjson.com/data/products/17/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/17/1.jpg',
@@ -333,7 +333,7 @@ const products: IProduct[] = [
         rating: 4.56,
         stock: 88,
         brand: 'Dermive',
-        category: '87e8869b-72bd-4507-a76d-61fef9f4ed3e',
+        category: 'skincare',
         thumbnail: 'https://i.dummyjson.com/data/products/18/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/18/1.jpg',
@@ -353,7 +353,7 @@ const products: IProduct[] = [
         rating: 4.42,
         stock: 54,
         brand: 'ROREC White Rice',
-        category: '87e8869b-72bd-4507-a76d-61fef9f4ed3e',
+        category: 'skincare',
         thumbnail: 'https://i.dummyjson.com/data/products/19/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/19/1.jpg',
@@ -372,7 +372,7 @@ const products: IProduct[] = [
         rating: 4.06,
         stock: 140,
         brand: 'Fair & Clear',
-        category: '87e8869b-72bd-4507-a76d-61fef9f4ed3e',
+        category: 'skincare',
         thumbnail: 'https://i.dummyjson.com/data/products/20/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/20/1.jpg',
@@ -391,7 +391,7 @@ const products: IProduct[] = [
         rating: 4.44,
         stock: 133,
         brand: 'Saaf & Khaas',
-        category: 'e9ef5dfa-9c99-4824-8688-640247f2292e',
+        category: 'groceries',
         thumbnail: 'https://i.dummyjson.com/data/products/21/thumbnail.png',
         images: [
             'https://i.dummyjson.com/data/products/21/1.png',
@@ -408,7 +408,7 @@ const products: IProduct[] = [
         rating: 4.57,
         stock: 146,
         brand: 'Bake Parlor Big',
-        category: 'e9ef5dfa-9c99-4824-8688-640247f2292e',
+        category: 'groceries',
         thumbnail: 'https://i.dummyjson.com/data/products/22/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/22/1.jpg',
@@ -426,7 +426,7 @@ const products: IProduct[] = [
         rating: 4.85,
         stock: 26,
         brand: 'Baking Food Items',
-        category: 'e9ef5dfa-9c99-4824-8688-640247f2292e',
+        category: 'groceries',
         thumbnail: 'https://i.dummyjson.com/data/products/23/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/23/1.jpg',
@@ -446,7 +446,7 @@ const products: IProduct[] = [
         rating: 4.94,
         stock: 113,
         brand: 'fauji',
-        category: 'e9ef5dfa-9c99-4824-8688-640247f2292e',
+        category: 'groceries',
         thumbnail: 'https://i.dummyjson.com/data/products/24/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/24/1.jpg',
@@ -465,7 +465,7 @@ const products: IProduct[] = [
         rating: 4.87,
         stock: 47,
         brand: 'Dry Rose',
-        category: 'e9ef5dfa-9c99-4824-8688-640247f2292e',
+        category: 'groceries',
         thumbnail: 'https://i.dummyjson.com/data/products/25/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/25/1.png',
@@ -485,7 +485,7 @@ const products: IProduct[] = [
         rating: 4.08,
         stock: 131,
         brand: 'Boho Decor',
-        category: '859ab8c5-dba0-483d-8d49-f675b54f9ec5',
+        category: 'home-decoration',
         thumbnail: 'https://i.dummyjson.com/data/products/26/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/26/1.jpg',
@@ -506,7 +506,7 @@ const products: IProduct[] = [
         rating: 4.41,
         stock: 17,
         brand: 'Flying Wooden',
-        category: '859ab8c5-dba0-483d-8d49-f675b54f9ec5',
+        category: 'home-decoration',
         thumbnail: 'https://i.dummyjson.com/data/products/27/thumbnail.webp',
         images: [
             'https://i.dummyjson.com/data/products/27/1.jpg',
@@ -526,7 +526,7 @@ const products: IProduct[] = [
         rating: 4.82,
         stock: 54,
         brand: 'LED Lights',
-        category: '859ab8c5-dba0-483d-8d49-f675b54f9ec5',
+        category: 'home-decoration',
         thumbnail: 'https://i.dummyjson.com/data/products/28/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/28/1.jpg',
@@ -546,7 +546,7 @@ const products: IProduct[] = [
         rating: 4.44,
         stock: 7,
         brand: 'luxury palace',
-        category: '859ab8c5-dba0-483d-8d49-f675b54f9ec5',
+        category: 'home-decoration',
         thumbnail: 'https://i.dummyjson.com/data/products/29/thumbnail.webp',
         images: [
             'https://i.dummyjson.com/data/products/29/1.jpg',
@@ -566,7 +566,7 @@ const products: IProduct[] = [
         rating: 4.92,
         stock: 54,
         brand: 'Golden',
-        category: '859ab8c5-dba0-483d-8d49-f675b54f9ec5',
+        category: 'home-decoration',
         thumbnail: 'https://i.dummyjson.com/data/products/30/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/30/1.jpg',
@@ -585,7 +585,7 @@ const products: IProduct[] = [
         rating: 4.16,
         stock: 140,
         brand: 'Furniture Bed Set',
-        category: '86fca7f3-6195-4220-ac40-a23ccff3a958',
+        category: 'furniture',
         thumbnail: 'https://i.dummyjson.com/data/products/31/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/31/1.jpg',
@@ -599,13 +599,13 @@ const products: IProduct[] = [
         _id: '67rdca3eeb7f6fgeed4718232',
         title: 'Sofa for Coffe Cafe',
         description:
-            'Ratttan Outdoor 86fca7f3-6195-4220-ac40-a23ccff3a958 Set Waterproof  Rattan Sofa for Coffe Cafe',
+            'Ratttan Outdoor furniture Set Waterproof  Rattan Sofa for Coffe Cafe',
         price: 50,
         discountPercentage: 15.59,
         rating: 4.74,
         stock: 30,
         brand: 'Ratttan Outdoor',
-        category: '86fca7f3-6195-4220-ac40-a23ccff3a958',
+        category: 'furniture',
         thumbnail: 'https://i.dummyjson.com/data/products/32/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/32/1.jpg',
@@ -624,7 +624,7 @@ const products: IProduct[] = [
         rating: 4.31,
         stock: 106,
         brand: 'Kitchen Shelf',
-        category: '86fca7f3-6195-4220-ac40-a23ccff3a958',
+        category: 'furniture',
         thumbnail: 'https://i.dummyjson.com/data/products/33/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/33/1.jpg',
@@ -644,7 +644,7 @@ const products: IProduct[] = [
         rating: 4.01,
         stock: 136,
         brand: 'Multi Purpose',
-        category: '86fca7f3-6195-4220-ac40-a23ccff3a958',
+        category: 'furniture',
         thumbnail: 'https://i.dummyjson.com/data/products/34/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/34/1.jpg',
@@ -664,7 +664,7 @@ const products: IProduct[] = [
         rating: 4.06,
         stock: 68,
         brand: 'AmnaMart',
-        category: '86fca7f3-6195-4220-ac40-a23ccff3a958',
+        category: 'furniture',
         thumbnail: 'https://i.dummyjson.com/data/products/35/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/35/1.jpg',
@@ -684,7 +684,7 @@ const products: IProduct[] = [
         rating: 4.26,
         stock: 39,
         brand: 'Professional Wear',
-        category: 'da5813c7-0110-4b23-b533-82e160a980bf',
+        category: 'tops',
         thumbnail: 'https://i.dummyjson.com/data/products/36/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/36/1.jpg',
@@ -704,7 +704,7 @@ const products: IProduct[] = [
         rating: 4.52,
         stock: 107,
         brand: 'Soft Cotton',
-        category: 'da5813c7-0110-4b23-b533-82e160a980bf',
+        category: 'tops',
         thumbnail: 'https://i.dummyjson.com/data/products/37/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/37/1.jpg',
@@ -723,7 +723,7 @@ const products: IProduct[] = [
         rating: 4.8,
         stock: 20,
         brand: 'Soft Cotton',
-        category: 'da5813c7-0110-4b23-b533-82e160a980bf',
+        category: 'tops',
         thumbnail: 'https://i.dummyjson.com/data/products/38/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/38/1.png',
@@ -742,7 +742,7 @@ const products: IProduct[] = [
         rating: 4.55,
         stock: 55,
         brand: 'Top Sweater',
-        category: 'da5813c7-0110-4b23-b533-82e160a980bf',
+        category: 'tops',
         thumbnail: 'https://i.dummyjson.com/data/products/39/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/39/1.jpg',
@@ -762,7 +762,7 @@ const products: IProduct[] = [
         rating: 4.91,
         stock: 84,
         brand: 'Top Sweater',
-        category: 'da5813c7-0110-4b23-b533-82e160a980bf',
+        category: 'tops',
         thumbnail: 'https://i.dummyjson.com/data/products/40/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/40/1.jpg',
@@ -778,7 +778,7 @@ const products: IProduct[] = [
         rating: 4.65,
         stock: 21,
         brand: 'RED MICKY MOUSE..',
-        category: '9fbd85d9-7e84-4ca8-ba05-73862adbe6b2',
+        category: 'womens-dresses',
         thumbnail: 'https://i.dummyjson.com/data/products/41/thumbnail.webp',
         images: [
             'https://i.dummyjson.com/data/products/41/1.jpg',
@@ -798,7 +798,7 @@ const products: IProduct[] = [
         rating: 4.05,
         stock: 148,
         brand: 'Digital Printed',
-        category: '9fbd85d9-7e84-4ca8-ba05-73862adbe6b2',
+        category: 'womens-dresses',
         thumbnail: 'https://i.dummyjson.com/data/products/42/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/42/1.png',
@@ -818,7 +818,7 @@ const products: IProduct[] = [
         rating: 4.31,
         stock: 150,
         brand: 'Ghazi Fabric',
-        category: '9fbd85d9-7e84-4ca8-ba05-73862adbe6b2',
+        category: 'womens-dresses',
         thumbnail: 'https://i.dummyjson.com/data/products/43/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/43/1.jpg',
@@ -838,7 +838,7 @@ const products: IProduct[] = [
         rating: 4.03,
         stock: 2,
         brand: 'Ghazi Fabric',
-        category: '9fbd85d9-7e84-4ca8-ba05-73862adbe6b2',
+        category: 'womens-dresses',
         thumbnail: 'https://i.dummyjson.com/data/products/44/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/44/1.jpg',
@@ -858,7 +858,7 @@ const products: IProduct[] = [
         rating: 4.67,
         stock: 96,
         brand: 'IELGY',
-        category: '9fbd85d9-7e84-4ca8-ba05-73862adbe6b2',
+        category: 'womens-dresses',
         thumbnail: 'https://i.dummyjson.com/data/products/45/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/45/1.jpg',
@@ -878,7 +878,7 @@ const products: IProduct[] = [
         rating: 4.14,
         stock: 72,
         brand: 'IELGY fashion',
-        category: '2072fb14-1cab-42f6-b356-331de4d50de6',
+        category: 'womens-shoes',
         thumbnail: 'https://i.dummyjson.com/data/products/46/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/46/1.webp',
@@ -898,7 +898,7 @@ const products: IProduct[] = [
         rating: 4.19,
         stock: 50,
         brand: 'Synthetic Leather',
-        category: '2072fb14-1cab-42f6-b356-331de4d50de6',
+        category: 'womens-shoes',
         thumbnail: 'https://i.dummyjson.com/data/products/47/thumbnail.jpeg',
         images: [
             'https://i.dummyjson.com/data/products/47/1.jpg',
@@ -917,7 +917,7 @@ const products: IProduct[] = [
         rating: 4.02,
         stock: 25,
         brand: 'Sandals Flip Flops',
-        category: '2072fb14-1cab-42f6-b356-331de4d50de6',
+        category: 'womens-shoes',
         thumbnail: 'https://i.dummyjson.com/data/products/48/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/48/1.jpg',
@@ -937,7 +937,7 @@ const products: IProduct[] = [
         rating: 4.72,
         stock: 107,
         brand: 'Maasai Sandals',
-        category: '2072fb14-1cab-42f6-b356-331de4d50de6',
+        category: 'womens-shoes',
         thumbnail: 'https://i.dummyjson.com/data/products/49/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/49/1.jpg',
@@ -956,7 +956,7 @@ const products: IProduct[] = [
         rating: 4.33,
         stock: 46,
         brand: 'Arrivals Genuine',
-        category: '2072fb14-1cab-42f6-b356-331de4d50de6',
+        category: 'womens-shoes',
         thumbnail: 'https://i.dummyjson.com/data/products/50/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/50/1.jpeg',
@@ -974,7 +974,7 @@ const products: IProduct[] = [
         rating: 4.26,
         stock: 132,
         brand: 'Vintage Apparel',
-        category: '1466791f-8b7f-4f1e-bf23-86c2c9c498f3',
+        category: 'mens-shirts',
         thumbnail: 'https://i.dummyjson.com/data/products/51/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/51/1.png',
@@ -993,7 +993,7 @@ const products: IProduct[] = [
         rating: 4.52,
         stock: 128,
         brand: 'FREE FIRE',
-        category: '1466791f-8b7f-4f1e-bf23-86c2c9c498f3',
+        category: 'mens-shirts',
         thumbnail: 'https://i.dummyjson.com/data/products/52/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/52/1.png',
@@ -1012,7 +1012,7 @@ const products: IProduct[] = [
         rating: 4.89,
         stock: 6,
         brand: 'Vintage Apparel',
-        category: '1466791f-8b7f-4f1e-bf23-86c2c9c498f3',
+        category: 'mens-shirts',
         thumbnail: 'https://i.dummyjson.com/data/products/53/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/53/1.webp',
@@ -1032,7 +1032,7 @@ const products: IProduct[] = [
         rating: 4.62,
         stock: 136,
         brand: 'The Warehouse',
-        category: '1466791f-8b7f-4f1e-bf23-86c2c9c498f3',
+        category: 'mens-shirts',
         thumbnail: 'https://i.dummyjson.com/data/products/54/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/54/1.jpg',
@@ -1051,7 +1051,7 @@ const products: IProduct[] = [
         rating: 4.9,
         stock: 122,
         brand: 'The Warehouse',
-        category: '1466791f-8b7f-4f1e-bf23-86c2c9c498f3',
+        category: 'mens-shirts',
         thumbnail: 'https://i.dummyjson.com/data/products/55/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/55/1.jpg',
@@ -1071,7 +1071,7 @@ const products: IProduct[] = [
         rating: 4.38,
         stock: 6,
         brand: 'Sneakers',
-        category: '4e992425-dccb-4dc3-a7e4-25bbb78c456f',
+        category: 'mens-shoes',
         thumbnail: 'https://i.dummyjson.com/data/products/56/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/56/1.jpg',
@@ -1092,7 +1092,7 @@ const products: IProduct[] = [
         rating: 4.91,
         stock: 20,
         brand: 'Rubber',
-        category: '4e992425-dccb-4dc3-a7e4-25bbb78c456f',
+        category: 'mens-shoes',
         thumbnail: 'https://i.dummyjson.com/data/products/57/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/57/1.jpg',
@@ -1112,7 +1112,7 @@ const products: IProduct[] = [
         rating: 4.41,
         stock: 68,
         brand: 'The Warehouse',
-        category: '4e992425-dccb-4dc3-a7e4-25bbb78c456f',
+        category: 'mens-shoes',
         thumbnail: 'https://i.dummyjson.com/data/products/58/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/58/1.jpg',
@@ -1132,7 +1132,7 @@ const products: IProduct[] = [
         rating: 4.33,
         stock: 137,
         brand: 'Sneakers',
-        category: '4e992425-dccb-4dc3-a7e4-25bbb78c456f',
+        category: 'mens-shoes',
         thumbnail: 'https://i.dummyjson.com/data/products/59/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/59/1.jpg',
@@ -1152,7 +1152,7 @@ const products: IProduct[] = [
         rating: 4.55,
         stock: 129,
         brand: 'Sneakers',
-        category: '4e992425-dccb-4dc3-a7e4-25bbb78c456f',
+        category: 'mens-shoes',
         thumbnail: 'https://i.dummyjson.com/data/products/60/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/60/1.jpg',
@@ -1170,7 +1170,7 @@ const products: IProduct[] = [
         rating: 4.63,
         stock: 91,
         brand: 'Naviforce',
-        category: 'c9cb8f4a-1166-4fd9-9ae8-f83c7495a76d',
+        category: 'mens-watches',
         thumbnail: 'https://i.dummyjson.com/data/products/61/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/61/1.jpg',
@@ -1188,7 +1188,7 @@ const products: IProduct[] = [
         rating: 4.05,
         stock: 95,
         brand: 'SKMEI 9117',
-        category: 'c9cb8f4a-1166-4fd9-9ae8-f83c7495a76d',
+        category: 'mens-watches',
         thumbnail: 'https://i.dummyjson.com/data/products/62/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/62/1.jpg',
@@ -1205,7 +1205,7 @@ const products: IProduct[] = [
         rating: 4.89,
         stock: 142,
         brand: 'SKMEI 9117',
-        category: 'c9cb8f4a-1166-4fd9-9ae8-f83c7495a76d',
+        category: 'mens-watches',
         thumbnail: 'https://i.dummyjson.com/data/products/63/thumbnail.webp',
         images: [
             'https://i.dummyjson.com/data/products/63/1.jpg',
@@ -1224,7 +1224,7 @@ const products: IProduct[] = [
         rating: 4.98,
         stock: 61,
         brand: 'Strap Skeleton',
-        category: 'c9cb8f4a-1166-4fd9-9ae8-f83c7495a76d',
+        category: 'mens-watches',
         thumbnail: 'https://i.dummyjson.com/data/products/64/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/64/1.jpg',
@@ -1243,7 +1243,7 @@ const products: IProduct[] = [
         rating: 4.79,
         stock: 94,
         brand: 'Stainless',
-        category: 'c9cb8f4a-1166-4fd9-9ae8-f83c7495a76d',
+        category: 'mens-watches',
         thumbnail: 'https://i.dummyjson.com/data/products/65/thumbnail.webp',
         images: [
             'https://i.dummyjson.com/data/products/65/1.jpg',
@@ -1262,7 +1262,7 @@ const products: IProduct[] = [
         rating: 4.79,
         stock: 24,
         brand: 'Eastern Watches',
-        category: 'f9c285f1-17ff-4659-8674-9ca2abf007db',
+        category: 'womens-watches',
         thumbnail: 'https://i.dummyjson.com/data/products/66/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/66/1.jpg',
@@ -1282,7 +1282,7 @@ const products: IProduct[] = [
         rating: 4.03,
         stock: 46,
         brand: 'Eastern Watches',
-        category: 'f9c285f1-17ff-4659-8674-9ca2abf007db',
+        category: 'womens-watches',
         thumbnail: 'https://i.dummyjson.com/data/products/67/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/67/1.jpg',
@@ -1302,7 +1302,7 @@ const products: IProduct[] = [
         rating: 4.55,
         stock: 77,
         brand: 'Luxury Digital',
-        category: 'f9c285f1-17ff-4659-8674-9ca2abf007db',
+        category: 'womens-watches',
         thumbnail: 'https://i.dummyjson.com/data/products/68/thumbnail.webp',
         images: [
             'https://i.dummyjson.com/data/products/68/1.jpg',
@@ -1319,7 +1319,7 @@ const products: IProduct[] = [
         rating: 4.77,
         stock: 89,
         brand: 'Watch Pearls',
-        category: 'f9c285f1-17ff-4659-8674-9ca2abf007db',
+        category: 'womens-watches',
         thumbnail: 'https://i.dummyjson.com/data/products/69/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/69/1.jpg',
@@ -1339,7 +1339,7 @@ const products: IProduct[] = [
         rating: 4.08,
         stock: 111,
         brand: 'Bracelet',
-        category: 'f9c285f1-17ff-4659-8674-9ca2abf007db',
+        category: 'womens-watches',
         thumbnail: 'https://i.dummyjson.com/data/products/70/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/70/1.jpg',
@@ -1357,7 +1357,7 @@ const products: IProduct[] = [
         rating: 4.71,
         stock: 17,
         brand: 'LouisWill',
-        category: '5acc17e0-1048-4ee4-9b1e-f91c351b5050',
+        category: 'womens-bags',
         thumbnail: 'https://i.dummyjson.com/data/products/71/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/71/1.jpg',
@@ -1376,7 +1376,7 @@ const products: IProduct[] = [
         rating: 4.91,
         stock: 27,
         brand: 'LouisWill',
-        category: '5acc17e0-1048-4ee4-9b1e-f91c351b5050',
+        category: 'womens-bags',
         thumbnail: 'https://i.dummyjson.com/data/products/72/thumbnail.webp',
         images: [
             'https://i.dummyjson.com/data/products/72/1.jpg',
@@ -1396,7 +1396,7 @@ const products: IProduct[] = [
         rating: 4.18,
         stock: 101,
         brand: 'Bracelet',
-        category: '5acc17e0-1048-4ee4-9b1e-f91c351b5050',
+        category: 'womens-bags',
         thumbnail: 'https://i.dummyjson.com/data/products/73/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/73/1.jpg',
@@ -1415,7 +1415,7 @@ const products: IProduct[] = [
         rating: 4.01,
         stock: 43,
         brand: 'Copenhagen Luxe',
-        category: '5acc17e0-1048-4ee4-9b1e-f91c351b5050',
+        category: 'womens-bags',
         thumbnail: 'https://i.dummyjson.com/data/products/74/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/74/1.jpg',
@@ -1435,7 +1435,7 @@ const products: IProduct[] = [
         rating: 4.93,
         stock: 13,
         brand: 'Steal Frame',
-        category: '5acc17e0-1048-4ee4-9b1e-f91c351b5050',
+        category: 'womens-bags',
         thumbnail: 'https://i.dummyjson.com/data/products/75/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/75/1.jpg',
@@ -1454,7 +1454,7 @@ const products: IProduct[] = [
         rating: 4.61,
         stock: 51,
         brand: 'Darojay',
-        category: 'aa8e06b6-5cc8-4065-89fc-bfcaab153af3',
+        category: 'womens-jewellery',
         thumbnail: 'https://i.dummyjson.com/data/products/76/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/76/1.jpg',
@@ -1472,7 +1472,7 @@ const products: IProduct[] = [
         rating: 4.21,
         stock: 149,
         brand: 'Copenhagen Luxe',
-        category: 'aa8e06b6-5cc8-4065-89fc-bfcaab153af3',
+        category: 'womens-jewellery',
         thumbnail: 'https://i.dummyjson.com/data/products/77/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/77/1.jpg',
@@ -1491,7 +1491,7 @@ const products: IProduct[] = [
         rating: 4.69,
         stock: 9,
         brand: 'Fashion Jewellery',
-        category: 'aa8e06b6-5cc8-4065-89fc-bfcaab153af3',
+        category: 'womens-jewellery',
         thumbnail: 'https://i.dummyjson.com/data/products/78/thumbnail.jpg',
         images: ['https://i.dummyjson.com/data/products/78/thumbnail.jpg'],
     },
@@ -1505,7 +1505,7 @@ const products: IProduct[] = [
         rating: 4.74,
         stock: 16,
         brand: 'Fashion Jewellery',
-        category: 'aa8e06b6-5cc8-4065-89fc-bfcaab153af3',
+        category: 'womens-jewellery',
         thumbnail: 'https://i.dummyjson.com/data/products/79/thumbnail.jpg',
         images: ['https://i.dummyjson.com/data/products/79/1.jpg'],
     },
@@ -1519,7 +1519,7 @@ const products: IProduct[] = [
         rating: 4.59,
         stock: 9,
         brand: 'Cuff Butterfly',
-        category: 'aa8e06b6-5cc8-4065-89fc-bfcaab153af3',
+        category: 'womens-jewellery',
         thumbnail: 'https://i.dummyjson.com/data/products/80/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/80/1.jpg',
@@ -1539,7 +1539,7 @@ const products: IProduct[] = [
         rating: 4.94,
         stock: 78,
         brand: 'Designer Sun Glasses',
-        category: '0c7bfe3e-e73b-4878-aee4-c59310e8884b',
+        category: 'sunglasses',
         thumbnail: 'https://i.dummyjson.com/data/products/81/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/81/1.jpg',
@@ -1559,7 +1559,7 @@ const products: IProduct[] = [
         rating: 4.62,
         stock: 78,
         brand: 'Designer Sun Glasses',
-        category: '0c7bfe3e-e73b-4878-aee4-c59310e8884b',
+        category: 'sunglasses',
         thumbnail: 'https://i.dummyjson.com/data/products/82/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/82/1.jpg',
@@ -1579,7 +1579,7 @@ const products: IProduct[] = [
         rating: 4.97,
         stock: 115,
         brand: 'mastar watch',
-        category: '0c7bfe3e-e73b-4878-aee4-c59310e8884b',
+        category: 'sunglasses',
         thumbnail: 'https://i.dummyjson.com/data/products/83/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/83/1.jpg',
@@ -1599,7 +1599,7 @@ const products: IProduct[] = [
         rating: 4.64,
         stock: 64,
         brand: 'mastar watch',
-        category: '0c7bfe3e-e73b-4878-aee4-c59310e8884b',
+        category: 'sunglasses',
         thumbnail: 'https://i.dummyjson.com/data/products/84/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/84/1.jpg',
@@ -1617,7 +1617,7 @@ const products: IProduct[] = [
         rating: 4.98,
         stock: 92,
         brand: 'LouisWill',
-        category: '0c7bfe3e-e73b-4878-aee4-c59310e8884b',
+        category: 'sunglasses',
         thumbnail: 'https://i.dummyjson.com/data/products/85/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/85/1.jpg',
@@ -1635,7 +1635,7 @@ const products: IProduct[] = [
         rating: 4.57,
         stock: 22,
         brand: 'Car Aux',
-        category: '3b4dafc2-70e7-44a2-a594-564eab616c22',
+        category: 'automotive',
         thumbnail: 'https://i.dummyjson.com/data/products/86/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/86/1.jpg',
@@ -1655,7 +1655,7 @@ const products: IProduct[] = [
         rating: 4.54,
         stock: 37,
         brand: 'W1209 DC12V',
-        category: '3b4dafc2-70e7-44a2-a594-564eab616c22',
+        category: 'automotive',
         thumbnail: 'https://i.dummyjson.com/data/products/87/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/87/1.jpg',
@@ -1675,7 +1675,7 @@ const products: IProduct[] = [
         rating: 4.98,
         stock: 42,
         brand: 'TC Reusable',
-        category: '3b4dafc2-70e7-44a2-a594-564eab616c22',
+        category: 'automotive',
         thumbnail: 'https://i.dummyjson.com/data/products/88/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/88/1.jpg',
@@ -1695,7 +1695,7 @@ const products: IProduct[] = [
         rating: 4.2,
         stock: 79,
         brand: 'TC Reusable',
-        category: '3b4dafc2-70e7-44a2-a594-564eab616c22',
+        category: 'automotive',
         thumbnail: 'https://i.dummyjson.com/data/products/89/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/89/1.jpg',
@@ -1715,7 +1715,7 @@ const products: IProduct[] = [
         rating: 4.1,
         stock: 63,
         brand: 'Neon LED Light',
-        category: '3b4dafc2-70e7-44a2-a594-564eab616c22',
+        category: 'automotive',
         thumbnail: 'https://i.dummyjson.com/data/products/90/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/90/1.jpg',
@@ -1735,7 +1735,7 @@ const products: IProduct[] = [
         rating: 4.04,
         stock: 115,
         brand: 'METRO 70cc Motorcycle - MR70',
-        category: '570ae5a3-df40-483e-b86a-528bc217c1af',
+        category: 'motorcycle',
         thumbnail: 'https://i.dummyjson.com/data/products/91/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/91/1.jpg',
@@ -1755,7 +1755,7 @@ const products: IProduct[] = [
         rating: 4.19,
         stock: 22,
         brand: 'BRAVE BULL',
-        category: '570ae5a3-df40-483e-b86a-528bc217c1af',
+        category: 'motorcycle',
         thumbnail: 'https://i.dummyjson.com/data/products/92/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/92/1.jpg',
@@ -1774,7 +1774,7 @@ const products: IProduct[] = [
         rating: 4.84,
         stock: 127,
         brand: 'shock absorber',
-        category: '570ae5a3-df40-483e-b86a-528bc217c1af',
+        category: 'motorcycle',
         thumbnail: 'https://i.dummyjson.com/data/products/93/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/93/1.jpg',
@@ -1794,7 +1794,7 @@ const products: IProduct[] = [
         rating: 4.06,
         stock: 109,
         brand: 'JIEPOLLY',
-        category: '570ae5a3-df40-483e-b86a-528bc217c1af',
+        category: 'motorcycle',
         thumbnail: 'https://i.dummyjson.com/data/products/94/thumbnail.webp',
         images: [
             'https://i.dummyjson.com/data/products/94/1.webp',
@@ -1813,7 +1813,7 @@ const products: IProduct[] = [
         rating: 4.21,
         stock: 144,
         brand: 'Xiangle',
-        category: '570ae5a3-df40-483e-b86a-528bc217c1af',
+        category: 'motorcycle',
         thumbnail: 'https://i.dummyjson.com/data/products/95/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/95/1.jpg',
@@ -1833,7 +1833,7 @@ const products: IProduct[] = [
         rating: 4.83,
         stock: 96,
         brand: 'lightingbrilliance',
-        category: '39b1d338-f1d2-4015-86ef-4b6622d05383',
+        category: 'lighting',
         thumbnail: 'https://i.dummyjson.com/data/products/96/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/96/1.jpg',
@@ -1853,7 +1853,7 @@ const products: IProduct[] = [
         rating: 4.93,
         stock: 146,
         brand: 'Ifei Home',
-        category: '39b1d338-f1d2-4015-86ef-4b6622d05383',
+        category: 'lighting',
         thumbnail: 'https://i.dummyjson.com/data/products/97/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/97/1.jpg',
@@ -1873,7 +1873,7 @@ const products: IProduct[] = [
         rating: 4.99,
         stock: 44,
         brand: 'DADAWU',
-        category: '39b1d338-f1d2-4015-86ef-4b6622d05383',
+        category: 'lighting',
         thumbnail: 'https://i.dummyjson.com/data/products/98/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/98/1.jpg',
@@ -1893,7 +1893,7 @@ const products: IProduct[] = [
         rating: 4.32,
         stock: 138,
         brand: 'Ifei Home',
-        category: '39b1d338-f1d2-4015-86ef-4b6622d05383',
+        category: 'lighting',
         thumbnail: 'https://i.dummyjson.com/data/products/99/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/99/1.jpg',
@@ -1912,7 +1912,7 @@ const products: IProduct[] = [
         rating: 4.74,
         stock: 133,
         brand: 'YIOSI',
-        category: '39b1d338-f1d2-4015-86ef-4b6622d05383',
+        category: 'lighting',
         thumbnail: 'https://i.dummyjson.com/data/products/100/thumbnail.jpg',
         images: [
             'https://i.dummyjson.com/data/products/100/1.jpg',
