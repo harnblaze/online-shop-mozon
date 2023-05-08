@@ -9,7 +9,7 @@ const http = axios.create({
 });
 
 http.interceptors.request.use(
-    async (config) => {
+    async (config): Promise<any> => {
 
         if (configFile.isFireBase) {
             const containSlash = /\/$/gi.test(config.url ?? "");
@@ -29,7 +29,13 @@ http.interceptors.request.use(
         }
         const accessToken = localStorageService.getAccessToken();
         if (accessToken !== undefined) {
-            config.headers = {...config.headers, Authorization: `Bearer ${accessToken}`};
+            return {
+                ...config,
+                headers: {
+                    ...config.headers,
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            }
         }
 
 
