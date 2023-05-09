@@ -54,11 +54,11 @@ const useMockData = (): IUseMockData => {
         setStatus(statusConst.idle);
         try {
             for (const cat of categories) {
-                await httpService.put('category/', cat);
+                await httpService.post('category/', cat);
                 incrementCount();
             }
             for (const prod of products) {
-                await httpService.put('product/', prod);
+                await httpService.post('product/', prod);
                 incrementCount();
             }
         } catch (error) {

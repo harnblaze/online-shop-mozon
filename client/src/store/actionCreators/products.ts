@@ -41,11 +41,11 @@ export const removeProduct =
         dispatch(productRemoveRequested());
         try {
             const {content} = await productService.removeProduct(productId);
-
             dispatch(productRemoved(content._id));
-
+            return true
         } catch (e: any) {
             dispatch(productsRequestFailed(e.message));
+            return false
         }
     };
 
@@ -55,8 +55,10 @@ export const createProduct =
         try {
             const {content} = await productService.createProduct(payload);
             dispatch(productCreated(content));
+            return true
         } catch (error: any) {
             dispatch(productsRequestFailed(error.message));
+            return false
         }
     };
 
@@ -66,8 +68,10 @@ export const updateProduct =
         try {
             const {content} = await productService.update(payload);
             await dispatch(productUpdated(content));
+            return true
         } catch (e: any) {
             dispatch(productsRequestFailed(e));
+            return false
         }
     };
 

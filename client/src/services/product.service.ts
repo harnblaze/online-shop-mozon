@@ -12,7 +12,7 @@ const productService = {
         return data;
     },
     createProduct: async (product: Omit<IProduct, "_id">): Promise<any> => {
-        const {data} = await httpService.put(endPoint, product);
+        const {data} = await httpService.post(endPoint, product);
         return data;
     },
     update: async (product: IProduct): Promise<any> => {

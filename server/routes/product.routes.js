@@ -28,13 +28,16 @@ router.put("/:productId", auth, async (req, res) => {
     }
 });
 
-router.put("/", auth, async (req, res) => {
+router.post("/", auth, async (req, res) => {
     try {
         const currentUser = await User.findById(req.user._id)
         const product = req.body
         delete product._id
         if (currentUser.isAdmin) {
-            const category = await Category.findOne({name: product.category})
+            let category = await Category.findOne({name: product.category})
+            if (category === null) {
+                category = await Category.findOne({_id: product.category})
+            }
 
             const newProduct = await Product.create({
                 ...product, category: category._id

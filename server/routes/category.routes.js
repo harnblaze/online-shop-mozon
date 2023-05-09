@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.put("/", auth, async (req, res) => {
+router.post("/", auth, async (req, res) => {
     try {
         const currentUser = await User.findById(req.user._id)
         const category = req.body
