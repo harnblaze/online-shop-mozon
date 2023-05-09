@@ -41,9 +41,9 @@ export const removeProduct =
         dispatch(productRemoveRequested());
         try {
             const {content} = await productService.removeProduct(productId);
-            if (content === null) {
-                dispatch(productRemoved(productId));
-            }
+
+            dispatch(productRemoved(content._id));
+
         } catch (e: any) {
             dispatch(productsRequestFailed(e.message));
         }
