@@ -32,7 +32,13 @@ export const fetchingProductsList =
             const {content} = await productService.get();
             dispatch(productsReceived(content));
         } catch (e: any) {
-            dispatch(productsRequestFailed(e.message));
+            let message
+            if (e.response.status === 401) {
+                message = e.response.data.message;
+            } else {
+                message = e.message
+            }
+            dispatch(productsRequestFailed(message));
         }
     };
 

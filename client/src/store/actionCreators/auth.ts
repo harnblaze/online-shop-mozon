@@ -78,7 +78,13 @@ export const loadUserData = () => async (dispatch: AppDispatch) => {
         const data = await userService.getCurrentUser();
         dispatch(userReceived(data?.content ?? null));
     } catch (e: any) {
-        dispatch(userRequestFailed(e.message));
+        let message
+        if (e.response.status === 401) {
+            message = e.response.data.message;
+        } else {
+            message = e.message
+        }
+        dispatch(userRequestFailed(message));
     }
 };
 
